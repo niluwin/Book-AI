@@ -871,7 +871,7 @@ There's an activation function called **hard max**, which gets 1 for the maximum
   * Truly open \(open source with good governance\)
 * Programming frameworks can not only shorten your coding time but sometimes also perform optimizations that speed up your code.
 
-### TensorFlow
+### TensorFlow 1.x
 
 * In this section we will learn the basic structure of TensorFlow programs.
 * Lets see how to implement a minimization function:
@@ -885,7 +885,7 @@ There's an activation function called **hard max**, which gets 1 for the maximum
 
     import tensorflow as tf
 
-```text
+```python
 w = tf.Variable(0, dtype=tf.float32)                 # creating a variable w
 cost = tf.add(tf.add(w**2, tf.multiply(-10.0, w)), 25.0)        # can be written as this - cost = w**2 - 10*w + 25
 train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
@@ -904,7 +904,7 @@ for i in range(1000):
 print("W after 1000 iterations:", session.run(w))
 ```
 
-```text
+```python
 * Code v.2 \(we feed the inputs to the algorithm through coefficients\):
 
   \`\`\`python import numpy as np import tensorflow as tf
