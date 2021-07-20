@@ -764,7 +764,7 @@ Implications of L2-regularization on:
 ### Why does Batch normalization work?
 
 * The first reason is the same reason as why we normalize X.
-* The second reason is that batch normalization reduces the problem of input values changing \(shifting\).
+* The second reason is that batch normalization reduces the problem of input values changing \(Covariance shift\). Makes the later layers robust to changes in the initial layers by having beta and gamma distributed values.
 * Batch normalization does some regularization:
 
   * Each mini batch is scaled by the mean/variance computed of that mini-batch.
