@@ -251,6 +251,7 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
   4. Normalize the variance. `X /= variance`
 * These steps should be applied to training, dev, and testing sets \(but using mean and variance of the train set\).
 * Why normalize?
+
   * If we don't normalize the inputs our cost function will be deep and its shape will be inconsistent \(elongated\) then optimizing it will take a long time.
   * But if we normalize it the opposite will occur. The shape of the cost function will be consistent \(look more symmetric like circle in 2D example\) and we can use a larger learning rate alpha - the optimization will be faster.
 
@@ -430,6 +431,7 @@ Implications of L2-regularization on:
 ### Understanding mini-batch gradient descent
 
 * In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down \(unlike the batch gradient descent where cost function descreases on each iteration\).
+
 * Mini-batch size:
   * \(`mini batch size = m`\)  ==&gt;    Batch gradient descent
   * \(`mini batch size = 1`\)  ==&gt;    Stochastic gradient descent \(SGD\)
@@ -707,20 +709,22 @@ Implications of L2-regularization on:
 * If you have enough computational resources, you can run some models in parallel and at the end of the day\(s\) you check the results.
   * Called Caviar approach.
 
+![](../../../.gitbook/assets/image%20%289%29.png)
+
 ### Normalizing activations in a network
 
 * In the rise of deep learning, one of the most important ideas has been an algorithm called **batch normalization**, created by two researchers, Sergey Ioffe and Christian Szegedy.
 * Batch Normalization speeds up learning.
-* Before we normalized input by subtracting the mean and dividing by variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
+* Before we normalized input by subtracting the mean and dividing by standard deviation. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
 * The question is: _for any hidden layer can we normalize `A[l]` to train `W[l+1]`, `b[l+1]` faster?_ This is what batch normalization is about.
 * There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
 * Algorithm:
   * Given `Z[l] = [z(1), ..., z(m)]`, i = 1 to m \(for each input\)
-  * Compute `mean = 1/m * sum(z[i])`
-  * Compute `variance = 1/m * sum((z[i] - mean)^2)`
-  * Then `Z_norm[i] = (z[i] - mean) / np.sqrt(variance + epsilon)` \(add `epsilon` for numerical stability if variance = 0\)
+  * Compute `mean = 1/m * sum(z(i))`
+  * Compute `variance = 1/m * sum((z(i) - mean)^2)`
+  * Then `Z_norm(i) = (z(i) - mean) / np.sqrt(variance + epsilon)` \(add `epsilon` for numerical stability if variance = 0\)
     * Forcing the inputs to a distribution with zero mean and variance of 1.
-  * Then `Z_tilde[i] = gamma * Z_norm[i] + beta`
+  * Then `Z_tilde(i) = gamma * Z_norm(i) + beta`
     * To make inputs belong to other distribution \(with other mean and variance\).
     * gamma and beta are learnable parameters of the model.
     * Making the NN learn the distribution of the outputs.
