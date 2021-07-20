@@ -734,8 +734,6 @@ Implications of L2-regularization on:
 
 * Using batch norm in 3 hidden layers NN:
 
-  ![](../../../.gitbook/assets/bn.png)
-
 * Our NN parameters will be:
   * `W[1]`, `b[1]`, ..., `W[L]`, `b[L]`, `beta[1]`, `gamma[1]`, ..., `beta[L]`, `gamma[L]`
   * `beta[1]`, `gamma[1]`, ..., `beta[L]`, `gamma[L]` are updated using any optimization algorithms \(like GD, RMSprop, Adam\)
@@ -759,16 +757,23 @@ Implications of L2-regularization on:
   * `beta[l]    - (n[l], m)`
   * `gamma[l]   - (n[l], m)`
 
+![](../../../.gitbook/assets/bn.png)
+
+![](../../../.gitbook/assets/image%20%2811%29.png)
+
 ### Why does Batch normalization work?
 
 * The first reason is the same reason as why we normalize X.
 * The second reason is that batch normalization reduces the problem of input values changing \(shifting\).
 * Batch normalization does some regularization:
+
   * Each mini batch is scaled by the mean/variance computed of that mini-batch.
   * This adds some noise to the values `Z[l]` within that mini batch. So similar to dropout it adds some noise to each hidden layer's activations.
   * This has a slight regularization effect.
   * Using bigger size of the mini-batch you are reducing noise and therefore regularization effect.
   * Don't rely on batch normalization as a regularization. It's intended for normalization of hidden units, activations and therefore speeding up learning. For regularization use other regularization techniques \(L2 or dropout\).
+
+![](../../../.gitbook/assets/image%20%2810%29.png)
 
 ### Batch normalization at test time
 
