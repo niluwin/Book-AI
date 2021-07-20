@@ -813,8 +813,11 @@ Implications of L2-regularization on:
 
 ### Training a Softmax classifier
 
-* There's an activation which is called hard max, which gets 1 for the maximum value and zeros for the others.
-  * If you are using NumPy, its `np.max` over the vertical axis.
+{% hint style="info" %}
+There's an activation function called **hard max**, which gets 1 for the maximum value and zeros for the others.
+{% endhint %}
+
+* If you are using NumPy, its `np.max` over the vertical axis.
 * The Softmax name came from softening the values and not harding them like hard max.
 * Softmax is a generalization of logistic activation function to `C` classes. If `C = 2` softmax reduces to logistic regression.
 * The loss function used with softmax:
