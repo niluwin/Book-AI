@@ -251,6 +251,7 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
   4. Normalize the variance. `X /= variance`
 * These steps should be applied to training, dev, and testing sets \(but using mean and variance of the train set\).
 * Why normalize?
+
   * If we don't normalize the inputs our cost function will be deep and its shape will be inconsistent \(elongated\) then optimizing it will take a long time.
   * But if we normalize it the opposite will occur. The shape of the cost function will be consistent \(look more symmetric like circle in 2D example\) and we can use a larger learning rate alpha - the optimization will be faster.
 
@@ -430,6 +431,7 @@ Implications of L2-regularization on:
 ### Understanding mini-batch gradient descent
 
 * In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down \(unlike the batch gradient descent where cost function descreases on each iteration\).
+
 * Mini-batch size:
   * \(`mini batch size = m`\)  ==&gt;    Batch gradient descent
   * \(`mini batch size = 1`\)  ==&gt;    Stochastic gradient descent \(SGD\)
@@ -704,20 +706,22 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
 * If you have enough computational resources, you can run some models in parallel and at the end of the day\(s\) you check the results.
   * Called Caviar approach.
 
+![](../../../.gitbook/assets/image%20%289%29.png)
+
 ### Normalizing activations in a network
 
 * In the rise of deep learning, one of the most important ideas has been an algorithm called **batch normalization**, created by two researchers, Sergey Ioffe and Christian Szegedy.
 * Batch Normalization speeds up learning.
-* Before we normalized input by subtracting the mean and dividing by variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
+* Before we normalized input by subtracting the mean and dividing by standard deviation. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
 * The question is: _for any hidden layer can we normalize `A[l]` to train `W[l+1]`, `b[l+1]` faster?_ This is what batch normalization is about.
 * There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
 * Algorithm:
   * Given `Z[l] = [z(1), ..., z(m)]`, i = 1 to m \(for each input\)
-  * Compute `mean = 1/m * sum(z[i])`
-  * Compute `variance = 1/m * sum((z[i] - mean)^2)`
-  * Then `Z_norm[i] = (z[i] - mean) / np.sqrt(variance + epsilon)` \(add `epsilon` for numerical stability if variance = 0\)
+  * Compute `mean = 1/m * sum(z(i))`
+  * Compute `variance = 1/m * sum((z(i) - mean)^2)`
+  * Then `Z_norm(i) = (z(i) - mean) / np.sqrt(variance + epsilon)` \(add `epsilon` for numerical stability if variance = 0\)
     * Forcing the inputs to a distribution with zero mean and variance of 1.
-  * Then `Z_tilde[i] = gamma * Z_norm[i] + beta`
+  * Then `Z_tilde(i) = gamma * Z_norm(i) + beta`
     * To make inputs belong to other distribution \(with other mean and variance\).
     * gamma and beta are learnable parameters of the model.
     * Making the NN learn the distribution of the outputs.
@@ -726,8 +730,6 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
 ### Fitting Batch Normalization into a neural network
 
 * Using batch norm in 3 hidden layers NN:
-
-  ![](../../../.gitbook/assets/bn.png)
 
 * Our NN parameters will be:
   * `W[1]`, `b[1]`, ..., `W[L]`, `b[L]`, `beta[1]`, `gamma[1]`, ..., `beta[L]`, `gamma[L]`
@@ -752,16 +754,23 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
   * `beta[l]    - (n[l], m)`
   * `gamma[l]   - (n[l], m)`
 
+![](../../../.gitbook/assets/bn.png)
+
+![](../../../.gitbook/assets/image%20%2811%29.png)
+
 ### Why does Batch normalization work?
 
 * The first reason is the same reason as why we normalize X.
-* The second reason is that batch normalization reduces the problem of input values changing \(shifting\).
+* The second reason is that batch normalization reduces the problem of input values changing \(Covariance shift\). Makes the later layers robust to changes in the initial layers by having beta and gamma distributed values.
 * Batch normalization does some regularization:
+
   * Each mini batch is scaled by the mean/variance computed of that mini-batch.
   * This adds some noise to the values `Z[l]` within that mini batch. So similar to dropout it adds some noise to each hidden layer's activations.
   * This has a slight regularization effect.
   * Using bigger size of the mini-batch you are reducing noise and therefore regularization effect.
   * Don't rely on batch normalization as a regularization. It's intended for normalization of hidden units, activations and therefore speeding up learning. For regularization use other regularization techniques \(L2 or dropout\).
+
+![](../../../.gitbook/assets/image%20%2810%29.png)
 
 ### Batch normalization at test time
 
@@ -801,8 +810,11 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
 
 ### Training a Softmax classifier
 
-* There's an activation which is called hard max, which gets 1 for the maximum value and zeros for the others.
-  * If you are using NumPy, its `np.max` over the vertical axis.
+{% hint style="info" %}
+There's an activation function called **hard max**, which gets 1 for the maximum value and zeros for the others.
+{% endhint %}
+
+* If you are using NumPy, its `np.max` over the vertical axis.
 * The Softmax name came from softening the values and not harding them like hard max.
 * Softmax is a generalization of logistic activation function to `C` classes. If `C = 2` softmax reduces to logistic regression.
 * The loss function used with softmax:
@@ -856,7 +868,7 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
   * Truly open \(open source with good governance\)
 * Programming frameworks can not only shorten your coding time but sometimes also perform optimizations that speed up your code.
 
-### TensorFlow
+### TensorFlow 1.x
 
 * In this section we will learn the basic structure of TensorFlow programs.
 * Lets see how to implement a minimization function:
@@ -870,7 +882,7 @@ _\(taken from_ [_investopedia.com_](https://www.investopedia.com/)_\)_
 
     import tensorflow as tf
 
-```text
+```python
 w = tf.Variable(0, dtype=tf.float32)                 # creating a variable w
 cost = tf.add(tf.add(w**2, tf.multiply(-10.0, w)), 25.0)        # can be written as this - cost = w**2 - 10*w + 25
 train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
@@ -889,7 +901,7 @@ for i in range(1000):
 print("W after 1000 iterations:", session.run(w))
 ```
 
-```text
+```python
 * Code v.2 \(we feed the inputs to the algorithm through coefficients\):
 
   \`\`\`python import numpy as np import tensorflow as tf
