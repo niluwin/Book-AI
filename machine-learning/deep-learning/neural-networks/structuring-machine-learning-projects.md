@@ -367,6 +367,8 @@ Here are the course summary as its given on the course [link](https://www.course
      * Is the difference is big \(positive\) then maybe you need to find a bigger dev set \(dev set and test set come from the same distribution, so the only way for there to be a huge gap here, for it to do much better on the dev set than the test set, is if you somehow managed to overfit the dev set\).
 * Unfortunately, there aren't many systematic ways to deal with data mismatch. There are some things to try about this in the next section.
 
+![](../../../.gitbook/assets/image%20%2813%29.png)
+
 ![](../../../.gitbook/assets/image%20%2812%29.png)
 
 ### Addressing data mismatch
