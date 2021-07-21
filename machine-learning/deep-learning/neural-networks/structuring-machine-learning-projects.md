@@ -367,7 +367,7 @@ Here are the course summary as its given on the course [link](https://www.course
      * Is the difference is big \(positive\) then maybe you need to find a bigger dev set \(dev set and test set come from the same distribution, so the only way for there to be a huge gap here, for it to do much better on the dev set than the test set, is if you somehow managed to overfit the dev set\).
 * Unfortunately, there aren't many systematic ways to deal with data mismatch. There are some things to try about this in the next section.
 
-![](../../../.gitbook/assets/image%20%2814%29.png)
+![](../../../.gitbook/assets/image%20%2815%29.png)
 
 ![](../../../.gitbook/assets/image%20%2812%29.png)
 
@@ -397,9 +397,11 @@ Here are the course summary as its given on the course [link](https://www.course
   * You have a lot of data for the task A you are transferring from and relatively less data for the task B your transferring to.
   * Low level features from task A could be helpful for learning task B.
 
-![](../../../.gitbook/assets/image%20%2813%29.png)
+![](../../../.gitbook/assets/image%20%2814%29.png)
 
 ### Multi-task learning
+
+![](../../../.gitbook/assets/image%20%2813%29.png)
 
 * Whereas in transfer learning, you have a sequential process where you learn from task A and then transfer that to task B. In multi-task learning, you start off simultaneously, trying to have one neural network do several things at the same time. And then each of these tasks helps hopefully all of the other tasks. 
 * Example:
@@ -442,7 +444,7 @@ Here are the course summary as its given on the course [link](https://www.course
     ```
 
   * End-to-end deep learning gives data more freedom, it might not use phonemes when training!
-* To build the end-to-end deep learning system that works well, we need a big dataset \(more data then in non end-to-end system\). If we have a small dataset the ordinary implementation could work just fine.
+* To build the end-to-end deep learning system that works well, we need a big dataset \(more data then in non end-to-end system\). If we have a small dataset the ordinary implementation could work just fine \(up to 10000 data points\).
 * Example 2:
   * Face recognition system:
 
