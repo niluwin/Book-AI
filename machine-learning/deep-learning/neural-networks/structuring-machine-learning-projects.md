@@ -367,7 +367,7 @@ Here are the course summary as its given on the course [link](https://www.course
      * Is the difference is big \(positive\) then maybe you need to find a bigger dev set \(dev set and test set come from the same distribution, so the only way for there to be a huge gap here, for it to do much better on the dev set than the test set, is if you somehow managed to overfit the dev set\).
 * Unfortunately, there aren't many systematic ways to deal with data mismatch. There are some things to try about this in the next section.
 
-![](../../../.gitbook/assets/image%20%2813%29.png)
+![](../../../.gitbook/assets/image%20%2814%29.png)
 
 ![](../../../.gitbook/assets/image%20%2812%29.png)
 
@@ -392,9 +392,12 @@ Here are the course summary as its given on the course [link](https://www.course
   2. Option 2: if you have enough data you can retrain all the weights.
 * Option 1 and 2 are called **fine-tuning** and training on task A called **pretraining**.
 * When transfer learning make sense:
+
   * Task A and B have the same input X \(e.g. image, audio\).
   * You have a lot of data for the task A you are transferring from and relatively less data for the task B your transferring to.
   * Low level features from task A could be helpful for learning task B.
+
+![](../../../.gitbook/assets/image%20%2813%29.png)
 
 ### Multi-task learning
 
