@@ -367,7 +367,7 @@ Here are the course summary as its given on the course [link](https://www.course
      * Is the difference is big \(positive\) then maybe you need to find a bigger dev set \(dev set and test set come from the same distribution, so the only way for there to be a huge gap here, for it to do much better on the dev set than the test set, is if you somehow managed to overfit the dev set\).
 * Unfortunately, there aren't many systematic ways to deal with data mismatch. There are some things to try about this in the next section.
 
-![](../../../.gitbook/assets/image%20%2815%29.png)
+![](../../../.gitbook/assets/image%20%2817%29.png)
 
 ![](../../../.gitbook/assets/image%20%2812%29.png)
 
@@ -397,7 +397,7 @@ Here are the course summary as its given on the course [link](https://www.course
   * You have a lot of data for the task A you are transferring from and relatively less data for the task B your transferring to.
   * Low level features from task A could be helpful for learning task B.
 
-![](../../../.gitbook/assets/image%20%2814%29.png)
+![](../../../.gitbook/assets/image%20%2815%29.png)
 
 ### Multi-task learning
 
@@ -489,9 +489,7 @@ Here are the course summary as its given on the course [link](https://www.course
   * Use ML/DL to learn some individual components.
   * When applying supervised learning you should carefully choose what types of X to Y mappings you want to learn depending on what task you can get data for.
 
-  
-  
-   
-  
+![](../../../.gitbook/assets/image%20%2816%29.png)
+
  These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
 
