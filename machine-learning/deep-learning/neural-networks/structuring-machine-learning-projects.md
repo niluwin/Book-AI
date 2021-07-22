@@ -489,7 +489,7 @@ Here are the course summary as its given on the course [link](https://www.course
   * Use ML/DL to learn some individual components.
   * When applying supervised learning you should carefully choose what types of X to Y mappings you want to learn depending on what task you can get data for.
 
-![](../../../.gitbook/assets/image%20%2816%29.png)
+![](../../../.gitbook/assets/image%20%2816%29%20%281%29.png)
 
  These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
 

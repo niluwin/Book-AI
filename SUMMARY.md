@@ -12,6 +12,7 @@
     * [Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization](machine-learning/deep-learning/neural-networks/improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization.md)
     * [Structuring Machine Learning Projects](machine-learning/deep-learning/neural-networks/structuring-machine-learning-projects.md)
   * [Computer Vision](machine-learning/deep-learning/computer-vision/README.md)
+    * [Convolutional Neural Networks](machine-learning/deep-learning/computer-vision/convolutional-neural-networks.md)
     * [Models](machine-learning/deep-learning/computer-vision/models/README.md)
       * [CNN](machine-learning/deep-learning/computer-vision/models/cnn.md)
       * [Multi layer perceptron \(MLP\)](machine-learning/deep-learning/computer-vision/models/multi-layer-perceptron-mlp.md)
