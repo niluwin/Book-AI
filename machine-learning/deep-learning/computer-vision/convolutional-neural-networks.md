@@ -425,6 +425,8 @@ P = (f-1) / 2
 
 ### Why ResNets work
 
+![](../../../.gitbook/assets/image%20%2818%29.png)
+
 * Lets see some example that illustrates why resNet work.
   * We have a big NN as the following:
     * `X --> Big NN --> a[l]`
@@ -447,25 +449,29 @@ P = (f-1) / 2
 * Using a skip-connection helps the gradient to backpropagate and thus helps you to train deeper networks
 * Lets take a look at ResNet on images.
   * Here are the architecture of **ResNet-34**:
-  * ![](../../../.gitbook/assets/resNet.jpg)
-  * All the 3x3 Conv are same Convs.
+  * * All the 3x3 Conv are same Convs.
   * Keep it simple in design of the network.
   * spatial size /2 =&gt; \# filters x2
   * No FC layers, No dropout is used.
   * Two main types of blocks are used in a ResNet, depending mainly on whether the input/output dimensions are same or different. You are going to implement both of them.
   * The dotted lines is the case when the dimensions are different. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
 * Useful concept \(**Spectrum of Depth**\):
-  * ![](../../../.gitbook/assets/12.png)
-  * Taken from [icml.cc/2016/tutorials/icml2016\_tutorial\_deep\_residual\_networks\_kaiminghe.pdf](https://github.com/niluwin/Book-AI/tree/851d65b86e4ab909cc0f3cdd57ad4b69c42cffb0/machine-learning/deep-learning/computer-vision/icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
+  * * Taken from [icml.cc/2016/tutorials/icml2016\_tutorial\_deep\_residual\_networks\_kaiminghe.pdf](https://github.com/niluwin/Book-AI/tree/851d65b86e4ab909cc0f3cdd57ad4b69c42cffb0/machine-learning/deep-learning/computer-vision/icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
 * Residual blocks types:
   * Identity block:
-    * ![](../../../.gitbook/assets/16.png)
-    * Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
+    * * Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
     * This skip is over 2 layers. The skip connection can jump n connections where n&gt;2
     * This drawing represents [Keras](https://keras.io/) layers.
   * The convolutional block:
-    * ![](../../../.gitbook/assets/17.png)
-    * The conv can be bottleneck 1 x 1 conv
+    * * The conv can be bottleneck 1 x 1 conv
+
+![convolutional block](../../../.gitbook/assets/17.png)
+
+![Identity block](../../../.gitbook/assets/16.png)
+
+![ResNet-34](../../../.gitbook/assets/resNet.jpg)
+
+![Spectrum of Depth](../../../.gitbook/assets/12.png)
 
 ### Network in Network and 1 X 1 convolutions
 
