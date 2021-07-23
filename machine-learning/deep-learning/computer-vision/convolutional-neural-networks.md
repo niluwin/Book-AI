@@ -259,7 +259,7 @@ P = (f-1) / 2
 
   \`\`
 
-![](../../../.gitbook/assets/image%20%2826%29.png)
+![](../../../.gitbook/assets/image%20%2831%29.png)
 
 ### Pooling layers
 
@@ -425,7 +425,7 @@ P = (f-1) / 2
 
 ### Why ResNets work
 
-![](../../../.gitbook/assets/image%20%2827%29.png)
+![](../../../.gitbook/assets/image%20%2832%29.png)
 
 * Lets see some example that illustrates why resNet work.
   * We have a big NN as the following:
@@ -537,7 +537,7 @@ P = (f-1) / 2
 
 ![Example of inception model in Keras](../../../.gitbook/assets/inception_block1a.png)
 
-![](../../../.gitbook/assets/image%20%2819%29.png)
+![](../../../.gitbook/assets/image%20%2820%29.png)
 
 ### Inception network \(GoogleNet \(2014\)\)
 
@@ -557,15 +557,15 @@ P = (f-1) / 2
 * Low computational cost at deployment \(mobiles, embedded vision application\)
 * Key idea: Normal vs Depthwise Seperable convolution
 
-![](../../../.gitbook/assets/image%20%2822%29.png)
+![](../../../.gitbook/assets/image%20%2827%29.png)
 
-![](../../../.gitbook/assets/image%20%2818%29.png)
+![](../../../.gitbook/assets/image%20%2819%29.png)
 
-![](../../../.gitbook/assets/image%20%2825%29.png)
+![](../../../.gitbook/assets/image%20%2830%29.png)
+
+![](../../../.gitbook/assets/image%20%2833%29.png)
 
 ![](../../../.gitbook/assets/image%20%2828%29.png)
-
-![](../../../.gitbook/assets/image%20%2823%29.png)
 
 * For the depthwise separable convolution, there was first, the depthwise step,  432 multiplications and then the pointwise step, where we had 240 multiplications, and so adding these up, we wind up with 672 multiplications.
 * If we look the ratio between these two numbers, 672 over 2160, this turns out to be about 0.31. In this example, the depthwise separable convolution was about 31 percent as computationally expensive as the normal convolution,
@@ -579,15 +579,15 @@ depthwise seperable convilution is (1/f^2) + (1/nc'^2) times expensive compared 
 
 ### MobileNet Architecture
 
-![MobileNet Architecture](../../../.gitbook/assets/image%20%2821%29.png)
+![MobileNet Architecture](../../../.gitbook/assets/image%20%2825%29.png)
 
 This architecture performed well in computation cost
 
 ### MobileNet v2 \(2019\)
 
-![](../../../.gitbook/assets/image%20%2820%29.png)
+![](../../../.gitbook/assets/image%20%2823%29.png)
 
-![](../../../.gitbook/assets/image%20%2824%29.png)
+![](../../../.gitbook/assets/image%20%2829%29.png)
 
 #### Why We need bottleneck block?
 
@@ -595,7 +595,19 @@ It turns out that the bottleneck block accomplishes two things,
 
 * By using the expansion operation, it increases the size of the representation within the bottleneck block. This allows the neural network to learn a richer function. There's just more computation over here. But when deploying on a mobile device, on edge device, you will often be heavy memory constraints. The bottleneck block uses the pointwise convolution or the projection operation in order to project it back down to a smaller set of values, so that when you pass this the next block, the amount of memory needed to store these values is reduced back down. The cool thing about the bottleneck block is that it enables a richer set of computations, thus allow your neural network to learn richer and more complex functions, while also keeping the amounts of memory that is the size of the activations you need to pass from layer to layer, relatively small. That's why the MobileNet v2 can get a better performance than MobileNet v1, while still continuing to use only a modest amount of compute and memory resources.
 
-### EfficientNet
+### EfficientNet\(2019\)
+
+MobileNet V1 and V2 gave us a way to implement a neural network, that is more computationally efficient. But is there a way to tune MobileNet, or some other architecture, to your specific device? Maybe you're implementing a computer vision algorithm for different brands of mobile phones with different amounts of compute resources, or for different edge devices. How can you automatically scale up or down neural networks for a particular device? EfficientNet, gives you a way to do so
+
+![](../../../.gitbook/assets/image%20%2818%29.png)
+
+![](../../../.gitbook/assets/image%20%2821%29.png)
+
+![](../../../.gitbook/assets/image%20%2822%29.png)
+
+![](../../../.gitbook/assets/image%20%2824%29.png)
+
+![](../../../.gitbook/assets/image%20%2826%29.png)
 
 ### Using Open-Source Implementation
 
