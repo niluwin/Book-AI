@@ -259,7 +259,7 @@ P = (f-1) / 2
 
   \`\`
 
-![](../../../.gitbook/assets/image%20%2814%29.png)
+![](../../../.gitbook/assets/image%20%2826%29.png)
 
 ### Pooling layers
 
@@ -425,7 +425,7 @@ P = (f-1) / 2
 
 ### Why ResNets work
 
-![](../../../.gitbook/assets/image%20%2818%29.png)
+![](../../../.gitbook/assets/image%20%2827%29.png)
 
 * Lets see some example that illustrates why resNet work.
   * We have a big NN as the following:
@@ -456,14 +456,14 @@ P = (f-1) / 2
   * Two main types of blocks are used in a ResNet, depending mainly on whether the input/output dimensions are same or different. You are going to implement both of them.
   * The dotted lines is the case when the dimensions are different. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
 * Useful concept \(**Spectrum of Depth**\):
-  * * Taken from [icml.cc/2016/tutorials/icml2016\_tutorial\_deep\_residual\_networks\_kaiminghe.pdf](https://github.com/niluwin/Book-AI/tree/851d65b86e4ab909cc0f3cdd57ad4b69c42cffb0/machine-learning/deep-learning/computer-vision/icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
+  * Taken from [icml.cc/2016/tutorials/icml2016\_tutorial\_deep\_residual\_networks\_kaiminghe.pdf](https://github.com/niluwin/Book-AI/tree/851d65b86e4ab909cc0f3cdd57ad4b69c42cffb0/machine-learning/deep-learning/computer-vision/icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
 * Residual blocks types:
   * Identity block:
-    * * Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
+    * Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
     * This skip is over 2 layers. The skip connection can jump n connections where n&gt;2
     * This drawing represents [Keras](https://keras.io/) layers.
   * The convolutional block:
-    * * The conv can be bottleneck 1 x 1 conv
+    * The conv can be bottleneck 1 x 1 conv
 
 ![convolutional block](../../../.gitbook/assets/17.png)
 
@@ -473,7 +473,7 @@ P = (f-1) / 2
 
 ![Spectrum of Depth](../../../.gitbook/assets/12.png)
 
-### Network in Network and 1 X 1 convolutions
+### Network in Network and 1 X 1 convolutions \(2013\)
 
 * A 1 x 1 convolution - We also call it Network in Network- is so useful in many CNN models.
 * What does a 1 X 1 convolution do? Isn't it just multiplying by a number?
@@ -496,12 +496,11 @@ P = (f-1) / 2
   * > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143)
 * [\[Lin et al., 2013. Network in network\]](https://arxiv.org/abs/1312.4400)
 
-### Inception network motivation
+### Inception network motivation \(2014\)
 
 * When you design a CNN you have to decide all the layers yourself. Will you pick a 3 x 3 Conv or 5 x 5 Conv or maybe a max pooling layer. You have so many choices.
 * What **inception** tells us is, Why not use all of them at once?
 * **Inception module**, naive version:
-  * ![](../../../.gitbook/assets/13.png)
   * Hint that max-pool are same here.
   * Input to the inception module are 28 x 28 x 192 and the output are 28 x 28 x 256
   * We have done all the Convs and pools we might want and will let the NN learn and decide which it want to use most.
@@ -529,12 +528,18 @@ P = (f-1) / 2
     * So the total number are 12.5 Mil approx. which is so good compared to 120 Mil
 * A 1 x 1 Conv here is called Bottleneck `BN`.
 * It turns out that the 1 x 1 Conv won't hurt the performance.
-* **Inception module**, dimensions reduction version:
-  * ![](../../../.gitbook/assets/14.png)
-* Example of inception model in Keras:
-  * ![](../../../.gitbook/assets/inception_block1a.png)
 
-### Inception network \(GoogleNet\)
+![Inception module](../../../.gitbook/assets/13.png)
+
+* **Inception module**, dimensions reduction version:
+
+![Inception module, dimensions reduction version:](../../../.gitbook/assets/14.png)
+
+![Example of inception model in Keras](../../../.gitbook/assets/inception_block1a.png)
+
+![](../../../.gitbook/assets/image%20%2819%29.png)
+
+### Inception network \(GoogleNet \(2014\)\)
 
 * The inception network consist of concatenated blocks of the Inception module.
 * The name inception was taken from a _meme_ image which was taken from **Inception movie**
@@ -544,6 +549,53 @@ P = (f-1) / 2
 * There are a 3 Sofmax branches at different positions to push the network toward its goal. and helps to ensure that the intermediate features are good enough to the network to learn and it turns out that softmax0 and sofmax1 gives regularization effect.
 * Since the development of the Inception module, the authors and the others have built another versions of this network. Like inception v2, v3, and v4. Also there is a network that has used the inception module and the ResNet together.
 * [\[Szegedy et al., 2014, Going Deeper with Convolutions\]](https://arxiv.org/abs/1409.4842)
+
+### MobileNet \(2017\)
+
+#### Motivation
+
+* Low computational cost at deployment \(mobiles, embedded vision application\)
+* Key idea: Normal vs Depthwise Seperable convolution
+
+![](../../../.gitbook/assets/image%20%2822%29.png)
+
+![](../../../.gitbook/assets/image%20%2818%29.png)
+
+![](../../../.gitbook/assets/image%20%2825%29.png)
+
+![](../../../.gitbook/assets/image%20%2828%29.png)
+
+![](../../../.gitbook/assets/image%20%2823%29.png)
+
+* For the depthwise separable convolution, there was first, the depthwise step,  432 multiplications and then the pointwise step, where we had 240 multiplications, and so adding these up, we wind up with 672 multiplications.
+* If we look the ratio between these two numbers, 672 over 2160, this turns out to be about 0.31. In this example, the depthwise separable convolution was about 31 percent as computationally expensive as the normal convolution,
+* So the depthwise separable convolution  cheaper in computational costs. That's why the depthwise separable convolution as a building block of a convnet, allows you to carry out inference much more efficiently than using a normal convolution.
+
+```text
+depthwise seperable convilution is (1/f^2) + (1/nc'^2) times expensive compared to normal convolutiondepthwise seperable convilution is (1/f^2) + (1/nc'^2) times expensive compared to normal convolutions
+```
+
+
+
+### MobileNet Architecture
+
+![MobileNet Architecture](../../../.gitbook/assets/image%20%2821%29.png)
+
+This architecture performed well in computation cost
+
+### MobileNet v2 \(2019\)
+
+![](../../../.gitbook/assets/image%20%2820%29.png)
+
+![](../../../.gitbook/assets/image%20%2824%29.png)
+
+#### Why We need bottleneck block?
+
+It turns out that the bottleneck block accomplishes two things, 
+
+* By using the expansion operation, it increases the size of the representation within the bottleneck block. This allows the neural network to learn a richer function. There's just more computation over here. But when deploying on a mobile device, on edge device, you will often be heavy memory constraints. The bottleneck block uses the pointwise convolution or the projection operation in order to project it back down to a smaller set of values, so that when you pass this the next block, the amount of memory needed to store these values is reduced back down. The cool thing about the bottleneck block is that it enables a richer set of computations, thus allow your neural network to learn richer and more complex functions, while also keeping the amounts of memory that is the size of the activations you need to pass from layer to layer, relatively small. That's why the MobileNet v2 can get a better performance than MobileNet v1, while still continuing to use only a modest amount of compute and memory resources.
+
+### EfficientNet
 
 ### Using Open-Source Implementation
 
