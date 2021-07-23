@@ -107,7 +107,9 @@ Here are the course summary as its given on the course [link](https://www.course
 
 * Deep learning is taking off for 3 reasons: 1. Data:
   * Using this image we can conclude:
-    * 
+
+    \* 
+
   * For small data NN can perform as Linear regression or SVM \(Support vector machine\)
   * For big data a small NN is better that SVM
   * For big data a big NN is better that a medium NN is better that small NN.
@@ -219,8 +221,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   Then `d(z)/d(x) = d(z)/d(y) * d(y)/d(x)`
 
-* The video illustrates a big example.
-  * 
+* The video illustrates a big example. \*
 * We compute the derivatives on a graph from right to left and it will be a lot more easier.
 * `dvar` means the derivatives of a final output variable with respect to various intermediate quantities.
 
@@ -405,7 +406,9 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Computing a Neural Network's Output
 
 * Equations of Hidden layers:
-  * 
+
+  \* 
+
 * Here are some informations about the last image:
   * `noOfHiddenNeurons = 4`
   * `Nx = 3`
@@ -648,7 +651,9 @@ Here are the course summary as its given on the course [link](https://www.course
     * Audio ==&gt; Low level sound features like \(sss,bb\) ==&gt; Phonemes ==&gt; Words ==&gt; Sentences
 * Neural Researchers think that deep neural networks "think" like brains \(simple ==&gt; complex\)
 * Circuit theory and deep learning:
-  * 
+
+  \* 
+
 * When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions \(e.g. Logistic Regression\), then try the shallow neural network and so on.
 
 ![](../../../.gitbook/assets/07.png)
@@ -656,7 +661,9 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Building blocks of deep neural networks
 
 * Forward and back propagation for a layer l:
-  * 
+
+  \* 
+
 * Deep NN blocks:
   * 
 

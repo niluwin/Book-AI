@@ -93,7 +93,7 @@ Here are the course summary as its given on the course [link](https://www.course
     | Actual cat | 3 | 2 |
     | Actual non-cat | 1 | 4 |
 
-  * **Precision**: percentage of true cats in the recognized result: P = 3/\(3 + 1\) 
+  * **Precision**: percentage of true cats in the recognized result: P = 3/\(3 + 1\)
   * **Recall**: percentage of true recognition cat of the all cat predictions: R = 3/\(3 + 2\)
   * **Accuracy**: \(3+4\)/10
 * Using a precision/recall for evaluation is good in a lot of cases, but separately they don't tell you which algothims is better. Ex:
@@ -162,9 +162,7 @@ Here are the course summary as its given on the course [link](https://www.course
       * `w[i] = 1                   if x[i] is not porn`
       * `w[i] = 10                 if x[i] is porn`
 
-* This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps:
-  1. Figure out how to define a metric that captures what you want to do - place the target. 
-  2. Worry about how to actually do well on this metric - how to aim/shoot accurately at the target.
+* This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps: 1. Figure out how to define a metric that captures what you want to do - place the target. 2. Worry about how to actually do well on this metric - how to aim/shoot accurately at the target.
 * Conclusion: if doing well on your metric + dev/test set doesn't correspond to doing well in your application, change your metric and/or dev/test set.
 
 ### Why human-level performance?
@@ -173,9 +171,6 @@ Here are the course summary as its given on the course [link](https://www.course
   1. Because of advances in deep learning, machine learning algorithms are suddenly working much better and so it has become much more feasible in a lot of application areas for machine learning algorithms to actually become competitive with human-level performance. 
   2. It turns out that the workflow of designing and building a machine learning system is much more efficient when you're trying to do something that humans can also do.
 * After an algorithm reaches the human level performance the progress and accuracy slow down.
-
-  
-
 * You won't surpass an error that's called "Bayes optimal error".
 * There isn't much error range between human-level error and Bayes optimal error.
 * Humans are quite good at a lot of tasks. So as long as Machine learning is worse than humans, you can:
@@ -392,7 +387,6 @@ Here are the course summary as its given on the course [link](https://www.course
   2. Option 2: if you have enough data you can retrain all the weights.
 * Option 1 and 2 are called **fine-tuning** and training on task A called **pretraining**.
 * When transfer learning make sense:
-
   * Task A and B have the same input X \(e.g. image, audio\).
   * You have a lot of data for the task A you are transferring from and relatively less data for the task B your transferring to.
   * Low level features from task A could be helpful for learning task B.
@@ -407,9 +401,9 @@ Here are the course summary as its given on the course [link](https://www.course
 * Example:
   * You want to build an object recognition system that detects pedestrians, cars, stop signs, and traffic lights \(image has multiple labels\).
   * Then Y shape will be `(4,m)` because we have 4 classes and each one is a binary one.
-  * Then   
+  * Then
 
-    `Cost = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j))), i = 1..m, j = 1..4`, where   
+    `Cost = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j))), i = 1..m, j = 1..4`, where
 
     `L = - y(i)_j * log(y_hat(i)_j) - (1 - y(i)_j) * log(1 - y_hat(i)_j)`
 * In the last example you could have trained 4 neural networks separately but if some of the earlier features in neural network can be shared between these different types of objects, then you find that training one neural network to do four things results in better performance than training 4 completely separate neural networks to do the four tasks separately. 
@@ -421,14 +415,11 @@ Here are the course summary as its given on the course [link](https://www.course
       [? 1 ? ...]
   ```
 
-  * And in this case it will do good with the missing data, just the loss function will be different:   
+  * And in this case it will do good with the missing data, just the loss function will be different:
 
     `Loss = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j) for all j which y(i)_j != ?))`
 
-* Multi-task learning makes sense:
-  1. Training on a set of tasks that could benefit from having shared lower-level features.
-  2. Usually, amount of data you have for each task is quite similar.
-  3. Can train a big enough network to do well on all the tasks.
+* Multi-task learning makes sense: 1. Training on a set of tasks that could benefit from having shared lower-level features. 2. Usually, amount of data you have for each task is quite similar. 3. Can train a big enough network to do well on all the tasks.
 * If you can train a big enough NN, the performance of the multi-task learning compared to splitting the tasks is better.
 * Today transfer learning is used more often than multi-task learning.
 
@@ -491,5 +482,5 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ![](../../../.gitbook/assets/image%20%2816%29.png)
 
- These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
+These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
 
