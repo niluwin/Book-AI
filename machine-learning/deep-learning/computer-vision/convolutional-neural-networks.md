@@ -150,11 +150,12 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 * In almost all the cases the padding values are zeros.
 * The general rule now,  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` give us `n+2p-f+1,n+2p-f+1` matrix. 
 * If n = 6, f = 3, and p = 1 Then the output image will have `n+2p-f+1 = 6+2-3+1 = 6`. We maintain the size of the image.
+* Valid convolution is convolution with p = 0
 * Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
 
-  ```text
-  P = (f-1) / 2
-  ```
+```text
+P = (f-1) / 2
+```
 
 * In computer vision f is usually odd. Some of the reasons is that its have a center value.
 
@@ -202,7 +203,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   * In the last result p=0, s=1
   * Hint number of parameters here are: `(3x3x3x10) + 10 = 280`
 * The last example forms a layer in the CNN.
-* Hint: no matter the size of the input, the number of the parameters is same if filter size is same. That makes it less prone to overfitting.
+* Hint: no matter the size of the input, the number of the parameters is same if filter size is same. That makes it less prone to **overfitting**.
 * Here are some notations we will use. If layer l is a conv layer:
 
   ```text
@@ -217,6 +218,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   Where n[l] = (n[l-1] + 2p[l] - f[l] / s[l]) + 1
 
   Each filter is: f[l] x f[l] x nc[l-1]
+  number of filters = nc[l]
 
   Activations: a[l] is nH[l] x nW[l] x nc[l]
                A[l] is m x nH[l] x nW[l] x nc[l]   # In batch or minbatch training
@@ -250,16 +252,20 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     * `a3 = 7x7x40 = 1960`  as a vector..
 * In the last example you seen that the image are getting smaller after each layer and thats the trend now.
 * Types of layer in a convolutional network:
+
   * Convolution.         `#Conv`
   * Pooling      `#Pool`
   * Fully connected     `#FC`
+
+  \`\`
+
+![](../../../.gitbook/assets/image%20%2814%29.png)
 
 ### Pooling layers
 
 * Other than the conv layers, CNNs often uses pooling layers to reduce the size of the inputs, speed up computation, and to make some of the features it detects more robust.
 * Max pooling example:
-  * ![](../../../.gitbook/assets/02%20%281%29.png)
-  * This example has `f = 2`, `s = 2`, and `p = 0` hyperparameters
+  * * This example has `f = 2`, `s = 2`, and `p = 0` hyperparameters
 * The max pooling is saying, if the feature is detected anywhere in this filter then keep a high number. But the main reason why people are using pooling because its works well in practice and reduce computations.
 * Max pooling has no parameters to learn.
 * Example of Max pooling on 3D input:
@@ -274,6 +280,8 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   * s : stride.
   * Padding are rarely uses here.
   * Max or average pooling.
+
+![](../../../.gitbook/assets/02%20%281%29.png)
 
 ### Convolutional neural network example
 
@@ -306,12 +314,13 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     * Number of neurons is 10 if we need to identify for example the 10 digits.
 * Hint a Conv1 and Pool1 is treated as one layer.
 * Some statistics about the last example:
-  * ![](../../../.gitbook/assets/03%20%282%29.png)
 * Hyperparameters are a lot. For choosing the value of each you should follow the guideline that we will discuss later or check the literature and takes some ideas and numbers from it.
 * Usually the input size decreases over layers while the number of filters increases.
 * A CNN usually consists of one or more convolution \(Not just one as the shown examples\) followed by a pooling.
 * Fully connected layers has the most parameters in the network.
 * To consider using these blocks together you should look at other working examples firsts to get some intuitions.
+
+![](../../../.gitbook/assets/03%20%282%29.png)
 
 ### Why convolutions?
 
@@ -321,7 +330,8 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   * sparsity of connections.
     * In each layer, each output value depends only on a small number of inputs which makes it translation invariance.
 * Putting it all together:
-  * ![](../../../.gitbook/assets/04%20%281%29.png)
+
+![](../../../.gitbook/assets/04%20%281%29.png)
 
 ## Deep convolutional models: case studies
 
