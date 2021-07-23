@@ -343,9 +343,9 @@ P = (f-1) / 2
 * To get some intuitions you have to see the examples that has been made.
 * Some neural networks architecture that works well in some tasks can also work well in other tasks.
 * Here are some classical CNN networks:
-  * **LeNet-5**
-  * **AlexNet**
-  * **VGG**
+  * **LeNet-5 \(1998\)**
+  * **AlexNet \(2012\)**
+  * **VGG \(2015\)**
 * The best CNN architecture that won the last ImageNet competition is called **ResNet** and it has 152 layers!
 * There are also an architecture called **Inception** that was made by Google that are very useful to learn and apply to your tasks.
 * Reading and trying the mentioned models can boost you and give you a lot of ideas to solve your task.
@@ -355,8 +355,7 @@ P = (f-1) / 2
 * In this section we will talk about classic networks which are **LeNet-5**, **AlexNet**, and **VGG**.
 * **LeNet-5**
   * The goal for this model was to identify handwritten digits in a `32x32x1` gray image. Here are the drawing of it:
-  * ![](../../../.gitbook/assets/05%20%281%29.png)
-  * This model was published in 1998. The last layer wasn't using softmax back then.
+  * * This model was published in 1998. The last layer wasn't using softmax back then.
   * It has 60k parameters.
   * The dimensions of the image decreases as the number of channels increases.
   * `Conv ==> Pool ==> Conv ==> Pool ==> FC ==> FC ==> softmax` this type of arrangement is quite common.
@@ -365,8 +364,7 @@ P = (f-1) / 2
 * **AlexNet**
   * Named after Alex Krizhevsky who was the first author of this paper. The other authors includes Geoffrey Hinton.
   * The goal for the model was the ImageNet challenge which classifies images into 1000 classes. Here are the drawing of the model:
-  * ![](../../../.gitbook/assets/06%20%281%29.png)
-  * Summary:
+  * * Summary:
     * ```text
       Conv => Max-pool => Conv => Max-pool => Conv => Conv => Conv => Max-pool ==> Flatten ==> FC ==> FC ==> Softmax
       ```
@@ -385,7 +383,7 @@ P = (f-1) / 2
     * CONV = 3 X 3 filter, s = 1, same  
     * MAX-POOL = 2 X 2 , s = 2
   * Here are the architecture:
-    * ![](../../../.gitbook/assets/07%20%281%29.png)
+    * 
   * This network is large even by modern standards. It has around 138 million parameters.
     * Most of the parameters are in the fully connected layers.
   * It has a total memory of 96MB per image for only forward propagation!
@@ -396,25 +394,34 @@ P = (f-1) / 2
   * VGG paper is attractive it tries to make some rules regarding using CNNs.
   * [\[Simonyan & Zisserman 2015. Very deep convolutional networks for large-scale image recognition\]](https://arxiv.org/abs/1409.1556)
 
-### Residual Networks \(ResNets\)
+![LeNet-5](../../../.gitbook/assets/05%20%281%29.png)
 
-* Very, very deep NNs are difficult to train because of vanishing and exploding gradients problems.
+![AlexNet](../../../.gitbook/assets/06%20%281%29.png)
+
+![VGG-16](../../../.gitbook/assets/07%20%281%29.png)
+
+### Residual Networks \(ResNets \(2015\)\)
+
+* Very, very deep NNs are difficult to train because of **vanishing and exploding gradients** problems.
 * In this section we will learn about skip connection which makes you take the activation from one layer and suddenly feed it to another layer even much deeper in NN which allows you to train large NNs even with layers greater than 100.
 * **Residual block**
   * ResNets are built out of some Residual blocks.
-  * ![](../../../.gitbook/assets/08%20%281%29.png)
   * They add a shortcut/skip connection before the second activation.
   * The authors of this block find that you can train a deeper NNs using stacking this block.
   * [\[He et al., 2015. Deep residual networks for image recognition\]](https://arxiv.org/abs/1512.03385)
 * **Residual Network**
   * Are a NN that consists of some Residual blocks.
-  * ![](../../../.gitbook/assets/09%20%281%29.png)
   * These networks can go deeper without hurting the performance. In the normal NN - Plain networks - the theory tell us that if we go deeper we will get a better solution to our problem, but because of the vanishing and exploding gradients problems the performance of the network suffers as it goes deeper. Thanks to Residual Network we can go deeper as we want now.
-  * ![](../../../.gitbook/assets/10%20%281%29.png)
   * On the left is the normal NN and on the right are the ResNet. As you can see the performance of ResNet increases as the network goes deeper.
   * In some cases going deeper won't effect the performance and that depends on the problem on your hand.
   * Some people are trying to train 1000 layer now which isn't used in practice. 
   * \[He et al., 2015. Deep residual networks for image recognition\]
+
+![](../../../.gitbook/assets/10%20%281%29.png)
+
+![Residual Network](../../../.gitbook/assets/09%20%281%29.png)
+
+![Residual block](../../../.gitbook/assets/08%20%281%29.png)
 
 ### Why ResNets work
 
