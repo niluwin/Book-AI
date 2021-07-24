@@ -783,7 +783,7 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 * Another application is when you need to get the skeleton of the person using different landmarks/points in the person which helps in some applications.
 * Hint, in your labeled data, if `l1x,l1y` is the left corner of left eye, all other `l1x,l1y` of the other examples has to be the same.
 
-![](../../../.gitbook/assets/image%20%2838%29.png)
+![](../../../.gitbook/assets/image%20%2843%29.png)
 
 ### Object Detection
 
@@ -806,7 +806,7 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 
 ![](../../../.gitbook/assets/18.png)
 
-![](../../../.gitbook/assets/image%20%2836%29.png)
+![](../../../.gitbook/assets/image%20%2838%29.png)
 
 ### Convolutional Implementation of Sliding Windows
 
@@ -855,13 +855,13 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 
 ![](../../../.gitbook/assets/24.png)
 
-![](../../../.gitbook/assets/image%20%2839%29.png)
+![](../../../.gitbook/assets/image%20%2844%29.png)
 
 ### 
 
 
 
-![](../../../.gitbook/assets/image%20%2843%29.png)
+![](../../../.gitbook/assets/image%20%2850%29.png)
 
 ### Intersection Over Union
 
@@ -893,7 +893,7 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 
 ![](../../../.gitbook/assets/26.png)
 
-![](../../../.gitbook/assets/image%20%2837%29.png)
+![](../../../.gitbook/assets/image%20%2841%29.png)
 
 ### Anchor Boxes
 
@@ -1112,11 +1112,11 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
   * [https://github.com/thtrieu/darkflow](https://github.com/thtrieu/darkflow)
   * [https://pjreddie.com/darknet/yolo/](https://pjreddie.com/darknet/yolo/)
 
-![](../../../.gitbook/assets/image%20%2840%29.png)
+![](../../../.gitbook/assets/image%20%2845%29.png)
 
 ![](../../../.gitbook/assets/31.png)
 
-![](../../../.gitbook/assets/image%20%2842%29.png)
+![](../../../.gitbook/assets/image%20%2849%29.png)
 
 
 
@@ -1157,13 +1157,39 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 
 ### Sematic Segmentation
 
-![](../../../.gitbook/assets/image%20%2844%29.png)
+![](../../../.gitbook/assets/image%20%2853%29.png)
 
 For example, rather than detecting the road and trying to draw a bounding box around the roads, which isn't going to be that useful, with semantic segmentation the algorithm attempts to label every single pixel as is this drivable roads or not, indicated by the dark green there. One of the uses of semantic segmentation is that it is used by some self driving car teams to figure out exactly which pixels are safe to drive over because they represent a drivable surface.
 
 ### U-Net\(2017\)
 
-![](../../../.gitbook/assets/image%20%2841%29.png)
+![](../../../.gitbook/assets/image%20%2847%29.png)
+
+![](../../../.gitbook/assets/image%20%2840%29.png)
+
+![](../../../.gitbook/assets/image%20%2836%29.png)
+
+![](../../../.gitbook/assets/image%20%2839%29.png)
+
+To explain how that works, you have to know how to implement a transpose convolution.
+
+semantic segmentation, a very useful algorithm for many computer vision applications where the key idea is you have to take every single pixel and label every single pixel individually with the appropriate class label.
+
+A key step to do that is to take a small set of activations and to blow it up to a bigger set of activations using **transpose convolutions**
+
+#### Transpose convolutions
+
+![](../../../.gitbook/assets/image%20%2851%29.png)
+
+![](../../../.gitbook/assets/image%20%2842%29.png)
+
+![](../../../.gitbook/assets/image%20%2846%29.png)
+
+![](../../../.gitbook/assets/image%20%2852%29.png)
+
+![](../../../.gitbook/assets/image%20%2837%29.png)
+
+
 
 ## Special applications: Face recognition & Neural style transfer
 
