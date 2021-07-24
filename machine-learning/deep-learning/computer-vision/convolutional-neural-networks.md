@@ -783,12 +783,14 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 * Another application is when you need to get the skeleton of the person using different landmarks/points in the person which helps in some applications.
 * Hint, in your labeled data, if `l1x,l1y` is the left corner of left eye, all other `l1x,l1y` of the other examples has to be the same.
 
+![](../../../.gitbook/assets/image%20%2837%29.png)
+
 ### Object Detection
 
 * We will use a Conv net to solve the object detection problem using a technique called the sliding windows detection algorithm.
 * For example lets say we are working on Car object detection.
 * The first thing, we will train a Conv net on cropped car images and non car images.
-  * ![](../../../.gitbook/assets/18.png)
+  * 
 * After we finish training of this Conv net we will then use it with the sliding windows technique.
 * Sliding windows detection algorithm:
   1. Decide a rectangle size.
@@ -802,27 +804,39 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 * To solve this problem, we can implement the sliding windows with a _**Convolutional approach**_.
 * One other idea is to compress your deep learning model.
 
+![](../../../.gitbook/assets/18.png)
+
+![](../../../.gitbook/assets/image%20%2836%29.png)
+
 ### Convolutional Implementation of Sliding Windows
 
 * Turning FC layer into convolutional layers \(predict image class from four classes\):
-  * ![](../../../.gitbook/assets/19.png)
-  * As you can see in the above image, we turned the FC layer into a Conv layer using a convolution with the width and height of the filter is the same as the width and height of the input.
+  * * As you can see in the above image, we turned the FC layer into a Conv layer using a convolution with the width and height of the filter is the same as the width and height of the input.
 * **Convolution implementation of sliding windows**:
   * First lets consider that the Conv net you trained is like this \(No FC all is conv layers\):
-    * ![](../../../.gitbook/assets/20.png)
+    * 
   * Say now we have a 16 x 16 x 3 image that we need to apply the sliding windows in. By the normal implementation that have been mentioned in the section before this, we would run this Conv net four times each rectangle size will be 16 x 16.
   * The convolution implementation will be as follows:
-    * ![](../../../.gitbook/assets/21.png)
+    * 
   * Simply we have feed the image into the same Conv net we have trained.
   * The left cell of the result "The blue one" will represent the the first sliding window of the normal implementation. The other cells will represent the others.
   * Its more efficient because it now shares the computations of the four times needed.
   * Another example would be:
-    * ![](../../../.gitbook/assets/22.png)
+    * 
   * This example has a total of 16 sliding windows that shares the computation together.
   * [\[Sermanet et al., 2014, OverFeat: Integrated recognition, localization and detection using convolutional networks\]](https://arxiv.org/abs/1312.6229)
 * The weakness of the algorithm is that the position of the rectangle wont be so accurate. Maybe none of the rectangles is exactly on the object you want to recognize.
-  * ![](../../../.gitbook/assets/23.png)
-  * In red, the rectangle we want and in blue is the required car rectangle.
+  * * In red, the rectangle we want and in blue is the required car rectangle.
+
+![](../../../.gitbook/assets/19.png)
+
+![](../../../.gitbook/assets/20.png)
+
+![](../../../.gitbook/assets/21.png)
+
+![](../../../.gitbook/assets/22.png)
+
+![](../../../.gitbook/assets/23.png)
 
 ### Bounding Box Predictions
 
