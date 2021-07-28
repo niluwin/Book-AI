@@ -1274,8 +1274,8 @@ A key step to do that is to take a small set of activations and to blow it up to
 
 * Triplet loss is one way to learn the parameters of a conv net for face recognition there's another way to learn these parameters as a straight binary classification problem.
 * Learning the similarity function another way:
-  * ![](../../../.gitbook/assets/36.png)
   * The final layer is a sigmoid layer.
+  * `Y' =  Sigmoid ( sum(wi *f(x(i)) - f(x(j))  + b))`
   * `Y' = wi * Sigmoid ( f(x(i)) - f(x(j)) ) + b` where the subtraction is the Manhattan distance between f\(x\(i\)\) and f\(x\(j\)\)
   * Some other similarities can be Euclidean and Ki square similarity.
   * The NN here is Siamese means the top and bottom convs has the same parameters.
@@ -1289,32 +1289,40 @@ A key step to do that is to take a small set of activations and to blow it up to
   * [FaceNet](https://github.com/davidsandberg/facenet)
   * [DeepFace](https://github.com/RiweiChen/DeepFace)
 
+![](../../../.gitbook/assets/36.png)
+
 ### Neural Style Transfer
 
 #### What is neural style transfer?
 
 * Neural style transfer is one of the application of Conv nets.
 * Neural style transfer takes a content image `C` and a style image `S` and generates the content image `G` with the style of style image.
-* ![](../../../.gitbook/assets/37.png)
-* In order to implement this you need to look at the features extracted by the Conv net at the shallower and deeper layers.
+* * In order to implement this you need to look at the features extracted by the Conv net at the shallower and deeper layers.
 * It uses a previously trained convolutional network like VGG, and builds on top of that. The idea of using a network trained on a different task and applying it to a new task is called transfer learning.
+
+![](../../../.gitbook/assets/37.png)
 
 #### What are deep ConvNets learning?
 
 * Visualizing what a deep network is learning:
   * Given this AlexNet like Conv net:
-    * ![](../../../.gitbook/assets/38.png)
+    * 
   * Pick a unit in layer l. Find the nine image patches that maximize the unit's activation. 
     * Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image in the shallower layers while it will get larger image in deeper layers.
   * Repeat for other units and layers.
   * It turns out that layer 1 are learning the low level representations like colors and edges.
 * You will find out that each layer are learning more complex representations.
-  * ![](../../../.gitbook/assets/39.png)
+  * 
 * The first layer was created using the weights of the first layer. Other images are generated using the receptive field in the image that triggered the neuron to be max.
 * [\[Zeiler and Fergus., 2013, Visualizing and understanding convolutional networks\]](https://arxiv.org/abs/1311.2901)
 * A good explanation on how to get **receptive field** given a layer:
-  * ![](../../../.gitbook/assets/receptiveField.png)
-  * From [A guide to receptive field arithmetic for Convolutional Neural Networks](https://medium.com/@nikasa1889/a-guide-to-receptive-field-arithmetic-for-convolutional-neural-networks-e0f514068807)
+  * * From [A guide to receptive field arithmetic for Convolutional Neural Networks](https://medium.com/@nikasa1889/a-guide-to-receptive-field-arithmetic-for-convolutional-neural-networks-e0f514068807)
+
+![](../../../.gitbook/assets/38.png)
+
+![](../../../.gitbook/assets/39.png)
+
+![](../../../.gitbook/assets/receptiveField.png)
 
 #### Cost Function
 
