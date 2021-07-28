@@ -1229,11 +1229,12 @@ A key step to do that is to take a small set of activations and to blow it up to
 
 * We will implement the similarity function using a type of NNs called Siamease Network in which we can pass multiple inputs to the two or more networks with the same architecture and parameters.
 * Siamese network architecture are as the following:
-  * ![](../../../.gitbook/assets/35.png)
-  * We make 2 identical conv nets which encodes an input image into a vector. In the above image the vector shape is \(128, \)
+  * * We make 2 identical conv nets which encodes an input image into a vector. In the above image the vector shape is \(128, \)
   * The loss function will be `d(x1, x2) = || f(x1) - f(x2) ||^2`
   * If `X1`, `X2` are the same person, we want d to be low. If they are different persons, we want d to be high.
   * [\[Taigman et. al., 2014. DeepFace closing the gap to human level performance\]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
+
+![](../../../.gitbook/assets/35.png)
 
 #### Triplet Loss
 
@@ -1255,7 +1256,7 @@ A key step to do that is to take a small set of activations and to blow it up to
   * Given 3 images \(A, P, N\)
   * `L(A, P, N) = max (||f(A) - f(P)||^2  - ||f(A) - f(N)||^2 + alpha , 0)`
   * `J = Sum(L(A[i], P[i], N[i]) , i)` for all triplets of images.
-* You need multiple images of the same person in your dataset. Then get some triplets out of your dataset. Dataset should be big enough.
+* You need multiple images of the same person in your dataset. Then get some triplets out of your dataset. Dataset should be big enough, like 10k images of 1k person.
 * Choosing the triplets A, P, N:
   * During training if A, P, N are chosen randomly \(Subjet to A and P are the same and A and N aren't the same\) then one of the problems this constrain is easily satisfied 
     * `d(A, P) + alpha <= d (A, N)` 
