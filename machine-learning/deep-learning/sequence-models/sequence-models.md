@@ -187,27 +187,33 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ![](../../../.gitbook/assets/05%20%282%29.png)
 
+![](../../../.gitbook/assets/image%20%2855%29.png)
+
 ### Backpropagation through time
 
 * Let's see how backpropagation works with the RNN architecture.
 * Usually deep learning frameworks do backpropagation automatically for you. But it's useful to know how it works in RNNs.
 * Here is the graph:   
 
-  ![](../../../.gitbook/assets/06%20%282%29.png)
+
 
   * Where wa, ba, wy, and by are shared across each element in a sequence.
 
 * We will use the cross-entropy loss function:   
 
-  ![](../../../.gitbook/assets/07%20%282%29.png)
+
 
   * Where the first equation is the loss for one example and the loss for the whole sequence is given by the summation over all the calculated single example losses.
 
 * Graph with losses:   
 
-  ![](../../../.gitbook/assets/08%20%282%29.png)
-
 * The backpropagation here is called **backpropagation through time** because we pass activation `a` from one sequence element to another like backwards in time.
+
+![](../../../.gitbook/assets/06%20%282%29.png)
+
+![](../../../.gitbook/assets/07%20%282%29.png)
+
+![](../../../.gitbook/assets/08%20%282%29.png)
 
 ### Different types of RNNs
 
