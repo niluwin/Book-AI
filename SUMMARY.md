@@ -32,6 +32,7 @@
       * [Tensorflow](machine-learning/deep-learning/computer-vision/frameworks/tensorflow/README.md)
         * [Keras](machine-learning/deep-learning/computer-vision/frameworks/tensorflow/keras.md)
         * [TF Hub](machine-learning/deep-learning/computer-vision/frameworks/tensorflow/tf-hub.md)
+  * [Sequence Models](machine-learning/deep-learning/sequence-models.md)
 * [Reinforcement Learning](machine-learning/reinforcement-learning.md)
 * [Tiny ML](machine-learning/tiny-ml.md)
 * [Graph neural network](machine-learning/graph-neural-network.md)
