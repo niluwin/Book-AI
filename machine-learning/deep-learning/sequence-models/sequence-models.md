@@ -220,30 +220,36 @@ Here are the course summary as its given on the course [link](https://www.course
 * So far we have seen only one RNN architecture in which Tx equals TY. In some other problems, they may not equal so we need different architectures.
 * The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:   
 
-  ![](../../../.gitbook/assets/09.jpg)
-
 * The architecture we have described before is called **Many to Many**.
 * In sentiment analysis problem, X is a text while Y is an integer that rangers from 1 to 5. The RNN architecture for that is **Many to One** as in Andrej Karpathy image.   
 
-  ![](../../../.gitbook/assets/10%20%282%29.png)
-
 * A **One to Many** architecture application would be music generation.  
 
-  ![](../../../.gitbook/assets/11%20%281%29.png)
+
 
   * Note that starting the second layer we are feeding the generated output back to the network.
 
 * There are another interesting architecture in **Many To Many**. Applications like machine translation inputs and outputs sequences have different lengths in most of the cases. So an alternative _Many To Many_ architecture that fits the translation would be as follows:   
 
-  ![](../../../.gitbook/assets/12%20%281%29.png)
+
 
   * There are an encoder and a decoder parts in this architecture. The encoder encodes the input sequence into one matrix and feed it to the decoder to generate the outputs. Encoder and decoder have different weight matrices.
 
 * Summary of RNN types:   
 
-   ![](../../../.gitbook/assets/12_different_types_of_rnn.jpg)
+ 
 
 * There is another architecture which is the **attention** architecture which we will talk about in chapter 3.
+
+![](../../../.gitbook/assets/09.jpg)
+
+![](../../../.gitbook/assets/10%20%282%29.png)
+
+![](../../../.gitbook/assets/11%20%281%29.png)
+
+![](../../../.gitbook/assets/12%20%281%29.png)
+
+![](../../../.gitbook/assets/12_different_types_of_rnn.jpg)
 
 ### Language model and sequence generation
 
@@ -262,8 +268,6 @@ Here are the course summary as its given on the course [link](https://www.course
 * Given the sentence "Cats average 15 hours of sleep a day. `<EOS>`"
   * In training time we will use this:   
 
-    ![](../../../.gitbook/assets/13%20%281%29.png)
-
   * The loss function is defined by cross-entropy loss:   
 
     ![](../../../.gitbook/assets/14%20%281%29.png)
@@ -275,13 +279,13 @@ Here are the course summary as its given on the course [link](https://www.course
      * p\(y, y, y\) = p\(y\)  _p\(y \| y\)_  p\(y \| y, y\)
      * This is simply feeding the sentence into the RNN and multiplying the probabilities \(outputs\).
 
+![](../../../.gitbook/assets/13%20%281%29.png)
+
 ### Sampling novel sequences
 
 * After a sequence model is trained on a language model, to check what the model has learned you can apply it to sample novel sequence.
 * Lets see the steps of how we can sample a novel sequence from a trained sequence language model:
   1. Given this model:   
-
-     ![](../../../.gitbook/assets/15%20%281%29.png)
 
   2. We first pass a = zeros vector, and x = zeros vector.
   3. Then we choose a prediction randomly from distribution obtained by ŷ. For example it could be "The".
@@ -301,6 +305,8 @@ Here are the course summary as its given on the course [link](https://www.course
     3. Also more computationally expensive and harder to train.
 * The trend Andrew has seen in NLP is that for the most part, a word-level language model is still used, but as computers get faster there are more and more applications where people are, at least in some special cases, starting to look at more character-level models. Also, they are used in specialized applications where you might need to deal with unknown words or other vocabulary words a lot. Or they are also used in more specialized applications where you have a more specialized vocabulary.
 
+![](../../../.gitbook/assets/15%20%281%29.png)
+
 ### Vanishing gradients with RNNs
 
 * One of the problems with naive RNNs that they run into **vanishing gradient** problem.
@@ -310,9 +316,14 @@ Here are the course summary as its given on the course [link](https://www.course
   * "The **cats**, which already ate ..., **were** full"
   * Dots represent many words in between.
 * What we need to learn here that "was" came with "cat" and that "were" came with "cats". The naive RNN is not very good at capturing very long-term dependencies like this.
-* As we have discussed in Deep neural networks, deeper networks are getting into the vanishing gradient problem. That also happens with RNNs with a long sequence size. ![](../../../.gitbook/assets/16%20%281%29.png)
-  * For computing the word "was", we need to compute the gradient for everything behind. Multiplying fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
-  * Therefore some of your weights may not be updated properly.
+* As we have discussed in Deep neural networks, deeper networks are getting into the vanishing gradient problem. That also happens with RNNs with a long sequence size. 
+
+![](../../../.gitbook/assets/16%20%281%29.png)
+
+
+
+* For computing the word "was", we need to compute the gradient for everything behind. Multiplying fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
+* Therefore some of your weights may not be updated properly.
 * In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't identify the singular/plural words so that it gives it the right grammar form of verb was/were.
 * The conclusion is that RNNs aren't good in **long-term dependencies**.
 * > In theory, RNNs are absolutely capable of handling such “long-term dependencies.” A human could carefully pick parameters for them to solve toy problems of this form. Sadly, in practice, RNNs don’t seem to be able to learn them. [http://colah.github.io/posts/2015-08-Understanding-LSTMs/](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
