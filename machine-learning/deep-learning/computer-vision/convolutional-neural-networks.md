@@ -692,7 +692,7 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
   * Use open source implementations if possible.
   * Use pretrained models and fine-tune on your dataset.
 
-![](../../../.gitbook/assets/image%20%2857%29.png)
+![](../../../.gitbook/assets/image%20%2860%29.png)
 
 ## Object detection
 
@@ -1164,7 +1164,7 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
 
 For example, rather than detecting the road and trying to draw a bounding box around the roads, which isn't going to be that useful, with semantic segmentation the algorithm attempts to label every single pixel as is this drivable roads or not, indicated by the dark green there. One of the uses of semantic segmentation is that it is used by some self driving car teams to figure out exactly which pixels are safe to drive over because they represent a drivable surface.
 
-### U-Net\(2017\)
+### U-Net\(2015\)
 
 ![](../../../.gitbook/assets/image%20%2847%29.png)
 
@@ -1192,7 +1192,11 @@ A key step to do that is to take a small set of activations and to blow it up to
 
 ![](../../../.gitbook/assets/image%20%2837%29.png)
 
+![](../../../.gitbook/assets/image%20%2856%29.png)
 
+![](../../../.gitbook/assets/image%20%2859%29.png)
+
+![](../../../.gitbook/assets/image%20%2857%29.png)
 
 ## Special applications: Face recognition & Neural style transfer
 
