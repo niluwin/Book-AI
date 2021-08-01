@@ -687,9 +687,12 @@ MobileNet V1 and V2 gave us a way to implement a neural network, that is more co
     * There is a technique called 10 crops that uses this.
     * This can give you a better result in the production.
 * Use open source code
+
   * Use architectures of networks published in the literature.
   * Use open source implementations if possible.
   * Use pretrained models and fine-tune on your dataset.
+
+![](../../../.gitbook/assets/image%20%2857%29.png)
 
 ## Object detection
 
