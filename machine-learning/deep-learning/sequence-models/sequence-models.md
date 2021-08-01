@@ -332,6 +332,22 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ![](../../../.gitbook/assets/26%20%281%29.png)
 
+![](../../../.gitbook/assets/26%20%281%29.png)
+
+* **Extra**:
+  * Solutions for the Exploding gradient problem:
+    * Truncated backpropagation.
+      * Not to update all the weights in the way back.
+      * Not optimal. You won't update all the weights.
+    * Gradient clipping.
+  * Solution for the Vanishing gradient problem:
+    * Weight initialization.
+      * Like He initialization.
+    * Echo state networks.
+    * Use LSTM/GRU networks.
+      * Most popular.
+      * We will discuss it next.
+
 \*\*\*\*
 
 * **Extra**:
@@ -357,14 +373,47 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
+![](../../../.gitbook/assets/17%20%281%29.png)
+
 * We will represent the GRU with a similar drawings.
 * Each layer in **GRUs** has a new variable `C` which is the memory cell. It can tell to whether memorize something or not.
 * In GRUs, C\ = a\
 * Equations of the GRUs: 
 
+
+
 ![](../../../.gitbook/assets/18%20%281%29.png)
 
+* We will represent the GRU with a similar drawings.
+* Each layer in **GRUs** has a new variable `C` which is the memory cell. It can tell to whether memorize something or not.
+* In GRUs, C\ = a\
+* Equations of the GRUs: 
 
+
+
+![](../../../.gitbook/assets/18%20%281%29.png)
+
+* The update gate is between 0 and 1
+  * To understand GRUs imagine that the update gate is either 0 or 1 most of the time.
+* So we update the memory cell based on the update cell and the previous cell.
+* Lets take the cat sentence example and apply it to understand this equations:
+  * Sentence: "The **cat**, which already ate ........................, **was** full"
+  * We will suppose that U is 0 or 1 and is a bit that tells us if a singular word needs to be memorized.
+  * Splitting the words and get values of C and U at each place:
+    * | Word | Update gate\(U\) | Cell memory \(C\) |
+      | :--- | :--- | :--- |
+      | The | 0 | val |
+      | cat | 1 | new\_val |
+      | which | 0 | new\_val |
+      | already | 0 | new\_val |
+      | ... | 0 | new\_val |
+      | was | 1 \(I don't need it anymore\) | newer\_val |
+      | full | .. | .. |
+* Drawing for the GRUs   
+
+
+
+![](../../../.gitbook/assets/19%20%281%29.png)
 
 * The update gate is between 0 and 1
   * To understand GRUs imagine that the update gate is either 0 or 1 most of the time.
@@ -384,9 +433,9 @@ Here are the course summary as its given on the course [link](https://www.course
       | full | .. | .. |
 * Drawing for the GRUs   
 
+
+
 ![](../../../.gitbook/assets/19%20%281%29.png)
-
-
 
 * Drawings like in [http://colah.github.io/posts/2015-08-Understanding-LSTMs/](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds it's better to look at the equations.
 * Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
@@ -401,7 +450,29 @@ Here are the course summary as its given on the course [link](https://www.course
   * The full GRU contains a new gate that is used with to calculate the candidate C. The gate tells you how relevant is C\ to C\
   * Equations:   
 
+
+
 ![](../../../.gitbook/assets/20%20%281%29.png)
+
+* Drawings like in [http://colah.github.io/posts/2015-08-Understanding-LSTMs/](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds it's better to look at the equations.
+* Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
+  * In the equation this makes C\ = C\ in a lot of cases.
+* Shapes:
+  * a\ shape is \(NoOfHiddenNeurons, 1\)
+  * c\ is the same as a\
+  * c~\ is the same as a\
+  * u\ is also the same dimensions of a\
+* The multiplication in the equations are element wise multiplication.
+* What has been descried so far is the Simplified GRU unit. Let's now describe the full one:
+  * The full GRU contains a new gate that is used with to calculate the candidate C. The gate tells you how relevant is C\ to C\
+  * Equations:   
+
+
+
+![](../../../.gitbook/assets/20%20%281%29.png)
+
+* Shapes are the same
+* So why we use these architectures, why don't we change them, how we know they will work, why not add another gate, why not use the simpler GRU instead of the full GRU; well researchers has experimented over years all the various types of these architectures with many many different versions and also addressing the vanishing gradient problem. They have found that full GRUs are one of the best RNN architectures  to be used for many different problems. You can make your design but put in mind that GRUs and LSTMs are standards.
 
 Shapes are the same
 
