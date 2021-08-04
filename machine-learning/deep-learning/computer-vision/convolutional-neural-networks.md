@@ -541,6 +541,8 @@ P = (f-1) / 2
 
 ### Inception network \(GoogleNet \(2014\)\)
 
+[https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202)
+
 * The inception network consist of concatenated blocks of the Inception module.
 * The name inception was taken from a _meme_ image which was taken from **Inception movie**
 * Here are the full model:
@@ -1234,6 +1236,10 @@ A key step to do that is to take a small set of activations and to blow it up to
 
 #### Siamese Network
 
+-​  [Learning a Similarity Metric Discriminatively, with Application to Face Verification](http://yann.lecun.com/exdb/publis/pdf/chopra-05.pdf) \(Chopra, Hadsell, & LeCun, 2005\)
+
+-​  [Similarity Learning with \(or without\) Convolutional Neural Network](http://slazebni.cs.illinois.edu/spring17/lec09_similarity.pdf) \(Chatterjee & Luo, n.d.\)
+
 * We will implement the similarity function using a type of NNs called Siamease Network in which we can pass multiple inputs to the two or more networks with the same architecture and parameters.
 * Siamese network architecture are as the following:
   * * We make 2 identical conv nets which encodes an input image into a vector. In the above image the vector shape is \(128, \)
@@ -1284,7 +1290,7 @@ A key step to do that is to take a small set of activations and to blow it up to
   * The final layer is a sigmoid layer.
   * `Y' =  Sigmoid ( sum(wi *f(x(i)) - f(x(j))  + b))`
   * `Y' = wi * Sigmoid ( f(x(i)) - f(x(j)) ) + b` where the subtraction is the Manhattan distance between f\(x\(i\)\) and f\(x\(j\)\)
-  * Some other similarities can be Euclidean and Ki square similarity.
+  * Some other similarities can be Euclidean \([The Distance Between Two Vectors](http://mathonline.wikidot.com/the-distance-between-two-vectors) \([Mathonline](http://mathonline.wikidot.com/)\) \)  and Ki square similarity.
   * The NN here is Siamese means the top and bottom convs has the same parameters.
 * The paper for this work: [\[Taigman et. al., 2014. DeepFace closing the gap to human level performance\]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
 * A good performance/deployment trick:
