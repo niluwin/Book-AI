@@ -525,10 +525,10 @@ Shapes are the same
 * In a lot of cases the standard one layer RNNs will solve your problem. But in some problems its useful to stack some RNN layers to make a deeper network.
 * For example, a deep RNN with 3 layers would look like this:  
 
-  ![](../../../.gitbook/assets/25%20%281%29.png)
-
 * In feed-forward deep nets, there could be 100 or even 200 layers. In deep RNNs stacking 3 layers is already considered deep and expensive to train.
 * In some cases you might see some feed-forward network layers connected after recurrent cell.
+
+![](../../../.gitbook/assets/25%20%281%29.png)
 
 ### Back propagation with RNNs
 
@@ -568,7 +568,7 @@ Shapes are the same
   * Orange and apple now share a lot of similar features which makes it easier for an algorithm to generalize between them.
   * We call this representation **Word embeddings**.
 
-* To visualize word embeddings we use a t-SNE algorithm to reduce the features to 2 dimensions which makes it easy to visualize:    
+* To visualize word embeddings we use a **t-SNE** algorithm to reduce the features to 2 dimensions which makes it easy to visualize:    
 
   ![](../../../.gitbook/assets/29%20%281%29.png)
 
