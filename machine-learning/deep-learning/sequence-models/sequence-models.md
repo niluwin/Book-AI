@@ -1232,9 +1232,17 @@ Shapes are the same
 
   * The diagram uses a `RepeatVector` node to copy s`<t-1>`'s value Tx times, and then `Concatenation` to concatenate s`<t-1>` and a`<t>` to compute e`<t, t>`, which is then passed through a softmax to compute α`<t, t>`.
 
-  
-  
-   
-  
- These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
+##  Transformer networks
+
+### Transformer network intuition
+
+![](../../../.gitbook/assets/image%20%2861%29.png)
+
+### Self-Attention Intuition
+
+![](../../../.gitbook/assets/image%20%2862%29.png)
+
+
+
+###      These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
 
