@@ -1240,9 +1240,28 @@ Shapes are the same
 
 ### Self-Attention Intuition
 
-![](../../../.gitbook/assets/image%20%2862%29.png)
+![](../../../.gitbook/assets/image%20%2868%29.png)
+
+![](../../../.gitbook/assets/image%20%2863%29.png)
+
+### Multi-head attention
+
+for loop over self attention mechanism
+
+![](../../../.gitbook/assets/image%20%2869%29.png)
+
+![](../../../.gitbook/assets/image%20%2867%29.png)
+
+### Transformer Network
+
+![](../../../.gitbook/assets/image%20%2866%29.png)
+
+![](../../../.gitbook/assets/image%20%2865%29.png)
 
 
 
-###      These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
+
+
+  
+ These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
 
