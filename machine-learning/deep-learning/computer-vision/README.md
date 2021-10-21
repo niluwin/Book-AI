@@ -14,5 +14,4 @@
 
 Amazon Mechanical turk
 
-[https://www.cs.ryerson.ca/~aharley/vis/conv/](https://www.cs.ryerson.ca/~aharley/vis/conv/)
-
+[https://www.cs.ryerson.ca/\~aharley/vis/conv/](https://www.cs.ryerson.ca/\~aharley/vis/conv/)

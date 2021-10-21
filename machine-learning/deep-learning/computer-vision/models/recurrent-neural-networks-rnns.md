@@ -4,5 +4,5 @@ description: >-
   time, such as with video.
 ---
 
-# Recurrent Neural Networks \(RNNs\)
+# Recurrent Neural Networks (RNNs)
 

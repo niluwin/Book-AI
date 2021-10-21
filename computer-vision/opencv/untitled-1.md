@@ -4,7 +4,7 @@
 
 Becoming a super hero is a fairly straight forward process:
 
-```text
+```
 $ give me super-powers
 ```
 
@@ -20,4 +20,3 @@ Once you're strong enough, save the world:
 echo 'You got to trust me on this, I saved the world'
 ```
 {% endcode %}
-

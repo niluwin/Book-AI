@@ -13,7 +13,7 @@ It takes two arguments:
    * `cv2.IMREAD_UNCHANGED`  or `-1`
    * `cv2.IMREAD_GRAYSCALE`  or `0`
    * `cv2.IMREAD_COLOR`  or `1`- _default_
-   * To check out the different flag options, click [here](https://docs.opencv.org/master/d8/d6a/group__imgcodecs__flags.html#ga61d9b0126a3e57d9277ac48327799c80)
+   * To check out the different flag options, click [here](https://docs.opencv.org/master/d8/d6a/group\_\_imgcodecs\_\_flags.html#ga61d9b0126a3e57d9277ac48327799c80)
 
 {% hint style="warning" %}
 OpenCV reads color images in BGR _\*\*_format, whereas most other computer vision libraries use the RGB channel format order
@@ -90,7 +90,7 @@ destroyAllWindows();
 `imshow(window_name, image)`
 
 1. The first argument is the window name that will be displayed on the window.
-2. The second argument is the image that you want to display. 
+2. The second argument is the image that you want to display.&#x20;
 
 To display multiple images at once, specify a new window name for every image you want to display.
 
@@ -98,10 +98,10 @@ The `imshow()` function is designed to be used along with the `waitKey()` and `d
 
 The `waitKey()` function is a keyboard-binding function.
 
-* It takes a single argument, which is the **time \(in milliseconds\)**, for which the window will be displayed.
+* It takes a single argument, which is the **time (in milliseconds)**, for which the window will be displayed.
 * If the user presses any key within this time period, the program continues.
 * If **0** is passed, the program waits indefinitely for a keystroke.
-* You can also set the function to detect specific keystrokes like the **Q** key or the **ESC** key on the keyboard, thereby telling more explicitly which key shall trigger which behavior. 
+* You can also set the function to detect specific keystrokes like the **Q** key or the **ESC** key on the keyboard, thereby telling more explicitly which key shall trigger which behavior.&#x20;
 
 The function `destroyAllWindows()` destroys all the windows we created. If a specific window needs to be destroyed, give that exact window name as the argument. Using `destroyAllWindows()` also clears the window or image from the main memory of the system.
 
@@ -109,7 +109,7 @@ The function `destroyAllWindows()` destroys all the windows we created. If a spe
 
 `imwrite(filename, image)`
 
-1. The first argument is the filename, which must include the filename extension \(for example .png, .jpg etc\). OpenCV uses this filename extension to specify the format of the file. 
+1. The first argument is the filename, which must include the filename extension (for example .png, .jpg etc). OpenCV uses this filename extension to specify the format of the file.&#x20;
 2. The second argument is the image you want to save. The function returns `True` if the image is saved successfully.
 
 {% tabs %}
@@ -130,8 +130,8 @@ imwrite("grayscale.jpg", img_grayscale);
 
 [Link](https://learnopencv.com/image-resizing-with-opencv/)
 
-* It is important to keep in mind the original aspect ratio of the image \(i.e. width by height\), if you want to maintain the same in the resized image too.
-* Reducing the size of an image will require resampling of the pixels. 
+* It is important to keep in mind the original aspect ratio of the image (i.e. width by height), if you want to maintain the same in the resized image too.
+* Reducing the size of an image will require resampling of the pixels.&#x20;
 * Increasing the size of an image requires reconstruction of the image. This means you need to interpolate new pixels.
 
 ### `using height and width`
@@ -216,10 +216,10 @@ int main()
 To obtain the size of an image:
 
 * use the **shape** method in **Python**
-  * `image.shape` in  returns three values: **\(H, W, C\)**
-* **rows** and **cols** in **C++** 
+  * `image.shape` in  returns three values: **(H, W, C)**
+* **rows** and **cols** in **C++**&#x20;
   * `image.rows` gives you the height
-  * `image.columns` gives you the width of the image 
+  * `image.columns` gives you the width of the image&#x20;
   * using the `size()` function
     * `image.size().width` returns the width
     * `image.size().height` returns the height
@@ -242,14 +242,14 @@ cout << "Original Height and Width :" << image.rows << "x" << image.cols << endl
 {% endtabs %}
 
 {% hint style="info" %}
-OpenCV outputs the shape of an image in ![height \* width \* channels ](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-29d033d57c7330f89d8885fbc83a9834_l3.png) format, whereas some other image-processing libraries give in the form of _**width, height, channels.**_ There’s a logical take to this.
+OpenCV outputs the shape of an image in ![height \* width \* channels ](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-29d033d57c7330f89d8885fbc83a9834\_l3.png) format, whereas some other image-processing libraries give in the form of _**width, height, channels.**_ There’s a logical take to this.
 {% endhint %}
 
-> When images are read using OpenCV, they are represented as NumPy arrays. And in general, you always refer to the shape of an array, in terms of ![rows \* columns](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-9e8744fadcaf9eeeb4be4a5ac2edf8c3_l3.png) \(rows representing its height and the columns its width\). So, even when reading images with OpenCV to get their shape, the same NumPy array rule comes into play. And you get the shape in the form of ![height \* width \* channels](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-34e0ab84b7d34817c20bb347dfbf59e7_l3.png).
+> When images are read using OpenCV, they are represented as NumPy arrays. And in general, you always refer to the shape of an array, in terms of ![rows \* columns](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-9e8744fadcaf9eeeb4be4a5ac2edf8c3\_l3.png) (rows representing its height and the columns its width). So, even when reading images with OpenCV to get their shape, the same NumPy array rule comes into play. And you get the shape in the form of ![height \* width \* channels](https://learnopencv.com/wp-content/ql-cache/quicklatex.com-34e0ab84b7d34817c20bb347dfbf59e7\_l3.png).
 
 `resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])`
 
-* **`src`**: It is the required input image, it could be a string with the path of the input image \(eg: ‘test\_image.png’\).
+* **`src`**: It is the required input image, it could be a string with the path of the input image (eg: ‘test\_image.png’).
 * **`dsize`**: It is the desired size of the output image, it can be a new height and width.
 * **`fx`**: Scale factor along the horizontal axis.
 * **`fy`**: Scale factor along the vertical axis.
@@ -288,19 +288,19 @@ resize(image, scaled_f_up, Size(), scale_up_x, scale_up_y, INTER_LINEAR);
 
 In the above **Python** snippet:
 
-* Define new scaling factors along the **horizontal** and **vertical** axis. 
-* Defining the scaling factors removes the need to have new points for width and height. Hence, we keep _**`dsize`**_ as **`None`.** 
+* Define new scaling factors along the **horizontal** and **vertical** axis.&#x20;
+* Defining the scaling factors removes the need to have new points for width and height. Hence, we keep _**`dsize`**_ as **`None`.**&#x20;
 
 In the above **C++** snippet:
 
 * Define the new scaling factors as well as the matrices for the new images.
-* As we do not need new points for width and height, we keep **`Size()`** empty and use the **`resize()`** function. 
+* As we do not need new points for width and height, we keep **`Size()`** empty and use the **`resize()`** function.&#x20;
 
 ### Interpolation Methods
 
 Different interpolation methods are used for different resizing purposes.
 
-* **`INTER_AREA`:** `INTER_AREA` uses pixel area relation for resampling. This is best suited for reducing the size of an image \(**shrinking**\). When used for zooming into the image, it uses the `INTER_NEAREST` method.
+* **`INTER_AREA`:** `INTER_AREA` uses pixel area relation for resampling. This is best suited for reducing the size of an image (**shrinking**). When used for zooming into the image, it uses the `INTER_NEAREST` method.
 * **`INTER_CUBIC`:** This uses bicubic interpolation for resizing the image. While resizing and interpolating new pixels, this method acts on the 4×4 neighboring pixels of the image. It then takes the weights average of the 16 pixels to create the new interpolated pixel.
 * **`INTER_LINEAR`**: This method is somewhat similar to the `INTER_CUBIC` interpolation. But unlike `INTER_CUBIC`, this uses 2×2 neighboring pixels to get the weighted average for the interpolated pixel.
 * **`INTER_NEAREST`**: The `INTER_NEAREST` method uses the nearest neighbor concept for interpolation. This is one of the simplest methods, using only one neighboring pixel from the image for interpolation.
@@ -403,7 +403,7 @@ In OpenCV, you crop the image using the same method as **NumPy** array slicing.
 {% endhint %}
 
 * The **first** dimension is always the number of **rows** or the **height** of the image.
-* The **second** dimension is the number of **columns** or the **width** of the image. 
+* The **second** dimension is the number of **columns** or the **width** of the image.&#x20;
 
 ### **Dividing an Image Into Small Patches Using Cropping**
 
@@ -545,4 +545,3 @@ destroyAllWindows();
 ```
 {% endtab %}
 {% endtabs %}
-

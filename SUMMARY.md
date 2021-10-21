@@ -14,8 +14,8 @@
   * [Computer Vision](machine-learning/deep-learning/computer-vision/README.md)
     * [Models](machine-learning/deep-learning/computer-vision/models/README.md)
       * [CNN](machine-learning/deep-learning/computer-vision/models/cnn.md)
-      * [Multi layer perceptron \(MLP\)](machine-learning/deep-learning/computer-vision/models/multi-layer-perceptron-mlp.md)
-      * [Recurrent Neural Networks \(RNNs\)](machine-learning/deep-learning/computer-vision/models/recurrent-neural-networks-rnns.md)
+      * [Multi layer perceptron (MLP)](machine-learning/deep-learning/computer-vision/models/multi-layer-perceptron-mlp.md)
+      * [Recurrent Neural Networks (RNNs)](machine-learning/deep-learning/computer-vision/models/recurrent-neural-networks-rnns.md)
     * [Problems](machine-learning/deep-learning/computer-vision/problems/README.md)
       * [Image Classification](machine-learning/deep-learning/computer-vision/problems/image-classification.md)
       * [Object Detection](machine-learning/deep-learning/computer-vision/problems/defect-detection/README.md)
@@ -49,8 +49,12 @@
   * [Basic Video Operations](computer-vision/opencv/basic-video-operations.md)
   * [Untitled](computer-vision/opencv/untitled-1.md)
 
+## Natural Language Processing
+
+* [Introduction](natural-language-processing/introduction.md)
+* [N-Grams](natural-language-processing/n-grams.md)
+
 ## MLops
 
 * [ML Project Lifecycle](mlops/ml-project-lifecycle.md)
 * [Untitled](mlops/untitled.md)
-

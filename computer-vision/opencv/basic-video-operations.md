@@ -127,7 +127,7 @@ int main()
 
 1. `cv2.VideoCapture` – Creates a video capture object, which would help stream or display the video.
 2. `cv2.VideoWriter` – Saves the output video to a directory.
-3. `get()`is used to read the video metadata such as frame height, width, fps etc. [List](https://docs.opencv.org/master/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d)
+3. `get()`is used to read the video metadata such as frame height, width, fps etc. [List](https://docs.opencv.org/master/d4/d15/group\_\_videoio\_\_flags\_\_base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d)
 
 {% hint style="warning" %}
 `get()` method does not apply to web cameras.
@@ -137,19 +137,19 @@ int main()
 
 `VideoCapture(path, apiPreference)`
 
-`VideoCapture()` class to create a [VideoCapture](https://docs.opencv.org/4.5.2/d8/dfe/classcv_1_1VideoCapture.html#ac4107fb146a762454a8a87715d9b7c96) object, which we will then use to read the video file.
+`VideoCapture()` class to create a [VideoCapture](https://docs.opencv.org/4.5.2/d8/dfe/classcv\_1\_1VideoCapture.html#ac4107fb146a762454a8a87715d9b7c96) object, which we will then use to read the video file.
 
-1. The first argument is the filename/path to the video file. 
-2. The second is an optional argument, indicating an `API` [preference.](https://docs.opencv.org/master/d4/d15/group__videoio__flags__base.html)
+1. The first argument is the filename/path to the video file.&#x20;
+2. The second is an optional argument, indicating an `API` [preference.](https://docs.opencv.org/master/d4/d15/group\_\_videoio\_\_flags\_\_base.html)
 
 The `isOpened()` method returns a **boolean** that indicates whether or not the video stream is valid. Otherwise you will get an **error** message. The error message can imply many things. One of them is that the entire video is corrupted, or some frames are corrupted.
 
-Once the video stream is fully processed or the user prematurely exits the loop, you release the video-capture object \(`vid_capture`\) and close the window
+Once the video stream is fully processed or the user prematurely exits the loop, you release the video-capture object (`vid_capture`) and close the window
 
 ### From Image-Sequence
 
-* Using the notation shown below \(Cars%04d.jpg\), where %04d indicates a four-digit sequence-naming convention \(e.g. Cars0001.jpg, Cars0002.jpg, Cars0003.jpg, etc\).  
-* If you had specified “Race\_Cars\_%02d.jpg” then you would be looking for files of the form: \(Race\_Cars\_01.jpg, Race\_Cars\_02.jpg, Race\_Cars\_03.jpg, etc…\).
+* Using the notation shown below (Cars%04d.jpg), where %04d indicates a four-digit sequence-naming convention (e.g. Cars0001.jpg, Cars0002.jpg, Cars0003.jpg, etc). &#x20;
+* If you had specified “Race\_Cars\_%02d.jpg” then you would be looking for files of the form: (Race\_Cars\_01.jpg, Race\_Cars\_02.jpg, Race\_Cars\_03.jpg, etc…).
 
 {% tabs %}
 {% tab title="Python" %}
@@ -190,9 +190,9 @@ Flag **`CAP_DSHOW`** is an optional argument, short for directshow via video inp
 ## Write Video
 
 * Retrieve the image frame height and width, using the `get()` method.
-* Initialize a video capture object \(as discussed in the previous sections\), to read the video stream into memory, using any of the sources previously described.
+* Initialize a video capture object (as discussed in the previous sections), to read the video stream into memory, using any of the sources previously described.
 * Create a video writer object.
-* Use the video writer object to save the video stream to disk. 
+* Use the video writer object to save the video stream to disk.&#x20;
 
 {% tabs %}
 {% tab title="Python" %}
@@ -271,16 +271,15 @@ while (vid_capture.isOpened())
 {% endtab %}
 {% endtabs %}
 
-Syntax of VideoWriter\(\):
+Syntax of VideoWriter():
 
 `VideoWriter(filename, apiPreference, fourcc, fps, frameSize[, isColor])`
 
 * `filename`: pathname for the output video file
 * `apiPreference`:  API backends identifier
-* `fourcc`: 4-character code of codec, used to compress the frames \([fourcc](https://docs.opencv.org/4.5.2/dd/d9e/classcv_1_1VideoWriter.html#ad59c61d8881ba2b2da22cff5487465b5)\)
+* `fourcc`: 4-character code of codec, used to compress the frames ([fourcc](https://docs.opencv.org/4.5.2/dd/d9e/classcv\_1\_1VideoWriter.html#ad59c61d8881ba2b2da22cff5487465b5))
   * AVI: `cv2.VideoWriter_fourcc('M','J','P','G')`
   * MP4: `cv2.VideoWriter_fourcc(*'XVID')`
 * `fps`: Frame rate of the created video stream
 * `frame_size`: Size of the video frames
-* `isColor`: If not zero, the encoder will expect and encode color frames. Else it will work with grayscale frames \(the flag is currently supported on Windows only\).
-
+* `isColor`: If not zero, the encoder will expect and encode color frames. Else it will work with grayscale frames (the flag is currently supported on Windows only).

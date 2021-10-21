@@ -5,5 +5,5 @@ description: >-
   by CNNs.
 ---
 
-# Multi layer perceptron \(MLP\)
+# Multi layer perceptron (MLP)
 
