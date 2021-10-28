@@ -8,15 +8,15 @@ N-grams are fundamental and give you a foundation that will allow you to underst
 
 Other applications of N-gram language modeling include:
 
-![](<../.gitbook/assets/image (70).png>)
+![](<../.gitbook/assets/image (70) (1).png>)
 
 ## N-Grams
 
-![](<../.gitbook/assets/image (72).png>)
+![](<../.gitbook/assets/image (72) (1).png>)
 
 Now given the those definitions, we can label a sentence as follows:
 
-![](<../.gitbook/assets/image (71).png>)
+![](<../.gitbook/assets/image (71) (1).png>)
 
 
 
@@ -43,7 +43,7 @@ To generalize, the probability of a unigram is $$P(w) = \frac{C(w)}{m}$$
 \
 
 
-![](<../.gitbook/assets/image (74).png>)
+![](<../.gitbook/assets/image (74) (1).png>)
 
 ### Trigram Probability
 
