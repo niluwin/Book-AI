@@ -8,7 +8,7 @@ N-grams are fundamental and give you a foundation that will allow you to underst
 
 Other applications of N-gram language modeling include:
 
-![](<../.gitbook/assets/image (70) (1).png>)
+![](<../.gitbook/assets/image (70) (1) (1).png>)
 
 ## N-Grams
 
@@ -16,7 +16,7 @@ Other applications of N-gram language modeling include:
 
 Now given the those definitions, we can label a sentence as follows:
 
-![](<../.gitbook/assets/image (71) (1) (1).png>)
+![](<../.gitbook/assets/image (71) (1) (1) (1).png>)
 
 
 
