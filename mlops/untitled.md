@@ -748,9 +748,29 @@ But found that when my goal is to build a useful application rather than trying 
 ![](<../.gitbook/assets/113.png>)
 
 ### Raising HLP
+> For example, I've done a lot of work on medical imaging, working on your AI for diagnosing from X-rays or things like these. Given an X-ray image, if you want to predict a diagnosis, if the diagnosis is defined according to, say, a biopsy, so your biological or medical tests, then HLP helps you measure how well does a doctor versus a learning algorithm predict the outcome of a biopsy or a biological medical tests. I find that to be really useful. But when the ground truth is defined by a human, maybe even a doctor labeled an X-ray image, then HLP is just measuring how well can one doctor predict another doctor's label versus how well can one learning algorithm predict another doctor's label. That too is useful, but it's different than if you're measuring how well you versus a doctor are predicting some ground truth outcome from a medical biopsy.
 
 ![](<../.gitbook/assets/114.png>)
+
+When the ground truth label is externally defined, such as the medical biopsy, then HLP gives an estimate for base error and irreducible error in terms of predicting the outcome of that medical test, the biopsy. But there are also a lot of problems with the ground truth is just another human label. 
+
+when the ground truth label y comes from a human, HLP being quite a bit less than 100 percent may just indicate that the labeling instructions or labeling convention is ambiguous.
+
+Improving label consistency will raise human-level performance. This makes it harder, unfortunately for your learning algorithm to beat HLP by the more consistent labels who raise your machine learning album performance, which is ultimately likely to benefit the actual application.
+
+So far we've been discussing HLP on unstructured data, but some of these issues apply to structure data as well.
+
+![](<../.gitbook/assets/114_1.png>)
+It turns out buses stop at bus stops, and so you can actually tell if someone is in a bus or in a car based on the GPS trace. For problems like these, it would be quite reasonable to ask a human to label the data, at least on the first pass for a learning algorithm to make such predictions as these. When the ground truth label you're trying to predict comes from one human, the same questions of what does HLP mean? It is a useful baseline to figure out what is possible. But sometimes when measuring HLP, you realize that low HLP stems from inconsistent labels, and working to improve HLP by coming up with a more consistent labeling standard will both raise HLP and give you cleaner data with which to improve your learning experience performance.
+
+First, HLP is important for problems where human-level performance can provide a useful reference. I do measure it and use it as a reference for what might be possible and to drive air analysis and prioritization. Having said that, when you're measuring HLP, if you find the HLP is much less than 100 percent, also ask yourself if some of the gap between HLP and complete consistency is due to inconsistent labeling instructions. Because if that turns out to be the case, then improving labeling consistency will raise HLP and also give cleaner data for your learning algorithm, which will ultimately result in better machine-learning algorithm performance.
+
+HLP is useful and important for many applications. For problems where I think how well humans perform is a useful reference, I do measure HLP and I use that to get a sense of what might be possible, and also use HLP to drive error analysis and preservation. Having said that, if, in the process of measuring HLP, you find that HLP is much less than perfect performance, much lower than 100 percent. This is also worth asking yourself, if that gap between HLP and 100 percent accuracy may be due to inconsistent labeling instructions. Because if that's the case, then improving labeling consistency will both raise HLP, but more importantly help you get cleaner and more consistent labels which will improve your learning algorithm's performance
+
 ![](<../.gitbook/assets/115.png>)
+
+
+
 ![](<../.gitbook/assets/116.png>)
 ![](<../.gitbook/assets/117.png>)
 ![](<../.gitbook/assets/118.png>)
