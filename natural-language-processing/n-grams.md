@@ -16,7 +16,7 @@ Other applications of N-gram language modeling include:
 
 Now given the those definitions, we can label a sentence as follows:
 
-![](<../.gitbook/assets/image (71) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (71) (1) (1) (1) (1).png>)
 
 
 

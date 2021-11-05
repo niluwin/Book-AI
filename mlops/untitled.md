@@ -38,7 +38,7 @@ After you have trained a neural network to take as input X pictures of phones an
 >
 > This would be an example of how you could deploy a system like this. You might have an edge device. By edge device, I mean a device that is living inside the factory that is manufacturing these smartphones. And that edge device would have a piece of inspection software whose job it is to take a picture of the phone, see if there's a stretch and then make a decision on whether this phone is acceptable, or not. This is actually commonly done in factories is called automated visual defect inspection. What the inspection software does is it will control camera that will take a picture of the smartphone as it rolls off the manufacturing line. And it then has to make an API call to pass this picture to a prediction server. And the job of the prediction server is to accept these API calls, receive an image, make a decision as to whether or not this phone is defective and return this prediction. And then the inspection software it can make the appropriate control decision whether to let it still move on in the manufacturing line. Or whether to shove it to a side, because it was defective and not acceptable.
 
-![Deployment Server](<../.gitbook/assets/image (83) (1).png>)
+![Deployment Server](<../.gitbook/assets/image (83) (1) (1).png>)
 
 There can still be quite a lot of work and challenges ahead to get a valuable production deployment running.
 
@@ -110,7 +110,7 @@ In contrast, I found that for a lot of product teams, if your main goal is to ju
 
 One of the key challenges when it comes to deployment is **concept drift or data drift**, which is what happens when the data distribution changes after deployment, such as there are more and more young voices being fed to the speech recognition system.
 
-![](<../.gitbook/assets/image (71) (1).png>)
+![](<../.gitbook/assets/image (71) (1) (1).png>)
 
 > Example: I train a few speech recognition systems, and when I built speech systems, quite often I would have some purchased data. This would be some purchased or licensed data, which includes both the input x, the audio, as well as the transcript y that the speech system supports it's output. In addition to data that you might purchase from a vendor, you might also have historical user data of user speaking to your application together with transcripts of that raw user data. Such user data, of course, should be collected with very clear user opt-in permission and clear safeguards for user privacy. After you've trained your speech recognition system on a data set like this, you might then evaluate it on a test set, but because speech data does change over time, when I build speech recognition systems, sometimes I would collect a dev set or hold out validation set as well as test set comprising data from just the last few months. You can test it on fairly recent data to make sure your system works, even on relatively recent data. After you push the system to deployments, the question is, will the data change or after you've run it for a few weeks or a few months, has the data changed yet again? The data has changed, such as the language changes or maybe people are using a brand new model of smartphone which has a different microphone, so the audio sounds different, then the performance of a speech recognition system can degrade.
 
@@ -228,7 +228,7 @@ key takeaways are that it is only by monitoring the system that you can spot if 
 
 Many AI systems are not just a single machine learning model running a prediction service, but instead involves a pipeline of multiple steps.
 
-![](<../.gitbook/assets/image (94).png>)
+![](<../.gitbook/assets/image (94) (1).png>)
 
 > Let's continue with our speech recognition example, you've seen how a speech recognition system may take as input audio and I'll put a transcript. The way that speech recognition is typically implemented on mobile apps is not like this, but instead is a slightly more complex pipeline. Where the audio is fed to a module called a VAD or a voice activity detection module, whose job it is to see if anyone is speaking. And only if the VAD module, the voice activity detection module thinks someone is speaking, does it then bother to pass the audio on to a speech recognition system whose job it is to then generate the transcript. And the reason we use a voice activity detection or VAD module is because if say, your speech recognition system runs in the cloud. You don't want to stream more bandwidth than you have to to your cloud server. And so the voice activity detection module looks at the long stream of audio on your cell phone and clips or shortens the audio to just the part where someone is talking and streams only that to the cloud server to perform the speech recognition
 >
@@ -236,7 +236,7 @@ Many AI systems are not just a single machine learning model running a predictio
 
 When you have two learning algorithms, changes to the first module may affect the performance of the second module as well.&#x20;
 
-![](<../.gitbook/assets/image (83).png>)
+![](<../.gitbook/assets/image (83) (1).png>)
 
 > Let's look an example involving user profiles. Maybe I've used the data such as clickstream data showing what users are clicking on. And this can be used to build a user profile that tries to capture key attributes or key characteristics of a user. For example, I once built user profiles that would try to expect many attributes of users including whether or not the user seemed to own a car. Because this would help us decide if it was worth trying to offer car insurance office to that user. And so whether the user owns a car could be yes or no or unknown, or maybe other final graduations and these. And the typical way that the user profile is built is with a learning algorithm to try to predict if this user of the car. This type of user profile, which can have a very long list of predicted attributes, can then be fed to recommend a system. Another learning algorithm that then takes this understanding of the user to try to generate product recommendations. Now, if something about the click stream data changes, maybe this input distribution changes, then maybe over time if we lose our ability to figure out if a user owns a car, then the percentage of the unknown tag here may go up. And because the user profiles output changes, the input to the recommended system now changes and this might affect the quality of the product recommendations. When you have a machine learning pipelines, these cascading effects in the pipeline can be complex to keep track on. But if the percentage of unknown labels does go up, this could be something that you want to be alerted to so that you can update the recommend the system if needed to make sure you continue to generate high quality product recommendations.
 
@@ -357,7 +357,7 @@ We've talked about how machine learning is an iterative process where you start 
 
 you should take deployment constraints such as compute constraints into account, if the baseline is already established and you're relatively confident that this project will work and thus your goal is to build and deploy a system. But if you have not yet even established a baseline, or if you're not yet sure if this project will work and be worthy of deployment, then I will say no, or maybe not necessarily. If you are in a stage of the project where your first goal is to just establish a baseline and determine what is possible and if this project is even worth pursuing for the long term, then it might be okay to ignore deployment constraints and just find some open source implementation and try it out to see what might be possible, even if that open source implementation is so computationally intensive that you know you will never be able to deploy that.&#x20;
 
-![](<../.gitbook/assets/image (88).png>)
+![](<../.gitbook/assets/image (88) (1).png>)
 
 ![](<../.gitbook/assets/image (90) (1).png>)
 
@@ -401,11 +401,11 @@ Error analysis is also an iterative process where what a typical process would b
 
 You can also take into account how easy it is to improve accuracy in that category. For example, if you have some ideas for how to improve the accuracy of speech with car noise, maybe your data augmentation, that might cause you to prioritize that category more highly than some other category where you just don't have as many ideas for how to improve the system. Then finally, how important it is to improve performance on that category. For example, you may decide that improving performance with car noise is especially important because when you're driving, you have a stronger desire to do search, especially search on maps and find addresses without needing to use your hands if your hands are supposed to be holding the steering wheel. There is no mathematical formula that will tell you what to work on.&#x20;
 
-![](<../.gitbook/assets/image (97) (1).png>)
+![](<../.gitbook/assets/image (97) (1) (1).png>)
 
 Once you've decided that there's a category, or maybe a few categories where you want to improve the average performance, one fruitful approach is to consider adding data or improving the quality of that data for that one, or maybe a small handful of categories. For example, if you want to improve performance on speech with car noise, you might go out and collect more data with car noise. Or if you have a way of using data augmentation to get more data from data category, that will be another way to improve your algorithm's performance.
 
-![](<../.gitbook/assets/image (87) (1).png>)
+![](<../.gitbook/assets/image (87) (1) (1).png>)
 
 &#x20;In machine learning, we always would like to have more data, but going out to collect more data generically, can be very time-consuming and expensive. By carrying out an analysis like this, when you are then going through this iterative process of improving your learning algorithm, you can be much more focused in exactly what types of data you collect. Because if you decide to collect more data with car noise or maybe people noise, you can be much more specific in going out to collect more of just that data or using data augmentation without wasting time trying to collect more data from a low bandwidth cell phone connection. This focus on improving your data on the tags that you have determined are most fruitful for you to work on, that can help you be much more efficient in how you improve your learning algorithm's performance.&#x20;
 
@@ -413,7 +413,7 @@ Once you've decided that there's a category, or maybe a few categories where you
 
 Data sets where the ratio of positive to negative examples is very far from 50-50 are called skewed data sets.&#x20;
 
-![](<../.gitbook/assets/image (71).png>)
+![](<../.gitbook/assets/image (71) (1).png>)
 
 > Data sets where the ratio of positive to negative examples is very far from 50-50 are called skewed data sets. Let's look at some special techniques for handling them. Let me start with a manufacturing example. If a manufacturing company makes smartphones, hopefully, the vast majority of them are not defective. If 99.7 percent have no defect and are labeled y equals 0 and only a small fraction is labeled y equals 1, then print 0, which is not a very impressive learning algorithm. We achieve 99.7 percent accuracy. For medical diagnosis, which was the example we went through in an earlier video, if 99 percent of patients don't have a disease, then an algorithm that predicts no one ever has a disease will have 99 percent accuracy or speech recognition. If you're building a system for wake word detection, sometimes also called trigger word detection, these are systems that listen and see if you say a special word like Alexa or Okay Google or Hey Zoe, most of the time that special wake word or trigger word is not being spoken by anyone at that moment in time. When I had built wake word detection systems, the data sets were actually quite skewed. One of the data sets I used had 96.7 percent negative examples and 3.3 percent positive examples.
 
@@ -479,7 +479,7 @@ One of the most important ways to improve the quality of a data set is data augm
 
 ### A useful picture of data augmentation
 
-![](<../.gitbook/assets/image (95).png>)
+![](<../.gitbook/assets/image (95) (1).png>)
 
 > Take speech recognition. There could be many different types of noise in speech input such as car noise, play noise, train noise, machine noise, cafe noise or library noise, which isn't that loud or food court noise. Maybe these types of noises are more similar to each other because they're all mechanical types of noise and these types of noise maybe a little bit more similar to each other with mainly people talking and interacting with each other. So let me share of your picture that I keep in mind when I'm planning out my activities on getting more data through data augmentation or through actual data collection of any of these types of data. In this diagram, the vertical axis represents performance, say accuracy. And on the horizontal axis, and this is a conceptual kind of a thought experiment type of access. I'm going to represent the space of possible inputs. So for example there speech with car noise and plane noise and train noise sound a bit like car noise. So they're quite similar and machine noise a little bit further away, by machine noise, I'm picturing the sounds of a washing machine or a very loud air conditioners. Then you may have speech with cafe noise, library noise or food court ,and those are maybe more similar to each other. Then to these types of mechanical noise. Your system will have different levels of performance on these different types of input. Let's say the performance is this for data of play noise, that of car noise, train noise, machine noise. And it does worse on data with library noise, cafe noise, food court noise. And so I think of their as being a curve. Or maybe think of this like a one dimensional piece of rubber band or like a rubber sheet that shows how accurate your speech system is as a function of the type of input it gets. A human will have some other level of performance on these different types of data. So maybe a human is a bit better, will play noise bit better in car noise, and so on and maybe they are much better then your algorithm on library noise, cafe noise and food court noise. So the human level performance is represented via some other curve. And let me just label this as the current models performance in blue. So this gap represents an opportunity for improvement. Now, what happens if you use data augmentation or maybe not data augmentation but go out to a bunch of actual cafes, to collect a lot more data with cafe noise in the background. What you'll do is, you'll take this point imagine grabbing a hold of this blue rubber bands or this rubber sheet, and pulling it upward like so. That's what you're doing if you collect or somehow gets more data with cafe noise and add that your training set, you're pulling up the performance of the algorithm on inputs with cafe noise. And what that will tend to do, is pull up this rubber sheet in the adjacent region as well. So if performance on cafe noise goes up, probably performance on the nearby points will go up too and performance on far away. Points may or may not go up as much.
 
@@ -523,7 +523,7 @@ For a lot of machine learning problems, training sets and dev and test set distr
 
 If you are working on an unstructured data problem and if your model is large, such as a neural network that is quite large and has a large capacity and does low bias. And if the mapping from x to y is clear and by that I mean given only the input x, humans can make accurate predictions. Then it turns out adding accurately labeled data rarely hurts accuracy. This is an important observation because adding data through data augmentation or collecting more of one type of data, can really change your input data distribution to probability of x.
 
-![](<../.gitbook/assets/image (87).png>)
+![](<../.gitbook/assets/image (87) (1).png>)
 
 > Let's say at the start of your problem, 20% of your data had cafe noise. But using augmentation, you added a lot of cafe noise. So now this is 50 of your data is data of cafe noise in the background. It turns out that so long as your model is sufficiently large, then it won't stop it from doing a good job on the cafe noise data as well as doing a good job on non cafe noise data. In contrast, if your model was small, then changing your input data distribution this way may cause it to spend too much of its resources modeling cafe noise settings. And this could hurt this performance on non cafe noise data. But if your model is large enough, then this isn't really an issue.&#x20;
 
@@ -547,7 +547,7 @@ Over the last several years, there's been a trend in product recommendations of 
 
 ![](<../.gitbook/assets/image (91).png>)
 
-![](<../.gitbook/assets/image (97).png>)
+![](<../.gitbook/assets/image (97) (1).png>)
 
 So data iteration for structured data problems may look like this. You start out with some model, train the model and then carry out error analysis. Error analysis can be harder on structured data problems if there is no good baseline such as human level performance to compare to, and human level performance is hard for structured data because it's really difficult for people to recommend good restaurants even to each other. But I found that error analysis can discover ideas for improvement, so can user feedback and so can benchmarking to competitors. But through these methods, if you can identify a academy or a certain type of tag associated your data that you want to drive improvement, then you may be able to go back to select some features to add, such as features to figure out who's vegetarian and what restaurants have good vegetarian options that would help you to improve your model.
 
@@ -591,4 +591,22 @@ Good data also has timely feedback from production data.
 
 And finally, you do need a reasonable size data set.
 
+![](<../.gitbook/assets/image (89) (1).png>)
+
+## Define Data and Establish baseline
+
+### Why is data definition hard?
+
+![](<../.gitbook/assets/image (71).png>)
+
+![](<../.gitbook/assets/image (97).png>)
+
+![](<../.gitbook/assets/image (87).png>)
+
+![](<../.gitbook/assets/image (95).png>)
+
+![](<../.gitbook/assets/image (88).png>)
+
 ![](<../.gitbook/assets/image (89).png>)
+
+![](<../.gitbook/assets/image (83).png>)
