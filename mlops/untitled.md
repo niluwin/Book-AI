@@ -767,11 +767,51 @@ First, HLP is important for problems where human-level performance can provide a
 
 HLP is useful and important for many applications. For problems where I think how well humans perform is a useful reference, I do measure HLP and I use that to get a sense of what might be possible, and also use HLP to drive error analysis and preservation. Having said that, if, in the process of measuring HLP, you find that HLP is much less than perfect performance, much lower than 100 percent. This is also worth asking yourself, if that gap between HLP and 100 percent accuracy may be due to inconsistent labeling instructions. Because if that's the case, then improving labeling consistency will both raise HLP, but more importantly help you get cleaner and more consistent labels which will improve your learning algorithm's performance
 
+## Label and Organize data
+### Obtaining data
+#### One key question I would urge you to think about is how much time should you spend obtaining data?
+Let's say just for the sake of arguments that carrying out error analysis for your project for the first time may take a couple of days. If this is the case, I would urge you not to spend 30 days collecting data, because that will delay by a whole month your getting into this iteration. Instead, I urge you to get in this iteration loop as quickly as possible. Training a model and error analysis might take just a couple of days. I would urge you to ask yourself, what if you were to give yourself only two days to collect data? Would that help get you into this loop much more quickly
+
 ![](<../.gitbook/assets/115.png>)
 
+After you've trained your initial model, carry out error analysis there's plenty of time to go back and collect more data.
 
+One exception to this guideline is if you have worked on this problem before, and if from experience you know you need at least a certain training set size. Then it might be okay to invest more effort up front to collect that much data.
+
+But a lot of the time if you're working on a brand new problem and if you are not sure and is often hard to tell even from the literature, but if you're not sure just how much data is needed, then is much better to quickly collect a small amount of data, train a model and then use error analysis to tell you if is worth your while to go out to collect more data. 
+
+In terms of getting the data you need, one other step I often carry out is to take inventory of possible data sources.
 
 ![](<../.gitbook/assets/116.png>)
+
+>Let's continue to use speech recognition as an example. If you were to brainstorm a list of data sources, this is maybe what you might come up with. Maybe I already own 100 hours of transcribed speech data, and because you already own it the cost of that is zero. Or you may be able to use a crowdsourcing platform and pay people to read text. You provide them a piece of text and ask them to read it out loud and just create text data where you already have the transcript because they were reading a piece of text that you have. Or you may decide to take audio that you have that hasn't been labeled yet, and to pay for it to be transcribed. It turns out this is more expensive on a per hour basis than paying people to read texts, but this results in audio that sounds more natural because people aren't reading. For 100 hours of data it may cost $6,000 to get high quality transcripts. Or you may find some commercial organizations that could sell you data. Through an exercise like this, you can brainstorm what are the different types of data you might use as well as their associated costs. One column that's missing from this that I find very important is the time costs, so how long will it take you to execute a project to get these different types of data? For the owned data you could get that instantaneously. For crowdsourced reading you may need to implement a bunch of software, find the right crowdsourcing platform, carry out software integration so you might estimate that that's two weeks of engineering work. Paying for data to be labeled is simpler but still is work to organize and manage, whereas purchasing data maybe there's a purchase order process that may be much quicker. 
+
+if you can sit down, write to all the different data sources and think through the trade-offs, including costs and time, then that can help you to make often better decisions about what sources of data to use.
+
+In addition to the amount of data you can acquire and the financial costs and the time costs, other important factors that's application dependent will include data quality. Where you may decide for example, that paying for labels actually gives more natural audio than having people sound like they're reading, as well as really important the privacy and regulatory constraints. If you decide to get data labeled, here are some options you might think through as well.
+
+The three most common ways to get data labeled are, in house where you have your own team label the data, versus outsource where you might find some company that labels data and have them do it for you, versus crowdsource where you might use a crowdsourcing platform to have a large group collectively label the data. The difference between outsource versus crowdsource is that, depending on what type of data you have, there may be specialized companies that could help you get the label quite efficiently.
+
+Some of the trade offs between these options, having machine learning engineers label data is often expensive. But I find that to get a project going quickly, having machine learning engineers do this just for a few days is usually fine and in fact, this can help build the machine learning engineers intuition about the data. When I'm working on a new project, I often don't mind spending a few hours or maybe a day or two labeling data myself if that helps me to build my intuition about the project. But beyond a certain point you may not want to spend all your time as a machine learning engineer labeling data, and you might want to shift to a more scalable labeling processes.
+
+Depending on your application, there may be also different groups or subgroups of individuals that are going to be more qualified to provide the labels, y.
+
+> If you're working on speech recognition, then maybe almost any reasonably fluent speaker can listen to audio and transcribe it. 
+> For more specialized applications like factory inspection or medical image diagnosis, a typical person off the street probably can't look at a medical X-ray image and diagnose from it, or look at a smartphone and determine what is and what isn't a defect.
+
+More specialized tasks like these usually require an SME or subject matter expert, in order to provide accurate labels. Finally there are some applications was very difficult to get anyone to give good labels.
+
+> Take product recommendations, there are probably product recommendation systems that are giving better recommendations to you than even your best friends or maybe your significant other. For this, you may just have to rely on purchase data by the user as a label rather than get humans to label this.
+
+When you're working on an application, figuring out which of these categories of application you're working on and identifying the right type of person or persons to help you label, will be an important step to making sure your labels are high quality.
+
+One last tip. Let's say you have 1,000 examples, and you've decided you need a bigger data set. How much bigger should you make your data set?
+> If you have a 1,000 examples and you've trained your model on 1,000 examples, maybe it's worth investing to try to increase your dataset to 3,000 examples or maybe at most 10,000 examples. But I would first do a 10x or less than 10x increase first, train another model, carry out error analysis and only then figure out if it's worth increasing it substantially beyond that. 
+
+Because once you increase your dataset size by 10x, so many things change is really difficult. I found this really hard to predict what will happen when your data set size increases even beyond that.
+
+### Data pipeline
+
 ![](<../.gitbook/assets/117.png>)
 ![](<../.gitbook/assets/118.png>)
 ![](<../.gitbook/assets/119.png>)
