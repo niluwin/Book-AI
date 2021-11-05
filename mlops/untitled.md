@@ -810,22 +810,117 @@ One last tip. Let's say you have 1,000 examples, and you've decided you need a b
 
 Because once you increase your dataset size by 10x, so many things change is really difficult. I found this really hard to predict what will happen when your data set size increases even beyond that.
 
-### Data pipeline
-
 ![](<../.gitbook/assets/117.png>)
+
+### Data pipeline
+> Let's say that given some user information you would like to predict if a given user is looking for a job, because if they're looking for a job at this moment in time, you may want to surface job ads or other pieces of perfectly useful information to them. Given raw data such as the data on top, there's often some pre-processing or data cleaning before the data is fed to learning algorithm that then tries to predict, why? Are they looking for a job? The data cleaning may include things like spam cleanup, such as removing the spam accounts, and maybe also user ID merge which we talked about in an earlier video. For the sake of this example, let's say that spam clean-up and user ID merge are done with just scripting. when you have strips for the data cleaning, one of the issues you run into is replicability when you take these systems into production deployment.
+>
 ![](<../.gitbook/assets/118.png>)
+
+Let's say during the development of the system, you have input data fed through pre-processing scripts, and the pre-processed data is fed to a machine learning algorithm, and after some amount of work, your learning algorithm does well on the test set. Printed development phase, you may have seen that pre-processing scripts can be quite messy. It may be you hacking something up, processing data, mailing a file to a different member of your team, having them have a few incantations in Python or some scripting language to process the data and having them, mail the process data back to you. When you take this system to production, you then have new data which has to be fed through a similar set of scripts because this data is going to be fed to the same machine learning algorithm. Your machine-learning algorithm on this data is what will run in your product. The key question is, if you're pre-processing was done with a bunch of strips, spread out on a bunch of different people's computers and laptops, how do you replicate the strips to make sure that the input distribution to a machine learning algorithm was the same for the development data and the production data?
+
+
 ![](<../.gitbook/assets/119.png>)
+
+I find that the amount of effort that you should invest to make sure that the pre-processing scripts are highly replicable can depend a little bit on the face of the project.
+
 ![](<../.gitbook/assets/120.png>)
+
+This is when tools which can be a little bit more heavyweight, but tools like TensorFlow Transform, Apache beam, Airflow, and so on become very valuable.
+
+### Meta-data, data provenance and lineage
+
+>Here's a more complex example of a data pipeline, building on our previous example of using user records to predict if someone is looking for a job at a given moment in time. Let's say you start off with a spam dataset. This may include a list of known spam accounts as well as features such as a list of blacklisted IP addresses that spammers are known to use. You might also implement a learning algorithm or a piece of machine learning code and train your learning algorithm, understand dataset, thus giving you an anti-spam model. These arrows indicate flow of information or flow of computation, where training your ML code on the spam dataset gives you your anti-spam model. You then take your user data and apply the anti-spam model to it to get the disband user data. We're following our usual convention that things with the purple rectangle around it represent pieces of code. Now, taking your de-spammed user data. Next, you may want to carry out user ID merge. To do that, you might start off with some ID merged data. This would be labeled data telling you some pairs of accounts that actually correspond to the same person have a machine learning algorithm implementation, train the model on that, and this gives you a learned ID merge model that tells you when to combine two accounts into a single user ID. You take your ID merge model, apply it to the de-spammed user data. This gives you your cleaned up user data. Then finally, based on the clean user data, hopefully, some of this labels with whether someone's looking for a job, you'll then have another machine learning model, train on it to give you a model to predict if a given user is looking for a job or not. This is then used to make predictions on other users or maybe across your whole database of users.
+
 ![](<../.gitbook/assets/121.png>)
+
+This level of complexity of a data pipeline is not atypical in large commercial systems. I've seen data pipelines or data cascades that are even far more complicated than this. One of the challenges of working with data pipelines like this is, what if after running this system for months, you discover that, oops, the IP address blacklists you're using has some mistakes in it. In particular, what if you discover that there was some IP addresses that were incorrectly blacklisted. Maybe because the provider from whom you had purchased a blacklisted IP addresses found out that there were some IP addresses that multiple users use, such as multiple users on a corporate campus or university campus, sharing IP address for security reasons. But the organization creating the blacklist IP address thought it was spammy because so many people shared an IP address. This has happened before. The question is, having built up this big complex system, if you were to update your spam dataset, won't that change your spam model, and therefore that, and therefore that, and therefore that, and therefore that. How do you go back and fix this problem? Especially if each of these systems was developed by different engineers, and you have files spread across the laptops of your machine learning engineering development team. To make sure your system is maintainable, especially when a piece of data upstream ends up needing to be changed, it can be very helpful to keep track of data provenance as well as lineage.
+
+**Data provenance refers to where the data came from. Who did you purchase the spam IP address from? Lineage refers to the sequence of steps needed to get to the end of the pipeline.**
+
+To make life easier, both for managing data pipelines as well as for error analysis and driving machine learning development, there's one tip I want to share, which is to make extensive use of metadata. Metadata is data about data. 
+
 ![](<../.gitbook/assets/122.png>)
+
+I found many times when I happened to maybe get lucky and store the right metadata, only to discover a month later that that metadata helped generate a key insight that helped the project move forward. 
+
+My tip is if you have a framework or a set of MLOps tools for storing metadata, that will definitely make life easier but even if you don't, just like you rarely regret commenting your code, I think you will really regret storing metadata that could then turn out to be useful later.
+
+### Balanced train/dev/test splits
+Many of us are used to taking a data set and randomly splitting it into train dev and tests. It turns out when your data set is small having balanced train dev and test set can significantly improve your machine learning development process. 
+
 ![](<../.gitbook/assets/123.png>)
+
+This is one of those little techniques that turns out to make a big difference to your performance when you're working on a small data problem, but that you don't really need to worry about if you have a very large data set
+
+## Scoping
+### Scoping Process
+What I've seen in a lot of businesses is that of all the ideas you can work on. Some are going to be much more valuable than others. Maybe two times or five times or 10 times more valuable than a different idea. And being able to pick the most valuable project will significantly increase the impact of your work. 
+
 ![](<../.gitbook/assets/124.png>)
+
+when brainstorming prices work on. The first thing I do is usually get together with a business or private owner. Often not an Ai person, but someone that understands the business and application and to brainstorm with them. What are their business or application problems. And at this stage I'm trying to identify a business problem, not an Ai problem. So if I'm speaking with Nikon retail business, like the example from the previous video. I might ask, what are the top few things, top three things you wish were working better, and maybe they'll share business problems. Like they like to increase conversions number of people that go to the website and convert to a sale or reduce inventory, or increased margin, increase the profit per item sold.
+
+not all problems can be solved by AI and that's okay. But hopefully we'll come up with some ideas for using machine learning algorithms, to address some of the business problems.
+
+I find it is hopeful for this process to separate out the identification of the problem, from the identification of the solution as engineers. We are pretty good at coming up with solutions, but having a clear articulation of what is the problem first often helps us come up with better solutions. This type of separation between problem and solution is something you might hear about in the writings on design thinking as well.
+
+After brainstorming a variety of different solutions, I would then assess the feasibility and the value of these different solutions. Diligence is a term that actually comes from the legal field, but it basically means double-checking if an AI solution really is technically feasible and valuable. Double-checking something that you're hoping, it's true really is true, after validating technical feasibility and value or ROI. Return on investment if you can project if it still looks promising right, if it still looks promising. We then flesh out the milestones for the project and finally budget for resources.
+
 ![](<../.gitbook/assets/125.png>)
+
+So the first one increased conversion, if the business wants to increase conversions, you may have different ideas are doing that. For example, you may want to improve the quality of the website search results. So people find more relevant products when they search. Or you might decide to try to offer a better product recommendations based on their purchase history. It is quite common that one problem may lead to multiple ideas for solutions. And you may be able to bring some other ideas as well, such as maybe a redesign of how products are displayed on the page. Or you may find interesting ways to surface the most relevant product reviews, to help users understand the product and does hopefully purchase it. So there can be many ways to increase conversions. 
+
+Take the next problem from the previous slide of reducing inventory. Maybe, you can imagine a demand prediction project to better estimate how many people buy something from you. So you don't purchase too many or too few, and have more accurate inventory in your warehouses. Or you may decide to come up with a marketing campaign to drive sales for specifically the products that you bought too many of. So as to steer more purchases of stuff sitting in your warehouse. And that could also reduce inventory, and there could be many other ideas for solutions 
+
+for the problem of increasing margin. You may come up with some ways to use machine learning to optimize what to sell. What is worth selling and what is not worth selling. And Nikon retail, sometimes this is called merchandising, just deciding what to sell. Or you can recommend bundles where if someone buys a camera. Maybe you can recommend to them a protective camera case and these bundles can also increase margin.
 ![](<../.gitbook/assets/126.png>)
+
+**The problem identification is a step of thinking through whether the things you want to achieve. And solution identification is a process of thinking through how to achieve those objectives.**
+
+One thing I hope you might avoid is working really hard on the project and creating a certain amount of monetary or social value. If for the same amount of work, there's a different project that could have created 10 times more, monitoring or social or other positive types of value. And I think this type of scoping process will help you to do that.
+
+### Diligence on feasibility and value
+
 ![](<../.gitbook/assets/127.png>)
+
+
+> Let's say you're building a self-driving car, and you want an algorithm to classify whether a traffic light is currently red, yellow, or green. I will take pictures from your self-driving car and ask a person to look at an image like this, and see if the person looking only at the image can tell which lamp is illuminated and in this example, it's pretty clear it's green. But if you find that you also have pictures like these, then I can't tell which lamp is illuminated in this example. This is why it's important for this HLP benchmark to make sure that human is given only the same data as your learning algorithm. It turns out maybe a human sitting in the car and seeing the traffic light with their own eye, could have told you which lamp was illuminated in this example on the right, but that's because the human eye has superior contrast to most digital cameras. But the useful test is not whether the human eye can recognize which lamp is illuminated, the useful test is if the person was sitting back in the office and they can only see the image from the camera, can they still do the task? That gives you a better read on feasibility. Specifically, it helps you make a better guess at whether a learning algorithm, which will only have access to this image, can also accurately detect which lamp in a traffic light is illuminated.
+
+Making sure that a human sees only the same data as a learning algorithm will see is really important. I've seen a lot of projects where for a long time a team was working on a computer vision system, say, and they thought they could do it because a human physically inspecting the cell phone or something could detect the defect. But it took a long time to realize that even a human looking only at the image, couldn't figure out what was going on. 
+
 ![](<../.gitbook/assets/128.png>)
+
+Next, for structured data problems, one of the key criteria to assess for technical feasibility is, do we have input features X that seem to be predictive whenever we're trying to predict Y. Let's look at a few examples. In a Ecom example, 
+
 ![](<../.gitbook/assets/129.png>)
+
+#### History of Project
+When I've worked on a machine learning application for many months, I found that the rates of previous improvements can be maybe a surprisingly good predictor for the rate of future improvement.
 ![](<../.gitbook/assets/130.png>)
+
+### Diligence on value
+How do you estimate the value of Machine Learning Project?
+
+> let's say you're working on building a more accurate speech recognition system for the purpose of voice search so that people speak to the smartphone app to do web searches. It turns out that in most businesses there will be some metrics that machine learning engineers are used to optimizing and some metrics that the owners of the product or the business will want to maximize. There's often a gap between these two building machine learning systems to objective that a learning algorithm may optimize might be something right where level accuracy. If a user says a certain number of words, how many of the words do we get right? Maybe the learning algorithm actually does great in the sense on log-likelihood or some other criteria. But many machine learning teams would be comfortable trying to get good words-level accuracy. But when using this in a business context, one other key metrics query-level accuracy, which is how often do you get all the words in a query right. For some businesses word-level accuracy is important, but query-level accuracy may be even more important. We've now taken one step away from the objective that the learning algorithm is almost directly optimizing. Even after you get the query right, which is important for the user experience, what users care even more about is the search result quality. The reason the business may want to ensure search result quality is that this gives users a better experience and just increases user engagement, so they come back to the search engine more often. This is important, but this is just one step towards actually driving the revenue of the business
+
 ![](<../.gitbook/assets/131.png>)
+
+In order for a project to move forward, I usually try to have the technical and the business teams try to agree on metrics that both are comfortable with. This often takes a little bit of compromise where the machine learning team might stretch a little bit further to the right and the business teams stretch a little bit further to the left. 
+
+One other practice I've found useful is that if you can do even very rough back of the envelope calculations to relate what level of accuracy to some of the metrics on the right. If word accuracy improves by one percent, if you have any rough guess for will that improve query level accuracy, maybe by 0.7 percent or 0.8 percent, and how much will that improve search result quality and user engagement and maybe revenue, if able to come up with even a very crude back of the envelope calculation. Sometimes these are also called **Fermi estimates**. That can also be a way to help bridge the machine learning and gene metrics and business metrics.
+
+
 ![](<../.gitbook/assets/132.png>)
+
+
+ I find it issues of values and ethics is very domain-dependent, is very different in making loans versus health care versus recommending products online.
+
+Encourage you to look up any ethical frameworks that have been developed for your industry and your application. If you have any concerns, raise it for debate within your team. 
+
+I have killed multiple projects on ethical considerations when I felt the project was economically sound, but I didn't think it would help people, and I just told the team, I don't want to do it and I won't do it.
+
+### Milestones and resourcing
+Determining milestones and resourcing involves writing out the key specifications for your project. 
+
 ![](<../.gitbook/assets/133.png>)
