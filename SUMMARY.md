@@ -57,4 +57,5 @@
 ## MLops
 
 * [ML Project Lifecycle](mlops/ml-project-lifecycle.md)
-* [Machine Learning in Production](mlops/untitled.md)
+* [Machine Learning in Production](mlops/ml-in-prod.md)
+* [Machine Learning Data Lifecycle in Production](mlops/machine-learning-data-lifecycle-in-production.md)
