@@ -897,6 +897,7 @@ Next, for structured data problems, one of the key criteria to assess for techni
 
 #### History of Project
 When I've worked on a machine learning application for many months, I found that the rates of previous improvements can be maybe a surprisingly good predictor for the rate of future improvement.
+
 ![](<../.gitbook/assets/130.png>)
 
 ### Diligence on value
