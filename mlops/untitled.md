@@ -689,6 +689,7 @@ i have trained computer vision systems with just 30 images and had to work just 
 ### Improving label consistency
 
 ![](<../.gitbook/assets/106.png>)
+
 In some cases you can also have the same labeler label an example, wait a while until they have hopefully forgotten or technical term is wash out, but have them take a break and then come back and re-label it and see if they're even consistent with themselves.
 
 Ideally, also document and write down that agreement, and this definition of y can then become an updated set of labeling instructions that they can go back to label new data or to relabel old data.
@@ -709,6 +710,7 @@ One of the technique I've used is to create a new class, or create a new label t
 > Let me use speech illustration to illustrate this further. Given this audio clip, [inaudible] I really can't tell what they said. [inaudible] If you were to force everyone to transcribe it, some labelers would transcribe, "Nearly go." Some maybe they'll say, "Nearest grocery," and it's very difficult to get to consistency because the audio clip is genuinely ambiguous. To improve labeling consistency, it may be better to create a new tag, the unintelligible tag, and just ask everyone to label this as nearest [inaudible] unintelligible. This can result in more consistent labels than if we were to ask everyone to guess what they heard when it really is unintelligible.
 
 ![](<../.gitbook/assets/108.png>)
+
 ![](<../.gitbook/assets/109.png>)
 
 I find that this type of voting mechanism technique, it can work, but it's probably over used in machine learning today. Where what I've seen a lot of teams do is have inconsistent labeling instructions, and then try to have a lot of labelers and then voting, to try to make it more consistent. But before resorting to this, which I do use, but more of a last resort, I would use the first, try to get to more consistent label definitions, to try to make the individual labelers choices less noisy in the first place, rather than take a lot of noisy data and then try to use voting to reduce the noise.
@@ -761,6 +763,7 @@ Improving label consistency will raise human-level performance. This makes it ha
 So far we've been discussing HLP on unstructured data, but some of these issues apply to structure data as well.
 
 ![](<../.gitbook/assets/114_1.png>)
+
 It turns out buses stop at bus stops, and so you can actually tell if someone is in a bus or in a car based on the GPS trace. For problems like these, it would be quite reasonable to ask a human to label the data, at least on the first pass for a learning algorithm to make such predictions as these. When the ground truth label you're trying to predict comes from one human, the same questions of what does HLP mean? It is a useful baseline to figure out what is possible. But sometimes when measuring HLP, you realize that low HLP stems from inconsistent labels, and working to improve HLP by coming up with a more consistent labeling standard will both raise HLP and give you cleaner data with which to improve your learning experience performance.
 
 First, HLP is important for problems where human-level performance can provide a useful reference. I do measure it and use it as a reference for what might be possible and to drive air analysis and prioritization. Having said that, when you're measuring HLP, if you find the HLP is much less than 100 percent, also ask yourself if some of the gap between HLP and complete consistency is due to inconsistent labeling instructions. Because if that turns out to be the case, then improving labeling consistency will raise HLP and also give cleaner data for your learning algorithm, which will ultimately result in better machine-learning algorithm performance.
@@ -874,6 +877,7 @@ So the first one increased conversion, if the business wants to increase convers
 Take the next problem from the previous slide of reducing inventory. Maybe, you can imagine a demand prediction project to better estimate how many people buy something from you. So you don't purchase too many or too few, and have more accurate inventory in your warehouses. Or you may decide to come up with a marketing campaign to drive sales for specifically the products that you bought too many of. So as to steer more purchases of stuff sitting in your warehouse. And that could also reduce inventory, and there could be many other ideas for solutions 
 
 for the problem of increasing margin. You may come up with some ways to use machine learning to optimize what to sell. What is worth selling and what is not worth selling. And Nikon retail, sometimes this is called merchandising, just deciding what to sell. Or you can recommend bundles where if someone buys a camera. Maybe you can recommend to them a protective camera case and these bundles can also increase margin.
+
 ![](<../.gitbook/assets/126.png>)
 
 **The problem identification is a step of thinking through whether the things you want to achieve. And solution identification is a process of thinking through how to achieve those objectives.**
