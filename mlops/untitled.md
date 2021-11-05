@@ -654,16 +654,21 @@ I found this categorization of problems into unstructured versus structured, sma
 
 
 for small datasets, if you discover an inconsistency in the labels, say one person label Iguanas one way and the different person labeled Iguanas a different way. You can just get the two or three labels together and have them talk to each other and hash out and agree on one labeling convention. For the very large data sets, the emphasis has to be on data process. And if you have a 100 labelers or even more, it's just harder to get 100 people into a room to all talk to each other and hash out the process. And so you might have to rely on a smaller team to establish a consistent label definition and then share that definition with all, say 100 or more labelers and ask them to all implement the same process.
+
 ![](<../.gitbook/assets/101.png>)
+
 >Maybe in your factory, you actually took many thousands of images of smartphones, but you just haven't bothered to label all of them yet. This is also common in the self driving car industry, where many self driving car companies have collected tons of images of cars driving around, but just have not yet caught in that data labeled.
 
 ![](<../.gitbook/assets/102.png>)
+
 Machine learning is very diverse and it's hard to find one size fits all advice like that. I've seen computer vision problems built with 100 examples or 100 examples for a class, screen systems built with 100 million examples. And so if you are looking for advice on a machine learning project, try to find someone that's worked in the same quadrant as the problem you are trying to solve. 
 
 
 ### Small data and label consistency
 So let's say you have a data set that looks like this where you have five examples. So a pretty small data set because this data set that is the output Y is pretty noisy, It is difficult to know what is the the function you should use to map voltage to the rotor speed in rpm.
+
 ![](<../.gitbook/assets/103.png>)
+
 Now, if you had a ton of data, this data set is equally noisy as the one on the left, but you just have a lot more data. Then the learning algorithm can average over the noisy data sets and you can now fill a function. You're pretty confidently
 
 A lot of AI had recently grown up in large consumer Internet companies which may have 100 million users or billion users and does very large data sets. And so, I think some of the practices for how to deal with small data sets have not been emphasized as much as would be needed to tackle problems where you don't have 100 million examples, but only 1000 or even fewer.
@@ -684,13 +689,66 @@ i have trained computer vision systems with just 30 images and had to work just 
 ### Improving label consistency
 
 ![](<../.gitbook/assets/106.png>)
+In some cases you can also have the same labeler label an example, wait a while until they have hopefully forgotten or technical term is wash out, but have them take a break and then come back and re-label it and see if they're even consistent with themselves.
+
+Ideally, also document and write down that agreement, and this definition of y can then become an updated set of labeling instructions that they can go back to label new data or to relabel old data.
+
+For example, when we saw the pictures of phones, they were was so dark that we couldn't even tell what was going on, that was a sign that we should consider increasing the illumination, the lighting with which the pictures were taken. But of course, I know this isn't always possible, but sometimes this can be a big help.
+
+So after improve x or after improving the label instructions, you will ask the team to label more data. If you think there are still disagreements, then repeat the whole process of having multiple labelers label the same example, major disagreement and so on. 
+
+>  One common outcome of this type of exercise is to standardize the definition of labels. Between these ways of labeling the audio clip you heard on the earlier video, perhaps the labelers will standardize on this as the convention, or maybe they'll pick a different one and that could be okay too. But at least this makes the data more consistent. Another common decision that I've seen come out of a process like this is merging classes. If in your labeling guidelines you asked labelers to label deep scratches on the surface of the phone, as well as shallow scratches on the surface of the phone, but if the definition between what constitutes a deep scratch versus a shallow scratch, barely visible here I know, is unclear, then you end up with labelers very inconsistently labeling things as deep versus shallow scratches. Sometimes the factory does really need to distinguish between deep versus shallow scratches. Sometimes factories need to do this to figure out what was the cause of the defect. But sometimes I found that you don't really need to distinguish between these two classes, and you can instead merge the two classes into a single class, say, the scratch class, and this gets rid of all of the inconsistencies with different labelers labeling the same thing deep versus shallow.
+
+Merging classes isn't always applicable, but when it is, it simplifies the task for the learning algorithm. 
+
+One of the technique I've used is to create a new class, or create a new label to capture uncertainty. 
+
 ![](<../.gitbook/assets/107.png>)
+
+> For example, let's say you asked labelers to label phones as defective or not based on the length of the scratch. Here's a sequence of smartphones with larger and larger scratches. Maybe everyone agrees that the giant scratch is a defect, a tiny scratch is not a defect, but they don't agree on what's in between. If it was possible to get them to agree, then that would be one way to reduce label ambiguity. But if that turns out to be difficult, then here's another option; which is to create a new class where you now have three labels. You can say, it's clearly not a defect, or clearly a defect, or just acknowledge there's some examples are ambiguous and put them in a new borderline class. 
+> Let me use speech illustration to illustrate this further. Given this audio clip, [inaudible] I really can't tell what they said. [inaudible] If you were to force everyone to transcribe it, some labelers would transcribe, "Nearly go." Some maybe they'll say, "Nearest grocery," and it's very difficult to get to consistency because the audio clip is genuinely ambiguous. To improve labeling consistency, it may be better to create a new tag, the unintelligible tag, and just ask everyone to label this as nearest [inaudible] unintelligible. This can result in more consistent labels than if we were to ask everyone to guess what they heard when it really is unintelligible.
+
 ![](<../.gitbook/assets/108.png>)
 ![](<../.gitbook/assets/109.png>)
+
+I find that this type of voting mechanism technique, it can work, but it's probably over used in machine learning today. Where what I've seen a lot of teams do is have inconsistent labeling instructions, and then try to have a lot of labelers and then voting, to try to make it more consistent. But before resorting to this, which I do use, but more of a last resort, I would use the first, try to get to more consistent label definitions, to try to make the individual labelers choices less noisy in the first place, rather than take a lot of noisy data and then try to use voting to reduce the noise.
+### Human level performance (HLP)
+One of the most important users of measuring Human Level Performance or HLP is to estimate based error or irreducible error. Especially on unstructured data tasks in order to help with their analysis and prioritization and just establish what might be possible.
+> ne of the most important users of measuring Human Level Performance or HLP is to estimate based error or irreducible error. Especially on unstructured data tasks in order to help with their analysis and prioritization and just establish what might be possible. Take a visual inspection tasks. This may have happened to you before, but I have gotten requests from business owners saying, hey Andrew, can you please build a system that's 99% accurate or maybe 99.9% accurate. So one way to establish what might be possible would be to take a data set and look at the Ground Truth Data. Say you have six examples where the Ground Truth Label is these, and then to answer human inspector to label the same data blinded to the Ground Truth Label of course and see what they come up with. And if they come up with these you would say this inspector agreed to the ground truth on four other six examples and disagreed on two out of six. And so Human Level Performance is 66.7%. And so this would let you go back to the business owner and say look, even your inspector is only 66.7% accuracy. How can you expect me to Get 99% accuracy? 
+
 ![](<../.gitbook/assets/110.png>)
+
+So HLP is useful for establishing a baseline in terms of what might be possible.
+There's one question that is often not asked, which is what exactly is this Ground Truth Label? Because rather than just measuring how well we can do compared to some Ground Truth Label, which was probably written by some other human. Are we really measuring what is possible or are we just measuring how well two different people happen to agree with each other? When the Ground Truth Label is itself determined by a person. There's a very different approach to thinking about Human Level Performance. 
+
+
+In academia, HLP is often used as a respectable benchmark. And so when you establish that people are only 92% accurate or some of the number on a speech recognition data set. And if you can beat human level performance, then that establishes then that helps you to quote proof that you're learning algorithm is doing something hard and helps get the paper published. I'm not saying this is a great use of HLP, but in academia showing you can beat HLP maybe for the first time has been a tried and true formula for establishing the academic significance of a piece of work and helps with getting something published.
+
+
+I've seen many projects with the machine learning team, wants to use HLP or beating HLP. To prove that the Machine Learning System is superior to the human is doing the job. And as tempting as it is to go to someone and says look, I've proved that my machinery system is more accurate than humans inspecting the phones or the radiologist reading X-rays or something. And now that I've mathematically proved the superiority of my learning album, you have to use it right? I know the logic of that is tempting, but as a practical matter, this approach rarely works. And you also saw last week that businesses need systems that do more than just doing well on average test set accuracy.
+
+ So if you ever find yourself in this situation, I would urge you to just use this type of logic with caution or maybe even more preferably just don't use these arguments.
+
+I've usually found other arguments than this to be more effective that working with the business to see if they should adopt a Machine Learning System. The problem with beating Human Level Performance as proof of machine learning superiority is multi fold. Beyond the fact that most applications require more than just high average tested accuracy, one of the problems with this metric is that it sometimes gives a learning algorithm an unfair advantage when labeling instructions are inconsistent.
+
 ![](<../.gitbook/assets/111.png>)
+
+
 ![](<../.gitbook/assets/112.png>)
+
+> Neither one is the superiors transcript to the other both seemed completely fine. But just by luck of the draw, 70% of labelers choose the first one, 30% choose the second one. So if the ground truth is established by a labelers, maybe just a laborer with a slightly bigger title, but really by one labelers. Then the chance that two random labeler will agree will be 0.7 squared plus 0.3 squares, which is 0.58. So if you had two labelers use the first convention, there's a 0.7 square chance of that. Or if both of your random labelers use the second convention, there's a 0.3 square chance of that. Then the two of them will agree. So the chances to labelers agreeing 0.58. And in the usual way of measuring Human Level Performance, you will conclude that Human Level Performance is 0.58. But what you're really measuring is the chance of two random labelers agreeing. This is where the machine learning our room has an unfair advantage. 
+> I think either of these labeling conventions is completely fine. But the learning algorithm is a little bit better at gathering statistics of how often ellipses versus commas are used in such a context than the learning algorithm may be able to always use the first labeling convention. Because it knows that statistically, it has a 70% chance of getting it right if it uses ellipses or dot dot dot. So a learning algorithm will agree with humans 70% of the time, just by choosing the first lebeling convention. But this 12% improvement in performance, whereas Human Level Performance is 58% and your learning algorithm is 12% better is 0.70. This 12 better performance is not actually important for anything between these two equally good, slightly arbitrary choices. The learning algorithm just consistently picks the first one so it gains what seems like a 12% advantage on this type of query, but it's not actually outperforming any human in any way that a user would care about. And one side effect of this is that, if you're speech recognition tool has multiple types of audio. For some, there's this dot dot dot or ellipses versus common ambiguity and learning album does 12% better on this.
+
+If you're learning algorithm makes some more significant errors on other types of input audio, then when its performance where it actually does worse could be averaged out by queries like these where kind of fake looks like it's doing better. And this will therefore mask or hide the fact that you're learning algorithm is actually creating worse transcripts than humans actually are. And what this means is that a machine learning system can look like it's doing better than HLP. But actually be producing worse transcripts than people because it's just doing better on this type of problem which is not important to do better on while potentially actually doing worse on some other types of input audio.
+
+Given these problems with Human Level Performance, what are we supposed to do? Measuring Human Level Performance is useful for establishing a baseline using that to drive error analysis and prioritization. But using it to benchmark machines and humans sometimes runs into problematic cases like this.
+
+But found that when my goal is to build a useful application rather than trying to beat Human Level Performance, I found it's often useful to instead try to raise Human Level Performance because we raise Human Level Performance by improving label consistency and that ultimately results in better learning outcomes performance as well. 
+
 ![](<../.gitbook/assets/113.png>)
+
+### Raising HLP
+
 ![](<../.gitbook/assets/114.png>)
 ![](<../.gitbook/assets/115.png>)
 ![](<../.gitbook/assets/116.png>)
