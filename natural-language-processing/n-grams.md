@@ -43,7 +43,7 @@ To generalize, the probability of a unigram is $$P(w) = \frac{C(w)}{m}$$
 \
 
 
-![](<../.gitbook/assets/image (74) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (74) (1) (1) (1) (1) (1).png>)
 
 ### Trigram Probability
 
