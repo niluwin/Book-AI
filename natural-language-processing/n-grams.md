@@ -16,7 +16,7 @@ Other applications of N-gram language modeling include:
 
 Now given the those definitions, we can label a sentence as follows:
 
-![](<../.gitbook/assets/image (71) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (71) (1) (1) (1) (1) (1).png>)
 
 
 
@@ -28,9 +28,9 @@ In other notation you can write:&#x20;
 
 ## ​N-Gram probabilities
 
-Given the following corpus:_ <mark style="color:blue;">I am happy because I am learning.</mark>_
+Given the following corpus: _ <mark style="color:blue;">I am happy because I am learning.</mark>_
 
-### Unigram Probability_ _
+### Unigram Probability __&#x20;
 
 * Size of corpus <mark style="color:blue;">m = 7</mark>.
 * ​$$P(I)= 2/7$$
@@ -59,7 +59,7 @@ To generalize, the probability of a unigram is $$P(w) = \frac{C(w)}{m}$$
 
 ## Sequence Probabilities
 
-To compute the probability of a sentence: _The teacher drinks tea, _We will make use of the following:
+To compute the probability of a sentence: _The teacher drinks tea,_ We will make use of the following:
 
 * $$P(B \mid A)=\frac{P(A, B)}{P(A)} \Longrightarrow P(A, B)=P(A) P(B \mid A)$$
 * $$P(A, B, C, D)=P(A) P(B \mid A) P(C \mid A, B) P(D \mid A, B, C)$$​
@@ -68,7 +68,7 @@ To compute the probability of a sequence, you can compute the following:
 
 $$P( the teacher drinks tea )= P(the)P( teacher|the)P( drinks | the teacher)P(tea∣the teacher drinks )$$
 
-One of the main issues with computing the probabilities above is the corpus rarely contains the exact same phrases as the ones you computed your probabilities on. Hence, you can easily end up getting a probability of 0. The _Markov assumption _indicates that only the last word matters. Hence:
+One of the main issues with computing the probabilities above is the corpus rarely contains the exact same phrases as the ones you computed your probabilities on. Hence, you can easily end up getting a probability of 0. The _Markov assumption_ indicates that only the last word matters. Hence:
 
 * $$\text { Bigram } \quad P\left(w_{n} \mid w_{1}^{n-1}\right) \approx P\left(w_{n} \mid w_{n-1}\right)$$​
 * $$\text { N-gram } \quad P\left(w_{n} \mid w_{1}^{n-1}\right) \approx P\left(w_{n} \mid w_{n-N+1}^{n-1}\right)$$​

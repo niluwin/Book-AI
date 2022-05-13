@@ -59,5 +59,10 @@
 * [ML Project Lifecycle](mlops/ml-project-lifecycle.md)
 * [Machine Learning in Production](mlops/ml-in-prod.md)
 * [Machine Learning Data Lifecycle in Production](mlops/machine-learning-data-lifecycle-in-production.md)
-* [Building ML Pipelines](mlops/building-ml-pipelines.md)
-* [Introduction](mlops/introduction.md)
+* [Building ML Pipelines](mlops/building-ml-pipelines/README.md)
+  * [Introduction](mlops/building-ml-pipelines/introduction.md)
+  * [Data Ingestion](mlops/building-ml-pipelines/data-ingestion.md)
+
+## Tools
+
+* [ML/DL tools](tools/ml-dl-tools.md)

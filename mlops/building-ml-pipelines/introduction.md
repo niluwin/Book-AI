@@ -16,7 +16,9 @@ TFX provides a variety of pipeline components that cover a good number of use ca
 * Model analysis and validation with `Evaluator`
 * Model deployments with `Pusher`
 
-![](<../.gitbook/assets/image (97).png>)
+![TFX as part of ML pipelines](<../../.gitbook/assets/image (71).png>)
+
+![TFX components and libraries](<../../.gitbook/assets/image (97).png>)
 
 ```shell
 pip install tfx
@@ -34,9 +36,9 @@ from tfx.components import Transform
 ...
 ```
 
-![Component overview](<../.gitbook/assets/image (74).png>)
+![Component overview](<../../.gitbook/assets/image (74).png>)
 
-![Storing metadata with MLMD](<../.gitbook/assets/image (83).png>)
+![Storing metadata with MLMD](<../../.gitbook/assets/image (83).png>)
 
 You can start an interactive pipeline by importing the required packages:
 
@@ -60,7 +62,7 @@ for artifact in statistics_gen.outputs['statistics'].get():
 
 ### Alternatives
 
-![](<../.gitbook/assets/image (90).png>)
+![](<../../.gitbook/assets/image (90).png>)
 
 ## Apache Beam
 
@@ -184,3 +186,11 @@ king: 65
 ```
 
 If you want to execute this pipeline on different Apache Beam runners like Apache Spark or Apache Flink, you will need to set the pipeline configurations through the `pipeline_options` object
+
+## Resources
+
+In supervised classification problems with multiple classes as outputs, it’s often necessary to convert from a category to a vector such as (0,1,0), which is a one-hot vector, or from a list of categories to a vector such as (1,1,0), which is a multi-hot vector.
+
+Google started an internal project called Sibyl in 2007 to manage an internal machine learning production pipeline. However, in 2015, the topic gained wider attention when D. Sculley et al. published their learnings of machine learning pipelines, [“Hidden Technical Debt in Machine Learning Systems”](https://oreil.ly/qVlYb).
+
+D. Sculley et al., “Hidden Technical Debt in Machine Learning Systems,” _Google, Inc._ (2015).
