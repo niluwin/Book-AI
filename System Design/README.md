@@ -351,7 +351,47 @@ Four key principles for **good API design**:​
 
 ***
 
-If you want, the next step can be similar GitBook-ready notes for the later sections specifically on **REST**, **GraphQL**, **authentication/authorization**, and **security**, with headings and timestamps aligned to your book structure.
+### What is RESTful API <a href="#what-restful-section-covers" id="what-restful-section-covers"></a>
+
+The RESTful segment itself includes all of the following topics, which you can checkpoint against your notes:
+
+* **REST concepts & resource modeling**:
+  * Resources as nouns (e.g., `products`, `orders`, `reviews`) and collections vs individual items (`/api/products` vs `/api/products/{id}`).\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Nested resources such as `/api/products/{id}/reviews` for product-specific reviews.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+* **Filtering, sorting, pagination**:
+  * Query parameters for filtering (e.g., `?category=electronics&inStock=true`).\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Sorting via `sort` query param (e.g., by price, rating) done on the backend, not client.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Pagination with `page` + `limit`, `offset` + `limit`, and cursor-based pagination; benefits for bandwidth and performance.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+* **HTTP methods and CRUD mapping**:
+  * GET for reading (safe and idempotent), POST for creating (non‑idempotent), PUT vs PATCH for full vs partial update, DELETE for removal.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * All demonstrated with `/api/v1/products` and `/api/v1/products/{id}` examples.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+* **Status codes and error handling**:
+  * 2xx: `200 OK`, `201 Created`, `204 No Content`.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * 3xx redirection codes when resources move.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * 4xx client errors including `400 Bad Request`, `401 Unauthorized`, `404 Not Found`.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * 5xx server errors for unexpected backend failures.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+* **REST best practices**:
+  * Use **plural** resource names (`/products`, not `/product`).\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Keep verbs in methods, not URLs (`DELETE /users/{id}`, not `POST /users/delete`).\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Always support filtering, sorting, and pagination for large collections.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * Version APIs via prefixes like `/api/v1/...` to avoid breaking existing clients when adding `/api/v2/...`.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+
+### GraphQL basics <a href="#checkpoint-1--graphql-basics" id="checkpoint-1--graphql-basics"></a>
+
+* GraphQL is a **query** language that lets clients ask for exactly the fields they need in a single request, typically via one endpoint (often `/graphql`).
+* Operations are:
+  * Queries: read data (equivalent to REST GET).
+  * Mutations: write/update/delete data (equivalent to REST POST/PUT/PATCH/DELETE).
+  * Subscriptions: real-time updates over a persistent connection.
+*   Key advantages:
+
+    * Minimizes over-fetching and under-fetching by allowing field-level selection.
+    * Reduces round trips; data that would need multiple REST calls can often be fetched in one query.
+    * Fits complex UIs where a single screen needs multiple related resource graphs.
+
+
+
+
 
 ### 9. Caching, Key-Value Stores, and CDNs (6:35–12:54, plus substack article) <a href="#id-9-caching-key-value-stores-and-cdns-6351254-plus-s" id="id-9-caching-key-value-stores-and-cdns-6351254-plus-s"></a>
 
