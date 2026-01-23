@@ -183,10 +183,11 @@ Types of load balancers mentioned:\[[youtube](https://www.youtube.com/watch?v=ad
 
 * **Software load balancers**:
   * NGINX is a very common software LB where you can configure upstream servers, algorithms, and health checks.
+  * Another example is HAProxy, which open source
 * **Hardware load balancers**:
   * Examples include F5 and Citrix devices used for high performance and enterprise setups.
 * **Cloud provider load balancers**:
-  * AWS load balancers and Google Cloud load balancing integrate with auto-scaling and security features, making configuration easier when servers are in the cloud.\[[hayksimonyan.substack](https://hayksimonyan.substack.com/p/system-design-explained-apis-databases)]​\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
+  * AWS load balancers and Google Cloud load balancing integrate with auto-scaling and security features, making configuration easier when servers are in the cloud. AWS has Elastic load Balancing \[[hayksimonyan.substack](https://hayksimonyan.substack.com/p/system-design-explained-apis-databases)]​\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​
 
 ***
 
