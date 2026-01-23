@@ -206,6 +206,153 @@ Good system design aims to avoid or reduce SPOFs by introducing redundancy and r
 
 ***
 
+
+
+***
+
+### 12. Handling Load Balancer as SPOF (29:00–31:02, 1760s–1861s) <a href="#id-12-handling-load-balancer-as-spof-29003102-1760s18" id="id-12-handling-load-balancer-as-spof-29003102-1760s18"></a>
+
+* The load balancer itself can become a **single point of failure** if there is only one; if it goes down, users cannot reach any backend servers, even if they are healthy.​
+* First strategy: **redundancy** – run multiple load balancers; if LB2 fails, all traffic is routed to LB1 while its health is monitored, and when LB2 recovers, traffic can be split again.​
+* Second strategy: **health checks and monitoring** for load balancers themselves so that routing logic avoids unhealthy LBs, similar to how LBs avoid unhealthy backend servers.​
+* Third strategy: **self-healing** – monitor LB health and automatically recreate/restart a failed load balancer instance so that clients quickly reconnect to a new healthy LB.​
+
+***
+
+### 13. What an API Is (31:03–36:00, 1861s–2010s) <a href="#id-13-what-an-api-is-31033600-1861s2010s" id="id-13-what-an-api-is-31033600-1861s2010s"></a>
+
+* API stands for **Application Programming Interface** and defines how software components interact: what requests can be made, endpoints, methods, and expected responses.​
+* The API is a **contract** between client (browser or mobile app) and server: it abstracts away implementation details and exposes only operations and data formats.​
+* APIs define **service boundaries**, allowing separate services (e.g., user service, post service) to communicate over well-defined interfaces regardless of internal implementation or language.​
+
+***
+
+### 14. API Styles: REST, GraphQL, gRPC (36:00–44:00, 2015s–2187s) <a href="#id-14-api-styles-rest-graphql-grpc-36004400-2015s2187" id="id-14-api-styles-rest-graphql-grpc-36004400-2015s2187"></a>
+
+### 14.1 RESTful APIs
+
+* REST (Representational State Transfer) uses a **resource-based** approach with HTTP as the underlying protocol.​
+* Characteristics:
+  * Stateless: each request contains all needed context; server does not rely on previous requests.
+  * Uses HTTP methods: GET (read), POST (create), PUT/PATCH (update), DELETE (delete).
+  * Common in web and mobile applications.​
+
+### 14.2 GraphQL
+
+* GraphQL is a **query language** for APIs where clients request exactly the fields they need via a single endpoint.​
+* Operations: **query** (read), **mutation** (write/update), and **subscription** (real-time updates).​
+* Advantages:
+  * Clients can fetch multiple related pieces of data (e.g., user + posts + followers) in **one request**, reducing round trips compared to REST.​
+  * Ideal for complex UIs where each screen needs a custom set of data.​
+
+### 14.3 gRPC
+
+* gRPC is a **high-performance RPC framework** that uses Protocol Buffers and HTTP/2 as transport.​
+* It defines methods as RPCs in `.proto` files, supports streaming and bidirectional communication, and is commonly used for **microservice-to-microservice** communication rather than browser clients.​
+
+***
+
+### 15. REST vs GraphQL in Detail (44:00–47:19, 2187s–2367s) <a href="#id-15-rest-vs-graphql-in-detail-44004719-2187s2367s" id="id-15-rest-vs-graphql-in-detail-44004719-2187s2367s"></a>
+
+### REST characteristics
+
+* Resource-based endpoints, e.g., `/api/v1/users/{id}`, `/api/v1/users/{id}/posts`, `/api/v1/users/{id}/followers`.​
+* Separate calls for related data: user details + posts + followers may require multiple requests.​
+* Fixed response structure: the shape of the response for an endpoint is stable across calls.​
+* Supports explicit versioning via URL or headers, such as `/v1/` and `/v2/` in paths.​
+* Can leverage **HTTP caching** with cache-related headers.​
+
+### GraphQL characteristics
+
+* Single endpoint (e.g., `/graphql`) for all operations; the request’s **query** defines exactly what fields to return.​
+* Client specifies the response shape: example query asking for `user(id: 123)` with `name`, `posts { title, content }`, `followers { name }`.​
+* Schema evolution often happens without versioned URLs; fields can be versioned at the schema level when needed (e.g., `followersV2`).​
+* Emphasizes **application-level caching** rather than HTTP-layer caching.​
+
+***
+
+### 16. API Design Principles (47:20–59:12, 2367s–2531s) <a href="#id-16-api-design-principles-47205912-2367s2531s" id="id-16-api-design-principles-47205912-2367s2531s"></a>
+
+Four key principles for **good API design**:​
+
+1. **Consistency**
+   * Use consistent naming, casing, and patterns across endpoints and payloads (e.g., always camelCase or always snake\_case, not mixed).​
+2. **Simplicity**
+   * Focus on core use cases and intuitive design; an ideal API can be used almost without reading docs.​
+3. **Security**
+   * Always include authentication and authorization, validate inputs, and apply rate limiting to protect against abuse.​
+4. **Performance**
+   * Use appropriate caching strategies, apply pagination for large result sets, minimize payload size, and reduce unnecessary round trips.​
+
+***
+
+### 17. Protocol Choice and API Design Process (47:20–1:04:24, 2526s–2747s) <a href="#id-17-protocol-choice-and-api-design-process-47201042" id="id-17-protocol-choice-and-api-design-process-47201042"></a>
+
+### 17.1 Protocol choice and impact
+
+* Protocols like HTTP, WebSockets, AMQP, and gRPC shape the API’s capabilities and performance; features of HTTP (methods, status codes, headers) align naturally with REST.​
+* WebSockets enable real-time, bidirectional communication, useful for chat or live updates; AMQP is used for asynchronous queuing; gRPC is strong for efficient server-to-server calls.​
+
+### 17.2 API design process
+
+* Start with **requirements**: user stories, core use cases, scope vs out-of-scope features, performance needs, and security constraints.​
+* Design approaches:​
+  * Top‑down: begin from requirements and workflows, then define endpoints and operations (very common in interviews).
+  * Bottom‑up: design based on existing data models and capabilities (common inside companies).
+  * Contract‑first: specify request/response schemas before implementation; often used with OpenAPI or similar.
+* API lifecycle stages: design → development and local testing → deployment and monitoring (staging/production) → maintenance → deprecation/retirement of old versions.​
+
+***
+
+### 18. API Protocols at the Application Layer (59:13–1:04:24, 2853s–3529s) <a href="#id-18-api-protocols-at-the-application-layer-59131042" id="id-18-api-protocols-at-the-application-layer-59131042"></a>
+
+### 18.1 Application protocols and the network stack
+
+* Application-layer protocols (HTTP, HTTPS, WebSockets, AMQP, gRPC) sit on top of transport-layer protocols like TCP and UDP.​
+* They define message formats, request–response patterns, connection management, and error handling for APIs.​
+
+### 18.2 HTTP and HTTPS basics
+
+* HTTP is the **foundation** of most web APIs; a request includes method (GET/POST/etc.), URL, version, host, headers (auth, etc.), and optional body.​
+* Responses include status code (200, 400, 500), content type (e.g., `application/json`), and payload along with other headers (e.g., cache control).​
+* HTTPS adds TLS/SSL encryption, providing confidentiality and integrity in transit; using HTTPS is the standard for production APIs.​
+
+### 18.3 WebSockets
+
+* WebSockets establish a long-lived, bidirectional connection after an initial handshake, allowing the server to **push** data to the client without repeated polling.​
+* This greatly reduces latency and unnecessary bandwidth usage for applications like chat, live feeds, or collaborative tools.​
+
+### 18.4 AMQP (Message Queues)
+
+* AMQP (Advanced Message Queuing Protocol) is used with message brokers and queues between producers and consumers (e.g., order processing).​
+* Producers publish messages to queues; consumers pull them when ready, enabling asynchronous processing, backpressure, and reliable delivery patterns.​
+
+### 18.5 gRPC recap at protocol level
+
+* gRPC uses HTTP/2 and Protocol Buffers to provide efficient, strongly-typed RPC calls, often between microservices.​
+* It leverages streaming and supports various interaction patterns beyond simple request–response, but browser support constraints make it mostly server-to-server.​
+
+***
+
+### 19. Transport Layer: TCP vs UDP (1:04:25–end excerpt, 3541s–3827s) <a href="#id-19-transport-layer-tcp-vs-udp-10425end-excerpt-354" id="id-19-transport-layer-tcp-vs-udp-10425end-excerpt-354"></a>
+
+* TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are transport-layer protocols that move data between machines, but with different trade-offs.​
+
+### 19.1 TCP
+
+* TCP is **reliable and ordered**: when data is split into multiple packets, TCP ensures all packets are delivered, reorders them if needed, and retransmits lost ones.​
+* Uses a three-way handshake to establish a connection, adding overhead but guaranteeing delivery and ordering; this is used for APIs involving payments, authentication, and user data where correctness is critical.​
+
+### 19.2 UDP
+
+* UDP is **faster but unreliable**: it sends packets without guaranteeing delivery, ordering, or retransmission of lost packets.​
+* Suitable for use cases like video calls, online games, and live streams where occasional packet loss is acceptable and lower latency is more important than perfect reliability.​
+* Choice guideline: use TCP when you need safety and reliability; use UDP when you prioritize speed and can tolerate some data loss.​
+
+***
+
+If you want, the next step can be similar GitBook-ready notes for the later sections specifically on **REST**, **GraphQL**, **authentication/authorization**, and **security**, with headings and timestamps aligned to your book structure.
+
 ### 9. Caching, Key-Value Stores, and CDNs (6:35–12:54, plus substack article) <a href="#id-9-caching-key-value-stores-and-cdns-6351254-plus-s" id="id-9-caching-key-value-stores-and-cdns-6351254-plus-s"></a>
 
 * Key-value stores like Redis and Memcache primarily store data in RAM, which makes reading and writing cached data extremely fast.[youtube+1](https://www.youtube.com/watch?v=Y-xBxnqaF4Y)\[[hayksimonyan.substack](https://hayksimonyan.substack.com/p/system-design-explained-apis-databases)]​
@@ -238,6 +385,3 @@ Example API discussed:\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]�
 * When choosing data stores in your design, explicitly justify **SQL vs NoSQL** using the rules above – consistency vs scalability, structure vs flexibility.[youtube+1](https://www.youtube.com/watch?v=Y-xBxnqaF4Y)\[[hayksimonyan.substack](https://hayksimonyan.substack.com/p/system-design-explained-apis-databases)]​
 * Show awareness of **load balancing algorithms**, health checks, and how to handle failures; interviewers want to see trade-off thinking, not just buzzwords.\[[youtube](https://www.youtube.com/watch?v=adOkTjIIDnk)]​\[[hayksimonyan.substack](https://hayksimonyan.substack.com/p/system-design-explained-apis-databases)]​
 
-These notes follow your original detailed structure and now include the video link, channel name, and timestamps so you can paste them directly into GitBook and navigate back to relevant sections quickly.
-
-Add to follow-upCheck sources
