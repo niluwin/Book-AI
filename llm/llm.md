@@ -38,13 +38,55 @@ messge a list of dictionaries
 1. role
 2. content
 
+### Ways to use
+
+1. endpoint
+2. python library
+
 ### Chat completions api
 
 1. model
 2. messages
 
-### types of prompt
+### Types of prompt
 
 1. system prompt
 2. user prompt
+
+### Types of models
+
+1. close source frontier models
+   1. gpt from OpenAI, gpt-5-nano
+   2. claude from Anthropic, haiku, sonnet and opus
+   3. gemini from Google
+   4. Grok from x.ai
+2.  open source models / open weight model
+
+    1. Llama from Meta, Llama 4, Llama3.2(1B, 3B)
+    2. Mixtral from Mistral
+    3. Qwen from Alibaba Cloud
+    4. Gemma from Google
+    5. Phi from Microsoft Phi4
+    6. Deepseek from Deepseek AI, R
+       1. Distillation
+    7. GPT-OSS from OpenAI
+
+
+
+### Model usage
+
+1. Chat Interface
+2.  Cloud APIs
+
+    1. Managed Service
+       1. Amazon Bedrock
+       2. Google Vertex
+       3. Azure ML
+       4. Groq
+    2. Frameworks like LangChain
+
+
+3. Direct Interface
+   1. Huggingface transformers library
+   2. Ollama
 
