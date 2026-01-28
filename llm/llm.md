@@ -12,5 +12,14 @@
 -----------
 
 1.   cusrsor
-2.   uv by astral, altername to anaconda
+2.   uv by astral, altername to anaconda [**https://docs.astral.sh/uv/**](https://docs.astral.sh/uv/)
 3.   OpenAI key
+
+
+
+## OLLAMA
+
+### Resources
+
+1. [https://ollama.com/](https://ollama.com/)
+2.
