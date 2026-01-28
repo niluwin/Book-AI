@@ -11,9 +11,15 @@
 Environment
 -----------
 
-1.   cusrsor
+1.   cusrsor by anysphere
+   1. Extensions
+      1. python ms-python
+      2. jupyter ms-toolsai
 2.   uv by astral, altername to anaconda [**https://docs.astral.sh/uv/**](https://docs.astral.sh/uv/)
-3.   OpenAI key
+   1. uv self update
+   2. uv sync
+3.   OpenAI key, platform.openai.com
+4.
 
 
 
@@ -22,4 +28,23 @@
 ### Resources
 
 1. [https://ollama.com/](https://ollama.com/)
-2.
+
+
+
+## OpenAI
+
+messge a list of dictionaries
+
+1. role
+2. content
+
+### Chat completions api
+
+1. model
+2. messages
+
+### types of prompt
+
+1. system prompt
+2. user prompt
+
