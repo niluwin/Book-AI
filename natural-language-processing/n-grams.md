@@ -4,33 +4,31 @@
 
 A language model is a tool that's calculates the probabilities of sentences. Language models can also estimate the probability of an upcoming word given a history of previous words.
 
-N-grams are fundamental and give you a foundation that will allow you to understand more complicated NLP models. These models allow you to calculate probabilities of certain words happening in a specific sequence. Using that, you can build an auto-correct or even a search suggestion tool.&#x20;
+N-grams are fundamental and give you a foundation that will allow you to understand more complicated NLP models. These models allow you to calculate probabilities of certain words happening in a specific sequence. Using that, you can build an auto-correct or even a search suggestion tool.
 
 Other applications of N-gram language modeling include:
 
-![](<../.gitbook/assets/image (70) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (23).png>)
 
 ## N-Grams
 
-![](<../.gitbook/assets/image (72) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (27).png>)
 
 Now given the those definitions, we can label a sentence as follows:
 
-![](<../.gitbook/assets/image (71) (1) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (159).png>)
 
-
-
-In other notation you can write:&#x20;
+In other notation you can write:
 
 * $$w_1^m = w_1 w_2 w_3 .... w_m$$​
-* $$w  ^1_ 3 ​  =w _1 ​  w _2 ​  w_ 3 ​$$​
-* $$w_{m−2}^m ​  =w _{m−2} w _{m−1} ​w_m$$
+* $$w ^1_ 3 ​ =w _1 ​ w _2 ​ w_ 3 ​$$​
+* $$w_{m−2}^m ​ =w _{m−2} w _{m−1} ​w_m$$
 
 ## ​N-Gram probabilities
 
-Given the following corpus: _ <mark style="color:blue;">I am happy because I am learning.</mark>_
+Given the following corpus: \_ <mark style="color:blue;">I am happy because I am learning.</mark>\_
 
-### Unigram Probability __&#x20;
+### Unigram Probability \_\_
 
 * Size of corpus <mark style="color:blue;">m = 7</mark>.
 * ​$$P(I)= 2/7$$
@@ -40,10 +38,9 @@ To generalize, the probability of a unigram is $$P(w) = \frac{C(w)}{m}$$
 
 ### Bigram Probability
 
-\
+\\
 
-
-![](<../.gitbook/assets/image (74) (1) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (25).png>)
 
 ### Trigram Probability
 
@@ -80,10 +77,8 @@ You can model the entire sentence as follows:
 
 ### Starting and Ending Sentences
 
-The N-gram Language Model\
+The N-gram Language Model\\
 
+###
 
-
-### &#x20;
-
-\
+\\

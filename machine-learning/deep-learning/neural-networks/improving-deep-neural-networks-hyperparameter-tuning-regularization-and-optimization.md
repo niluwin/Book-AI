@@ -56,11 +56,11 @@ Here are the course summary as its given on the course [link](https://www.course
 >
 > After 3 weeks, you will:
 >
-> * Understand industry best-practices for building deep learning applications.&#x20;
-> * Be able to effectively use the common neural network "tricks", including initialization, L2 and dropout regularization, Batch normalization, gradient checking,&#x20;
-> * Be able to implement and apply a variety of optimization algorithms, such as mini-batch gradient descent, Momentum, RMSprop and Adam, and check for their convergence.&#x20;
+> * Understand industry best-practices for building deep learning applications.
+> * Be able to effectively use the common neural network "tricks", including initialization, L2 and dropout regularization, Batch normalization, gradient checking,
+> * Be able to implement and apply a variety of optimization algorithms, such as mini-batch gradient descent, Momentum, RMSprop and Adam, and check for their convergence.
 > * Understand new best-practices for the deep learning era of how to set up train/dev/test sets and analyze bias/variance
-> * Be able to implement a neural network in TensorFlow.&#x20;
+> * Be able to implement a neural network in TensorFlow.
 >
 > This is the second course of the Deep Learning Specialization.
 
@@ -72,13 +72,13 @@ Here are the course summary as its given on the course [link](https://www.course
 * So the idea is you go through the loop: `Idea ==> Code ==> Experiment`.
 * You have to go through the loop many times to figure out your hyperparameters.
 * Your data will be split into three parts:
-  * Training set.       (Has to be the largest set)
+  * Training set. (Has to be the largest set)
   * Hold-out cross validation set / Development or "dev" set.
   * Testing set.
 * You will try to build a model upon training set then try to optimize hyperparameters on dev set as much as possible. Then after your model is ready you try and evaluate the testing set.
 * so the trend on the ratio of splitting the models:
-  * If size of the  dataset is 100 to 1000000  ==> 60/20/20
-  * If size of the  dataset is 1000000  to INF  ==> 98/1/1 or  99.5/0.25/0.25
+  * If size of the dataset is 100 to 1000000 ==> 60/20/20
+  * If size of the dataset is 1000000 to INF ==> 98/1/1 or 99.5/0.25/0.25
 * The trend now gives the training data the biggest sets.
 * Make sure the dev and test set are coming from the same distribution.
   * For example if cat training pictures is from the web and the dev/test pictures are from users cell phone they will mismatch. It is better to make sure that dev and test set are from the same distribution.
@@ -93,7 +93,7 @@ Here are the course summary as its given on the course [link](https://www.course
   * If your model is overfitting then it has a "high variance"
   * Your model will be alright if you balance the Bias / Variance
   * For more: Refer Bias and Variance image below
-* Another idea to get the bias /  variance if you don't have a 2D plotting mechanism:
+* Another idea to get the bias / variance if you don't have a 2D plotting mechanism:
   * High variance (overfitting) for example:
     * Training error: 1%
     * Dev error: 11%
@@ -137,9 +137,9 @@ Lecture Notes
 
 * Adding regularization to NN will help it reduce variance (overfitting)
 * L1 matrix norm:
-  * `||W|| = Sum(|w[i,j]|)  # sum of absolute values of all w`
+  * `||W|| = Sum(|w[i,j]|) # sum of absolute values of all w`
 * L2 matrix norm because of arcane technical math reasons is called Frobenius norm:
-  * `||W||^2 = Sum(|w[i,j]|^2)    # sum of all w squared`
+  * `||W||^2 = Sum(|w[i,j]|^2) # sum of all w squared`
   * Also can be calculated as `||W||^2 = W.T * W if W is a vector`
 * Regularization for logistic regression:
   * The normal cost function that we want to minimize is: `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
@@ -215,7 +215,7 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
 * A downside of dropout is that the cost function J is not well defined and it will be hard to debug (plot J by iteration).
   * To solve that you'll need to turn off dropout, set all the `keep_prob`s to 1, and then run the code and check that it monotonically decreases J and then turn on the dropouts again.
 
-![Dropout](../../../.gitbook/assets/image.png)
+![Dropout](<../../../.gitbook/assets/image (38).png>)
 
 ### Other regularization methods
 
@@ -239,7 +239,7 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
   * It reduces the generalization error.
   * You can use some snapshots of your NN at the training ensembles them and take the results.
 
-![](../../../.gitbook/assets/02-\_Early\_stopping.png)
+![](../../../.gitbook/assets/02-_Early_stopping.png)
 
 ### Normalizing inputs
 
@@ -255,7 +255,7 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
   * If we don't normalize the inputs our cost function will be deep and its shape will be inconsistent (elongated) then optimizing it will take a long time.
   * But if we normalize it the opposite will occur. The shape of the cost function will be consistent (look more symmetric like circle in 2D example) and we can use a larger learning rate alpha - the optimization will be faster.
 
-![](<../../../.gitbook/assets/image (1).png>)
+![](<../../../.gitbook/assets/image (81).png>)
 
 ### Vanishing / Exploding gradients
 
@@ -331,11 +331,11 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
         d_theta_approx[i] = (J(theta1,...,theta[i] + eps) -  J(theta1,...,theta[i] - eps)) / 2*eps
       ```
   * Finally we evaluate this formula `(||d_theta_approx - d_theta||) / (||d_theta_approx||+||d_theta||)` (`||` - Euclidean vector norm) and check (with eps = 10^-7):
-    * if it is < 10^-7  - great, very likely the backpropagation implementation is correct
-    * if around 10^-5   - can be OK, but need to inspect if there are no particularly big values in `d_theta_approx - d_theta` vector
+    * if it is < 10^-7 - great, very likely the backpropagation implementation is correct
+    * if around 10^-5 - can be OK, but need to inspect if there are no particularly big values in `d_theta_approx - d_theta` vector
     * if it is >= 10^-3 - bad, probably there is a bug in backpropagation implementation
 
-![](../../../.gitbook/assets/03-\_Numerical\_approximation\_of\_gradients.png)
+![](../../../.gitbook/assets/03-_Numerical_approximation_of_gradients.png)
 
 ### Gradient checking implementation notes
 
@@ -343,15 +343,15 @@ At test time we don't use dropout. If you implement dropout at test time - it wo
 * Use gradient checking only for debugging.
 * If algorithm fails grad check, look at components to try to identify the bug.
 * Don't forget to add `lamda/(2m) * sum(W[l])` to `J` if you are using L1 or L2 regularization.
-* Gradient checking doesn't work with dropout because J is not consistent.&#x20;
+* Gradient checking doesn't work with dropout because J is not consistent.
   * You can first turn off dropout (set `keep_prob = 1.0`), run gradient checking and then turn on dropout again.
 * Run gradient checking at random initialization and train the network for a while maybe there's a bug which can be seen when w's and b's become larger (further from 0) and can't be seen on the first iteration (when w's and b's are very small).
 
-![](<../../../.gitbook/assets/image (2).png>)
+![](<../../../.gitbook/assets/image (115).png>)
 
-![](<../../../.gitbook/assets/image (3).png>)
+![](<../../../.gitbook/assets/image (35).png>)
 
-![](<../../../.gitbook/assets/image (4).png>)
+![](<../../../.gitbook/assets/image (39).png>)
 
 ### Initialization summary
 
@@ -403,8 +403,8 @@ Implications of L2-regularization on:
   * because 50 million won't fit in the memory at once we need other processing to make such a thing.
 * It turns out you can make a faster algorithm to make gradient descent process some of your items even before you finish the 50 million items.
 * Suppose we have split m to **mini batches** of size 1000.
-  * `X{1} = 0    ...  1000`
-  * `X{2} = 1001 ...  2000`
+  * `X{1} = 0 ... 1000`
+  * `X{2} = 1001 ... 2000`
   * `...`
   * `X{bs} = ...`
 * We similarly split `X` & `Y`.
@@ -427,9 +427,9 @@ Implications of L2-regularization on:
 
 * In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down (unlike the batch gradient descent where cost function descreases on each iteration).
 * Mini-batch size:
-  * (`mini batch size = m`)  ==>    Batch gradient descent
-  * (`mini batch size = 1`)  ==>    Stochastic gradient descent (SGD)
-  * (`mini batch size = between 1 and m`) ==>    Mini-batch gradient descent
+  * (`mini batch size = m`) ==> Batch gradient descent
+  * (`mini batch size = 1`) ==> Stochastic gradient descent (SGD)
+  * (`mini batch size = between 1 and m`) ==> Mini-batch gradient descent
 * Batch gradient descent:
   * Takes relatively low noise, large steps to reach minimum
   * too long per iteration (epoch)
@@ -451,9 +451,9 @@ Implications of L2-regularization on:
       * Make sure that mini-batch fits in CPU/GPU memory.
 * Mini-batch size is a `hyperparameter`
 
-![](../../../.gitbook/assets/04-\_batch\_vs\_mini\_batch\_cost.png)
+![](../../../.gitbook/assets/04-_batch_vs_mini_batch_cost.png)
 
-![](<../../../.gitbook/assets/image (5).png>)
+![](<../../../.gitbook/assets/image (33).png>)
 
 ### Exponentially weighted averages
 
@@ -493,7 +493,7 @@ Implications of L2-regularization on:
 
 _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 
-![](../../../.gitbook/assets/Nasdaq1\_small.png)
+![](../../../.gitbook/assets/Nasdaq1_small.png)
 
 ### Understanding exponentially weighted averages
 
@@ -510,7 +510,7 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
       }
       ```
 
-![](../../../.gitbook/assets/05-\_exponentially\_weighted\_averages\_intuitions.png)
+![](../../../.gitbook/assets/05-_exponentially_weighted_averages_intuitions.png)
 
 ### Bias correction in exponentially weighted averages
 
@@ -544,7 +544,7 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 * `beta` is another `hyperparameter`. `beta = 0.9` is very common and works very well in most cases.
 * In practice people don't bother implementing **bias correction**.
 
-![](<../../../.gitbook/assets/image (6).png>)
+![](<../../../.gitbook/assets/image (138).png>)
 
 ### RMSprop
 
@@ -570,7 +570,7 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 * With RMSprop you can increase your learning rate.
 * Developed by Geoffrey Hinton and firstly introduced on [Coursera.org](https://www.coursera.org) course.
 
-![](../../../.gitbook/assets/06-\_RMSprop.png)
+![](../../../.gitbook/assets/06-_RMSprop.png)
 
 ### Adam optimization algorithm
 
@@ -611,11 +611,11 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 
 * Slowly reduce learning rate.
 * As mentioned before mini-batch gradient descent won't reach the optimum point (converge). But by making the learning rate decay with iterations it will be much closer to it because the steps (and possible oscillations) near the optimum are smaller.
-* One technique equations is`learning_rate = (1 / (1 + decay_rate * epoch_num)) * learning_rate_0` &#x20;
+* One technique equations is`learning_rate = (1 / (1 + decay_rate * epoch_num)) * learning_rate_0`
   * `epoch_num` is over all data (not a single mini-batch).
 * Other learning rate decay methods (continuous):
   * `learning_rate = (0.95 ^ epoch_num) * learning_rate_0`
-  * `learning_rate = (k / sqrt(epoch_num)) * learning_rate_0`  or
+  * `learning_rate = (k / sqrt(epoch_num)) * learning_rate_0` or
   * `learning_rate = (k / sqrt(mini-batch num)) * learning_rate_0`
 * Some people perform learning rate decay discretely - repeatedly decrease after some number of epochs.
 * Some people are making changes to the learning rate manually.
@@ -630,9 +630,9 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
   * Plateau is a region where the derivative is close to zero for a long time.
   * This is where algorithms like momentum, RMSprop or Adam can help.
 
-![](<../../../.gitbook/assets/image (7).png>)
+![](<../../../.gitbook/assets/image (66).png>)
 
-![](<../../../.gitbook/assets/image (8).png>)
+![](<../../../.gitbook/assets/image (34).png>)
 
 ## Hyperparameter tuning, Batch Normalization and Programming Frameworks
 
@@ -659,8 +659,8 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 ### Using an appropriate scale to pick hyperparameters
 
 * Let's say you have a specific range for a hyperparameter from "a" to "b". It's better to search for the right ones using the logarithmic scale rather then in linear scale:
-  * Calculate: `a_log = log(a)  # e.g. a = 0.0001 then a_log = -4`
-  * Calculate: `b_log = log(b)  # e.g. b = 1  then b_log = 0`
+  * Calculate: `a_log = log(a) # e.g. a = 0.0001 then a_log = -4`
+  * Calculate: `b_log = log(b) # e.g. b = 1 then b_log = 0`
   *   Then:
 
       ```
@@ -692,7 +692,7 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 * If you have enough computational resources, you can run some models in parallel and at the end of the day(s) you check the results.
   * Called Caviar approach.
 
-![](<../../../.gitbook/assets/image (9).png>)
+![](<../../../.gitbook/assets/image (156).png>)
 
 ### Normalizing activations in a network
 
@@ -734,13 +734,13 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
 * So if you are using batch normalization, you can remove b\[l] or make it always zero.
 * So the parameters will be `W[l]`, `beta[l]`, and `alpha[l]`.
 * Shapes:
-  * `Z[l]       - (n[l], m)`
-  * `beta[l]    - (n[l], m)`
-  * `gamma[l]   - (n[l], m)`
+  * `Z[l] - (n[l], m)`
+  * `beta[l] - (n[l], m)`
+  * `gamma[l] - (n[l], m)`
 
 ![](../../../.gitbook/assets/bn.png)
 
-![](<../../../.gitbook/assets/image (10).png>)
+![](<../../../.gitbook/assets/image (40).png>)
 
 ### Why does Batch normalization work?
 
@@ -753,7 +753,7 @@ _(taken from_ [_investopedia.com_](https://www.investopedia.com)_)_
   * Using bigger size of the mini-batch you are reducing noise and therefore regularization effect.
   * Don't rely on batch normalization as a regularization. It's intended for normalization of hidden units, activations and therefore speeding up learning. For regularization use other regularization techniques (L2 or dropout).
 
-![](<../../../.gitbook/assets/image (11).png>)
+![](<../../../.gitbook/assets/image (153).png>)
 
 ### Batch normalization at test time
 
@@ -822,7 +822,7 @@ There's an activation function called **hard max**, which gets 1 for the maximum
     ```
 * Example:
 
-![](../../../.gitbook/assets/07-\_softmax.png)
+![](../../../.gitbook/assets/07-_softmax.png)
 
 ### Deep learning frameworks
 
@@ -840,7 +840,7 @@ There's an activation function called **hard max**, which gets 1 for the maximum
   * TensorFlow
   * Theano
   * Torch/Pytorch
-* These frameworks are getting better month by month. Comparison between them can be found [here](https://en.wikipedia.org/wiki/Comparison\_of\_deep\_learning\_software).
+* These frameworks are getting better month by month. Comparison between them can be found [here](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software).
 * How to choose deep learning framework:
   * Ease of programming (development and deployment)
   * Running speed

@@ -6,7 +6,7 @@
 
 Google faced the same problem internally and decided to develop a platform to simplify the pipeline definitions and to minimize the amount of task boilerplate code to write. The open source version of Google’s internal ML pipeline framework is TFX.
 
-TFX provides a variety of pipeline components that cover a good number of use cases. Few oft  the tools are:
+TFX provides a variety of pipeline components that cover a good number of use cases. Few oft the tools are:
 
 * Data ingestion with `ExampleGen`
 * Data validation with `StatisticsGen`, `SchemaGen`, and the `ExampleValidator`
@@ -16,9 +16,9 @@ TFX provides a variety of pipeline components that cover a good number of use ca
 * Model analysis and validation with `Evaluator`
 * Model deployments with `Pusher`
 
-![TFX as part of ML pipelines](<../../.gitbook/assets/image (71).png>)
+![TFX as part of ML pipelines](<../../.gitbook/assets/image (154).png>)
 
-![TFX components and libraries](<../../.gitbook/assets/image (97).png>)
+![TFX components and libraries](<../../.gitbook/assets/image (116).png>)
 
 ```shell
 pip install tfx
@@ -36,9 +36,9 @@ from tfx.components import Transform
 ...
 ```
 
-![Component overview](<../../.gitbook/assets/image (74).png>)
+![Component overview](<../../.gitbook/assets/image (105).png>)
 
-![Storing metadata with MLMD](<../../.gitbook/assets/image (83).png>)
+![Storing metadata with MLMD](<../../.gitbook/assets/image (4).png>)
 
 You can start an interactive pipeline by importing the required packages:
 
@@ -62,13 +62,13 @@ for artifact in statistics_gen.outputs['statistics'].get():
 
 ### Alternatives
 
-![](<../../.gitbook/assets/image (90).png>)
+![](<../../.gitbook/assets/image (132).png>)
 
 ## Apache Beam
 
-Beam is an open source tool for defining and executing data-processing jobs. it is essential if you wish to write custom components.&#x20;
+Beam is an open source tool for defining and executing data-processing jobs. it is essential if you wish to write custom components.
 
-Pipelines also require well-managed distributed processing, which is why TFX leverages Apache Beam. This means that you can run the same data pipeline on Apache Beam’s DirectRunner, Apache Spark, Apache Flink, or Google Cloud Dataflow without a single change in the pipeline description.&#x20;
+Pipelines also require well-managed distributed processing, which is why TFX leverages Apache Beam. This means that you can run the same data pipeline on Apache Beam’s DirectRunner, Apache Spark, Apache Flink, or Google Cloud Dataflow without a single change in the pipeline description.
 
 Apache Beam can be used to describe batch processes, streaming operations, and data pipelines.
 
@@ -77,9 +77,9 @@ It has two uses in TFX pipelines:
 * it runs under the hood of many TFX components to carry out processing steps like data validation or data preprocessing.
 * it can be used as a pipeline orchestrator
 
-Apache Beam’s abstraction is based on two concepts:&#x20;
+Apache Beam’s abstraction is based on two concepts:
 
-* collections:  describe operations where data is being read or written from or to a given file or stream.&#x20;
+* collections: describe operations where data is being read or written from or to a given file or stream.
 * transformations: describe ways to manipulate the data.
 
 ```shell

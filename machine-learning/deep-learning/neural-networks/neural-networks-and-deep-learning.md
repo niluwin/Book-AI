@@ -49,7 +49,7 @@ This is the first course of the deep learning specialization at [Coursera](https
 
 ## Course summary
 
-[Andrew NG's Machine learning course notes](https://www.holehouse.org/mlclass/06\_Logistic\_Regression.html)
+[Andrew NG's Machine learning course notes](https://www.holehouse.org/mlclass/06_Logistic_Regression.html)
 
 Here are the course summary as its given on the course [link](https://www.coursera.org/learn/neural-networks-deep-learning):
 
@@ -76,23 +76,21 @@ Here are the course summary as its given on the course [link](https://www.course
 * Actually, when w⋅x+b=0 the perceptron outputs 0.
 * Disadvantage of perceptron is that it only output binary values and if we try to give small change in weight and bais then perceptron can flip the output. We need some system which can modify the output slightly according to small change in weight and bias. Here comes sigmoid function in picture.
 * If we change perceptron with a sigmoid function, then we can make slight change in output.
-* e.g. output in perceptron = 0, you slightly changed weight and bias, output becomes = 1 but actual output is 0.7. In case of sigmoid, output1 = 0, slight change in weight and bias, output = 0.7.&#x20;
+* e.g. output in perceptron = 0, you slightly changed weight and bias, output becomes = 1 but actual output is 0.7. In case of sigmoid, output1 = 0, slight change in weight and bias, output = 0.7.
 * If we apply sigmoid activation function then Single neuron will act as Logistic Regression.
 * we can understand difference between perceptron and sigmoid function by looking at sigmoid function graph.
-* Simple NN graph:
-  *
-    * Image taken from [tutorialspoint.com](http://www.tutorialspoint.com)
+* Simple NN graph: \*
+  * Image taken from [tutorialspoint.com](http://www.tutorialspoint.com)
 * RELU stands for rectified linear unit is the most popular activation function right now that makes deep NNs train faster now.
 * Hidden layers predicts connection between inputs automatically, thats what deep learning is good at.
-* Deep NN consists of more hidden layers (Deeper layers)
-  *
-    * Image taken from [opennn.net](http://www.opennn.net)
+* Deep NN consists of more hidden layers (Deeper layers) \*
+  * Image taken from [opennn.net](http://www.opennn.net)
 * Each Input will be connected to the hidden layer and the NN will decide the connections.
 * Supervised learning means we have the (X,Y) and we need to get the function that maps X to Y.
 
 ![](../../../.gitbook/assets/01.jpg)
 
-![](../../../.gitbook/assets/02.png)
+![](<../../../.gitbook/assets/02 (1).png>)
 
 ### Supervised learning with neural networks
 
@@ -110,7 +108,7 @@ Here are the course summary as its given on the course [link](https://www.course
 * Deep learning is taking off for 3 reasons: 1. Data:
   *   Using this image we can conclude:
 
-      \*&#x20;
+      \*
   * For small data NN can perform as Linear regression or SVM (Support vector machine)
   * For big data a small NN is better that SVM
   * For big data a big NN is better that a medium NN is better that small NN.
@@ -126,7 +124,7 @@ Here are the course summary as its given on the course [link](https://www.course
   * Creative algorithms has appeared that changed the way NN works.
     * For example using RELU function is so much better than using SIGMOID function in training a NN because it helps with the vanishing gradient problem.
 
-![](../../../.gitbook/assets/11.png)
+![](<../../../.gitbook/assets/11 (1).png>)
 
 ## Neural Networks Basics
 
@@ -134,9 +132,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Binary classification
 
-* Mainly he is talking about how to do a logistic regression to make a binary classifier.
-  *
-    * Image taken from [3.bp.blogspot.com](http://3.bp.blogspot.com)
+* Mainly he is talking about how to do a logistic regression to make a binary classifier. \*
+  * Image taken from [3.bp.blogspot.com](http://3.bp.blogspot.com)
 * He talked about an example of knowing if the current image contains a cat or not.
 * Here are some notations:
   * `M is the number of training vectors`
@@ -149,13 +146,13 @@ Here are the course summary as its given on the course [link](https://www.course
 * We will use python in this course.
 * In NumPy we can make matrices and make operations on them in a fast and reliable time.
 
-![log](../../../.gitbook/assets/03.png)
+![log](<../../../.gitbook/assets/03 (3).png>)
 
 ### Logistic regression
 
 * Algorithm is used for classification algorithm of 2 classes.
 * Equations:
-  * Simple equation:    `y = wx + b`
+  * Simple equation: `y = wx + b`
   * If x is a vector: `y = w(transpose)x + b`
   * If we need y to be in between 0 and 1 (probability): `y = sigmoid(w(transpose)x + b)`
   * In some notations this might be used: `y = sigmoid(w(transpose)x)`
@@ -165,11 +162,11 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Logistic regression cost function
 
-* First loss function would be the square root error:  `L(y',y) = 1/2 (y' - y)^2`
+* First loss function would be the square root error: `L(y',y) = 1/2 (y' - y)^2`
   * But we won't use this notation because it leads us to optimization problem which is non convex, means it contains local optimum points.
 * This is the function that we will use: `L(y',y) = - (y*log(y') + (1-y)*log(1-y'))`
 * To explain the last function lets see:
-  * if `y = 1` ==> `L(y',1) = -log(y')`  ==> we want `y'` to be the largest   ==> `y`' biggest value is 1
+  * if `y = 1` ==> `L(y',1) = -log(y')` ==> we want `y'` to be the largest ==> `y`' biggest value is 1
   * if `y = 0` ==> `L(y',0) = -log(1-y')` ==> we want `1-y'` to be the largest ==> `y'` to be smaller as possible because it can only has 1 value.
 * Then the Cost function will be: `J(w,b) = (1/m) * Sum(L(y'[i],y[i]))`
 * The loss function computes the error for a single training example; the cost function is the average of the loss functions of the entire training set.
@@ -187,25 +184,25 @@ Here are the course summary as its given on the course [link](https://www.course
     The derivative is also the slope of `w`
 * Looks like greedy algorithms. the derivative give us the direction to improve our parameters.
 * The actual equations we will implement:
-  * `w = w - alpha * d(J(w,b) / dw)`        (how much the function slopes in the w direction)
-  * `b = b - alpha * d(J(w,b) / db)`        (how much the function slopes in the d direction)
+  * `w = w - alpha * d(J(w,b) / dw)` (how much the function slopes in the w direction)
+  * `b = b - alpha * d(J(w,b) / db)` (how much the function slopes in the d direction)
 
 ### Derivatives
 
 * We will talk about some of required calculus.
 * You don't need to be a calculus geek to master deep learning but you'll need some skills from it.
 * Derivative of a linear line is its slope.
-  * ex. `f(a) = 3a`                    `d(f(a))/d(a) = 3`
+  * ex. `f(a) = 3a` `d(f(a))/d(a) = 3`
   * if `a = 2` then `f(a) = 6`
   * if we move a a little bit `a = 2.001` then `f(a) = 6.003` means that we multiplied the derivative (Slope) to the moved area and added it to the last result.
 
 ### More Derivatives examples
 
-* `f(a) = a^2`  ==> `d(f(a))/d(a) = 2a`
-  * `a = 2`  ==> `f(a) = 4`
+* `f(a) = a^2` ==> `d(f(a))/d(a) = 2a`
+  * `a = 2` ==> `f(a) = 4`
   * `a = 2.0001` ==> `f(a) = 4.0004` approx.
-* `f(a) = a^3`  ==> `d(f(a))/d(a) = 3a^2`
-* `f(a) = log(a)`  ==> `d(f(a))/d(a) = 1/a`
+* `f(a) = a^3` ==> `d(f(a))/d(a) = 3a^2`
+* `f(a) = log(a)` ==> `d(f(a))/d(a) = 1/a`
 * To conclude, Derivative is the slope and slope is different in different points in the function thats why the derivative is a function.
 * On a straight line the derivative doesn't change. For other functions derivative can have different values at different points.
 
@@ -229,10 +226,9 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Logistic Regression Gradient Descent
 
-* In the video he discussed the derivatives of gradient decent example for one sample with two features `x1` and `x2`.
-  *
+* In the video he discussed the derivatives of gradient decent example for one sample with two features `x1` and `x2`. \*
 
-![](../../../.gitbook/assets/04.png)
+![](<../../../.gitbook/assets/04 (2).png>)
 
 ### Gradient Descent on m Examples
 
@@ -247,7 +243,7 @@ Here are the course summary as its given on the course [link](https://www.course
         M                   Number of training examples
         Y(i)                Expected output of i
     ```
-* So we have: ![](../../../.gitbook/assets/09.png)
+* So we have: ![](<../../../.gitbook/assets/09 (1).png>)
 *   Then from right to left we will calculate derivations compared to the result:
 
     ```
@@ -397,7 +393,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 *   Equations of Hidden layers:
 
-    \*&#x20;
+    \*
 * Here are some informations about the last image:
   * `noOfHiddenNeurons = 4`
   * `Nx = 3`
@@ -411,7 +407,7 @@ Here are the course summary as its given on the course [link](https://www.course
     * `z2` is the result of the equation `z2 = W2*a1 + b`, it has a shape of `(noOfHiddenNeuronsCurrent,1)`
     * `a2` is the result of the equation `a2 = sigmoid(z2)`, it has a shape of `(noOfHiddenNeuronsCurrent,1)`
 
-![](../../../.gitbook/assets/05.png)
+![](<../../../.gitbook/assets/05 (2).png>)
 
 ### Vectorizing across multiple examples
 
@@ -466,7 +462,7 @@ Here are the course summary as its given on the course [link](https://www.course
 * In NN you will decide a lot of choices like:
   * No of hidden layers.
   * No of neurons in each hidden layer.
-  * Learning rate.       (The most important parameter)
+  * Learning rate. (The most important parameter)
   * Activation functions.
   * And others..
 * It turns out there are no guide lines for that. You should try all activation functions for example.
@@ -520,7 +516,7 @@ Here are the course summary as its given on the course [link](https://www.course
     * `b1` shape is `(n[1],1)`
     * `W2` shape is `(n[2],n[1])`
     * `b2` shape is `(n[2],1)`
-  * Cost function `I =  I(W1, b1, W2, b2) = (1/m) * Sum(L(Y,A2))`
+  * Cost function `I = I(W1, b1, W2, b2) = (1/m) * Sum(L(Y,A2))`
   *   Then Gradient descent:
 
       ```
@@ -553,7 +549,7 @@ Here are the course summary as its given on the course [link](https://www.course
     ```
 * How we derived the 6 equations of the backpropagation:
 
-![](../../../.gitbook/assets/06.png)
+![](<../../../.gitbook/assets/06 (2).png>)
 
 ### Random Initialization
 
@@ -615,7 +611,7 @@ Here are the course summary as its given on the course [link](https://www.course
 * Dimension of `W` is `(n[l],n[l-1])` . Can be thought by right to left.
 * Dimension of `b` is `(n[l],1)`
 * `dw` has the same shape as `W`, while `db` is the same shape as `b`
-* Dimension of `Z[l],` `A[l]`, `dZ[l]`, and `dA[l]`  is `(n[l],m)`
+* Dimension of `Z[l],` `A[l]`, `dZ[l]`, and `dA[l]` is `(n[l],m)`
 
 ### Why deep representations?
 
@@ -628,22 +624,21 @@ Here are the course summary as its given on the course [link](https://www.course
 * Neural Researchers think that deep neural networks "think" like brains (simple ==> complex)
 *   Circuit theory and deep learning:
 
-    \*&#x20;
+    \*
 * When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions (e.g. Logistic Regression), then try the shallow neural network and so on.
 
-![](../../../.gitbook/assets/07.png)
+![](<../../../.gitbook/assets/07 (1).png>)
 
 ### Building blocks of deep neural networks
 
 *   Forward and back propagation for a layer l:
 
-    \*&#x20;
-* Deep NN blocks:
-  *
+    \*
+* Deep NN blocks: \*
 
-![](../../../.gitbook/assets/08.png)
+![](<../../../.gitbook/assets/08 (2).png>)
 
-![Untitled](../../../.gitbook/assets/10.png)
+![Untitled](<../../../.gitbook/assets/10 (2).png>)
 
 ### Forward and Backward Propagation
 
