@@ -90,3 +90,9 @@ messge a list of dictionaries
    1. Huggingface transformers library
    2. Ollama
 
+### Types of LLMs
+
+1. Base model: Model used for predicting next word
+2. Chat/Instruct Model: RLHF: better for interactive usecases and creative content generation
+3. Reasoning/Thinking: budget forcing: Better for problem solving
+4. Hybrid: (chat+Reasoning)
