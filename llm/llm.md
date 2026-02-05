@@ -119,3 +119,9 @@ Evolution of llm application
 
 ### API Costs
 
+### Data science UI
+
+1. Gradio
+2. Streamlit
+3.
+
