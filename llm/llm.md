@@ -47,11 +47,14 @@ messge a list of dictionaries
 
 1. model
 2. messages
+3. response\_type
+4. reasoning\_effort: minimal, low, medium or high
 
 ### Types of prompt
 
 1. system prompt
 2. user prompt
+3. assistant
 
 ### Types of models
 
@@ -96,3 +99,23 @@ messge a list of dictionaries
 2. Chat/Instruct Model: RLHF: better for interactive usecases and creative content generation
 3. Reasoning/Thinking: budget forcing: Better for problem solving
 4. Hybrid: (chat+Reasoning)
+
+
+
+Evolution of llm application
+
+1. prompt engineering
+2. copilot
+3. RAG
+4. Agentic ai
+
+
+
+### Tokenizer
+
+1. tiktoken
+
+### Context Window
+
+### API Costs
+
