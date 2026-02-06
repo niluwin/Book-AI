@@ -37,6 +37,8 @@ messge a list of dictionaries
 
 1. role
 2. content
+3. metadata
+4. options
 
 ### Ways to use
 
