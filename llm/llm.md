@@ -55,9 +55,10 @@ messge a list of dictionaries
 
 ### Types of prompt
 
-1. system prompt
-2. user prompt
+1. system
+2. user
 3. assistant
+4. tool
 
 ### Types of models
 
