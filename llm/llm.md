@@ -51,6 +51,7 @@ messge a list of dictionaries
 2. messages
 3. response\_type
 4. reasoning\_effort: minimal, low, medium or high
+5. tools
 
 ### Types of prompt
 
