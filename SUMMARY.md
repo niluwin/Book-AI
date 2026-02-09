@@ -70,4 +70,5 @@
 ## LLM
 
 * [LLM](llm/llm.md)
+* [Hugging Face](llm/hugging-face.md)
 * [RAG](llm/rag.md)
