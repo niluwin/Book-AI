@@ -16,3 +16,20 @@ spaces
 4. peft
 5. trl
 6. accelerate
+
+### Tokenizer
+
+encode
+
+decode
+
+batch\_decode
+
+get\_added\_vocab
+
+vocab
+
+apply chat template
+
+
+
