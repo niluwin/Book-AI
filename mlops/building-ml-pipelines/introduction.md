@@ -38,7 +38,7 @@ from tfx.components import Transform
 
 ![Component overview](<../../.gitbook/assets/image (105).png>)
 
-![Storing metadata with MLMD](<../../.gitbook/assets/image (4).png>)
+![Storing metadata with MLMD](<../../.gitbook/assets/image (4) (1).png>)
 
 You can start an interactive pipeline by importing the required packages:
 
