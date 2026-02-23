@@ -62,6 +62,9 @@
 * [Building ML Pipelines](mlops/building-ml-pipelines/README.md)
   * [Introduction](mlops/building-ml-pipelines/introduction.md)
   * [Data Ingestion](mlops/building-ml-pipelines/data-ingestion.md)
+* [Terraform](mlops/terraform.md)
+* [Github Actions](mlops/github-actions.md)
+* [Cloud](mlops/cloud.md)
 
 ## Tools
 
