@@ -65,6 +65,7 @@
 * [Terraform](mlops/terraform.md)
 * [Github Actions](mlops/github-actions.md)
 * [Cloud](mlops/cloud.md)
+* [Security](mlops/security.md)
 
 ## Tools
 
@@ -75,3 +76,4 @@
 * [LLM](llm/llm.md)
 * [Hugging Face](llm/hugging-face.md)
 * [RAG](llm/rag.md)
+* [Agents](llm/agents.md)
